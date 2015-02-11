@@ -25,7 +25,9 @@ Opera 12.0+
 Thanks To
 ======
 [PIXI.JS](https://github.com/GoodBoyDigital/pixi.js/) - Renderer
+
 [Howler.JS](https://github.com/goldfire/howler.js) - Audio
+
 [Codo](https://github.com/coffeedoc/codo) - Documentation Tool
 
 Licence
