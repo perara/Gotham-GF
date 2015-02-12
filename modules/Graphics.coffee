@@ -6,7 +6,9 @@ Rectangle       = require './Graphics/Rectangle.coffee'
 Renderer        = require './Graphics/Renderer.coffee'
 Scene           = require './Graphics/Scene.coffee'
 Text            = require './Graphics/Text.coffee'
-graphics        = require './Graphics/Graphics.coffee'
+GraphicsObj     = require './Graphics/Graphics.coffee'
+Container       = require './Graphics/Container.coffee'
+Texture         = require './Graphics/Texture.coffee'
 
 # This class has a virtual method, that doesn't
 # exist in the source but appears in the documentation.
@@ -23,7 +25,9 @@ class Graphics
   @Renderer     = Renderer
   @Scene        = Scene
   @Text         = Text
-  @graphics      = graphics
+  @Graphics     = GraphicsObj
+  @Container    = Container
+  @Texture      = Texture
  
   
   # Requires the following json structure [[x,y,x2,y2][x,y,x2,y2]]
@@ -77,34 +81,36 @@ class Graphics
 
     polygonList = []
     graphicsList = []
-  
+
     if polygon.constructor != Array
       polygonList.push(polygon)
     else
       polygonList = polygon
 
     for polygon, key  in polygonList
-      grp = new Gotham.Graphics.graphics()
+      grp = new Gotham.Graphics.Graphics()
       graphicsList.push grp
-      grp.get().lineStyle(1, 0x0000FF, 1);
-      grp.get().drawPolygon(polygon.points);
+      grp.lineStyle(1, 0x0000FF, 1);
+      grp.beginFill(0xffffff, 0.5);
+      grp.polygon = polygon
+      grp.drawPolygon(polygon.points);
 
       if interactive?
         console.log "yes"
-        grp.get().interactive = true
-        grp.get().buttonMode = true
-        grp.get().hitArea = new PIXI.Polygon(polygon.points);
+        grp.interactive = true
+        grp.buttonMode = true
+        grp.hitArea = new PIXI.Polygon(polygon.points);
 
 
 
 
     return graphicsList
-      
-      
-      
-      
 
-  
-  
+
+
+
+
+
+
 
 module.exports = Graphics

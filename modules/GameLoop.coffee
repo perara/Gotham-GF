@@ -12,6 +12,7 @@ class GameLoop
       @fps = 60
     else
       @fps = fps
+
     setInterval(@update, @fps)
 
 
@@ -21,12 +22,11 @@ class GameLoop
 
 
   update: () ->
-    for key, logic of methods["logic"] 
+    for key, logic of methods["logic"]
       logic()
 
     for key, draw of methods["draw"]
       draw()
-
 
 
   addLogic: (method) ->

@@ -2,18 +2,9 @@
 
 class Container extends PIXI.DisplayObjectContainer
 
+  _created = false
   constructor: ->
     super
-
-    console.log "woooW"
-
-
-  childrenMap = {}
-  addChildName: (name, object) ->
-    @addChild object
-    @childrenMap[name] = object
-
-
 
   create: ->
     throw new Exception "Override Create Method"

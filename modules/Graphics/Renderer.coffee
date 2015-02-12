@@ -29,14 +29,14 @@ class Renderer
 
 
     # Create initial pixi stage (Root)
-    rootStage = new Gotham.Graphics.Scene(0x97c56e, true)
+    rootScene = new Gotham.Graphics.Scene(0x97c56e, true)
 
     # Add Text Label instructing to change stage
-    rootStage.addChild new Gotham.Graphics.Text("Gotham Game Engine", {font: "35px Arial", fill: "white", align: "left"}, 220, 255)
+    rootScene.addChild new Gotham.Graphics.Text("Gotham Game Engine", {font: "35px Arial", fill: "white", align: "left"}, 220, 255)
     
     # Sets current stage and maps it as Root in object
-    @pixi.stage = rootStage
-    @stages =
+    @pixi.stage = rootScene
+    @scenes =
       "root": @pixi.stage
 
     # Append renderer to the document
@@ -48,8 +48,15 @@ class Renderer
 
   # Sets current stage to defined name, errors out if not exists
   # @return [void] None
-  setStage: (name) ->
-    @pixi.stage = @stages[name]
+  setScene: (name) ->
+    scene = @scenes[name]
+
+
+    @pixi.stage = scene
+
+  addScene: (name, scene) ->
+    @scenes[name] = scene
+
 
 
 

@@ -33,13 +33,21 @@ class Preload
 
     @imageFromUrl = (url, name) ->
       that = @
-      img = new Image()
-      img.src = url
-      img._name = name
-      img.onload = ->
+
+      texture = Gotham.Graphics.Texture.fromImage(url)
+      texture._name = name
+      texture.addEventListener "update", ->
+
+        # Unset the Update Listener
+        this.addEventListener "update", ->
+
+        # Increment Loaded objects
         that._loadedObjects++
+
         # URL, Name, Percent
         that._onLoad(@src, @_name, (that._loadedObjects / that._totalObjects ) * 100.0)
+
+        # Check if preload is complete, call onComplete if true
         if that.isPreloadComplete() 
           that._onComplete()
     

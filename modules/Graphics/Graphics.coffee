@@ -1,23 +1,16 @@
 ﻿
-
-class graphics
+class Graphics extends PIXI.Graphics
 
   constructor: ->
-    @graphics = new PIXI.Graphics()
-    @graphics.setScale = (num) ->
+    super
 
 
-      #diffX = Math.abs(this.width - (this.width * num))
-      #diffY = this.height - (this.height * num)
-      console.log this
+  redraw: ->
+    @clear()
+    @graphics()
+
+  graphics: ->
+    throw new Error "Override this function"
 
 
-  get: ->
-    return @graphics
-
-
-
-
-    
-
-module.exports = graphics
+module.exports = Graphics

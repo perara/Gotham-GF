@@ -1,8 +1,8 @@
 ﻿# CoffeeScript
 
 # Third Party
-Howler      =     require "./dependencies/howler.js"
-PIXI        =     require './dependencies/pixi.js'
+window.Howler      =     require "./dependencies/howler.js"
+window.PIXI       =     require './dependencies/pixi.js'
 
 
 # 
@@ -18,10 +18,6 @@ class Gotham
   constructor: ->
     window.Gotham = @
 
-    # Third Party
-    window.Howler = Howler
-    window.PIXI = PIXI
-
     # Modules
     @Sound = Sound
     @Graphics = Graphics
@@ -29,7 +25,7 @@ class Gotham
     @GameLoop = new GameLoop()
     @Preload = new Preload()
     @Util = Util
-   
+
 
 
 
