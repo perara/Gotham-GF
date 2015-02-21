@@ -1,14 +1,15 @@
 ﻿# CoffeeScript
-
+Renderer        = require './Renderer.coffee'
+Scene           = require './Scene.coffee'
 
 Polygon         = require './Graphics/Polygon.coffee'
 Rectangle       = require './Graphics/Rectangle.coffee'
-Renderer        = require './Graphics/Renderer.coffee'
-Scene           = require './Graphics/Scene.coffee'
 Text            = require './Graphics/Text.coffee'
 GraphicsObj     = require './Graphics/Graphics.coffee'
 Container       = require './Graphics/Container.coffee'
 Texture         = require './Graphics/Texture.coffee'
+Sprite          = require './Graphics/Sprite.coffee'
+
 
 # This class has a virtual method, that doesn't
 # exist in the source but appears in the documentation.
@@ -28,6 +29,7 @@ class Graphics
   @Graphics     = GraphicsObj
   @Container    = Container
   @Texture      = Texture
+  @Sprite       = Sprite
  
   
   # Requires the following json structure [[x,y,x2,y2][x,y,x2,y2]]
@@ -57,9 +59,9 @@ class Graphics
       for point, _key  in polygon
 
         # Add every 20th point 
-        if count++ % 5 == 0
+        if count++ % skipRatio == 0
           # Push this point to the point list
-          pointList.push new PIXI.Point(point[0] / scale.x, point[1] / scale.y)
+          pointList.push new PIXI.Point(point[0] / (scale.x * 1.0), point[1] / (scale.y * 1.0))
          
       # Add the polygon to the polygon list
       polygonList.push(new Gotham.Graphics.Polygon(pointList))
@@ -96,10 +98,9 @@ class Graphics
       grp.drawPolygon(polygon.points);
 
       if interactive?
-        console.log "yes"
         grp.interactive = true
         grp.buttonMode = true
-        grp.hitArea = new PIXI.Polygon(polygon.points);
+        grp.hitArea = new Gotham.Graphics.Polygon(polygon.points);
 
 
 

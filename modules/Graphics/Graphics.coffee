@@ -3,6 +3,8 @@ class Graphics extends PIXI.Graphics
 
   constructor: ->
     super
+    @_dx = 0
+    @_dy = 0
 
 
   redraw: ->

@@ -9,11 +9,16 @@ class GameLoop
 
   constructor: (fps) ->
     if not fps?
-      @fps = 60
+      @fps = 1
     else
       @fps = fps
 
-    setInterval(@update, @fps)
+    #PIXI.INTERACTION_FREQUENCY = 60;
+    that = @
+    animate = ->
+      requestAnimationFrame( animate );
+      that.update()
+    requestAnimationFrame animate
 
 
   methods =

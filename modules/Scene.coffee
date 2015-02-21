@@ -20,20 +20,27 @@ class Scene extends PIXI.Stage
   create: ->
     #throw new Error "create() must be overriden by a scene!"
 
+  getObject: (name) ->
+    return childrenMap[name]
+
   addObject: (object) ->
+    # Add to the Container children Map
+    if not object.name?
+      throw new Error "object.name is " +  object.name + ", Please define!"
+
+    # Add to the PIXI.DisplayObjectContainer
+    @addChild object
+    childrenMap[object.name] = object
+
     # Run Create Function if not already done
     if not object._created?
       object.create()
       object._created = true
 
-    # Add to the PIXI.DisplayObjectContainer
-    @addChild object
 
-    # Add to the Container children Map
-    if not object.name?
-      throw new Error "object.name is " +  object.name + ", Please define!"
 
-    childrenMap[object.name] = object
+
+
 
 
 

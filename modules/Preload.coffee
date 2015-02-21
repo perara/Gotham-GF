@@ -1,6 +1,4 @@
-﻿Sound         = require './Sound.coffee'
-
-class Preload
+﻿class Preload
 
   constructor: ->
     @_Gotham = Gotham
@@ -70,7 +68,7 @@ class Preload
       # Load the Sound
       _howlerSound = new Howl(howlParameters)
 
-      sound = new Sound(_howlerSound)
+      sound = new Gotham.Sound(_howlerSound)
       sound._name = name
 
       return sound
