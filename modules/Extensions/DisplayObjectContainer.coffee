@@ -1,5 +1,15 @@
 
 PIXI.DisplayObjectContainer.prototype.onWheelScroll = null
+
+PIXI.DisplayObjectContainer.prototype.network = null
+PIXI.DisplayObjectContainer.prototype.addNetworkMethod = (methodName , method) ->
+  console.log @network
+  @network.client[methodName] = method
+PIXI.DisplayObjectContainer.prototype.setNetworkHub = (hubName) ->
+  @network = GothamGame.network.connection[hubName]
+
+
+
 PIXI.DisplayObjectContainer.prototype.activatePan = () ->
   that = @
   parent = that.parent

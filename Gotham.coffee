@@ -1,16 +1,17 @@
 ﻿# CoffeeScript
 
 # Third Party
-window.Howler       =     require "./dependencies/howler.js"
+window.Howler       =     require './dependencies/howler.js'
 window.PIXI         =     require './dependencies/pixi.js'
-
+window.SignalR      =     require './dependencies/signalR.js'
 # 
-Sound       =     require "./modules/Sound.coffee" 
-Tween       =     require "./modules/Tween.coffee"
-Graphics    =     require "./modules/Graphics.coffee"
-Preload     =     require "./modules/Preload.coffee"
-GameLoop    =     require "./modules/GameLoop.coffee"
-Util        =     require "./util/Util.coffee"
+Sound       =     require './modules/Sound.coffee'
+Tween       =     require './modules/Tween.coffee'
+Graphics    =     require './modules/Graphics.coffee'
+Preload     =     require './modules/Preload.coffee'
+GameLoop    =     require './modules/GameLoop.coffee'
+Util        =     require './util/Util.coffee'
+Network     =     require './modules/Network.coffee'
 
 # PIXI Extensions
 DisplayObjectContainer    =   require './modules/Extensions/DisplayObjectContainer.coffee'
@@ -27,6 +28,7 @@ class Gotham
   @Graphics = Graphics
   @Tween = Tween
   @Util = Util
+  @Network = Network
 
   # Gotham Engine Dependency Modules
   @GameLoop = new GameLoop()
