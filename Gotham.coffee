@@ -7,7 +7,7 @@ window.SignalR      =     require './Dependencies/signalR.js'
 
 # 
 Sound       =     require './Modules/Sound.coffee'
-Tween       =     require './Modules/Tween.coffee'
+Tween       =     require './Modules/Tween.cs/Tween.coffee'
 Graphics    =     require './Modules/Graphics.coffee'
 Preload     =     require './Modules/Preload.coffee'
 GameLoop    =     require './Modules/GameLoop.coffee'
