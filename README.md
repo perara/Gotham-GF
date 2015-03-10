@@ -30,6 +30,8 @@ Thanks To
 
 [Codo](https://github.com/coffeedoc/codo) - Documentation Tool
 
+[SignalR](http://signalr.net/) - Networking
+
 Licence
 ======
 The MIT License (MIT)
