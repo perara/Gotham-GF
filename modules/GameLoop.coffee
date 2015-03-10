@@ -15,9 +15,9 @@ class GameLoop
 
     #PIXI.INTERACTION_FREQUENCY = 60;
     that = @
-    animate = ->
+    animate = (time) ->
       requestAnimationFrame( animate );
-      that.update()
+      that.update(time)
     requestAnimationFrame animate
 
 
@@ -26,12 +26,18 @@ class GameLoop
       "draw" : []
 
 
-  update: () ->
+  update: (time) ->
+
+    # Update Logic
     for key, logic of methods["logic"]
       logic()
 
+    # Update Drawing
     for key, draw of methods["draw"]
       draw()
+
+    # Update Tweening
+    Gotham.Tween.update(time);
 
 
   addLogic: (method) ->

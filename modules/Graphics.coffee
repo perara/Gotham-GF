@@ -57,7 +57,6 @@ class Graphics
 
       # And for all of the points in the polygon
       for point, _key  in polygon
-
         # Add every 20th point 
         if count++ % skipRatio == 0
           # Push this point to the point list
@@ -90,9 +89,26 @@ class Graphics
       polygonList = polygon
 
     for polygon, key  in polygonList
+
+      # Find Upmost X and Y in the point list
+      xory = 0
+      minX = 10000000
+      minY = 10000000
+      for point in polygon.points
+        if xory++ % 2 == 0
+          if point < minX
+            minX = point
+        else
+          if point < minY
+            minY = point
+
+
+
       grp = new Gotham.Graphics.Graphics()
+      grp.minX = minX
+      grp.minY = minY
       graphicsList.push grp
-      grp.lineStyle(1, 0x0000FF, 1);
+      grp.lineStyle(2, 0x000000, 1);
       grp.beginFill(0xffffff, 0.5);
       grp.polygon = polygon
       grp.drawPolygon(polygon.points);

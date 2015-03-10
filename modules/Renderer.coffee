@@ -32,10 +32,14 @@ class Renderer
 
 
     # Create initial pixi stage (Root)
-    rootScene = new Gotham.Graphics.Scene(0x97c56e, true)
+    rootScene = new Gotham.Graphics.Scene(0x000000, true)
 
     # Add Text Label instructing to change stage
-    rootScene.addChild new Gotham.Graphics.Text("Gotham Game Engine", {font: "35px Arial", fill: "white", align: "left"}, 220, 255)
+    label = new Gotham.Graphics.Text("Gotham Game Engine", {font: "35px Arial", fill: "white", align: "left"}, 1920/2, 1080/2)
+    label.anchor =
+      x: 0.5
+      y: 0.5
+    rootScene.addChild label
     
     # Sets current stage and maps it as Root in object
     @pixi.stage = rootScene

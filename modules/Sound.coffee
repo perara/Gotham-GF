@@ -70,6 +70,9 @@ class Sound
   # @return [void] None
   unmute: ->
     @_sound.unmute()
+
+  loop: (state) ->
+    @_sound.loop(state)
   
 
 

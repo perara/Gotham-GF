@@ -1,23 +1,26 @@
 ﻿# CoffeeScript
 
 # Third Party
-window.Howler       =     require './dependencies/howler.js'
-window.PIXI         =     require './dependencies/pixi.js'
-window.SignalR      =     require './dependencies/signalR.js'
+window.Howler       =     require './Dependencies/howler.js'
+window.PIXI         =     require './Dependencies/pixi.js'
+window.SignalR      =     require './Dependencies/signalR.js'
+
 # 
-Sound       =     require './modules/Sound.coffee'
-Tween       =     require './modules/Tween.coffee'
-Graphics    =     require './modules/Graphics.coffee'
-Preload     =     require './modules/Preload.coffee'
-GameLoop    =     require './modules/GameLoop.coffee'
-Util        =     require './util/Util.coffee'
-Network     =     require './modules/Network.coffee'
+Sound       =     require './Modules/Sound.coffee'
+Tween       =     require './Modules/Tween.coffee'
+Graphics    =     require './Modules/Graphics.coffee'
+Preload     =     require './Modules/Preload.coffee'
+GameLoop    =     require './Modules/GameLoop.coffee'
+Util        =     require './Util/Util.coffee'
+Network     =     require './Modules/Network.coffee'
+Filter      =     require './Modules/Filter.coffee'
 
 # PIXI Extensions
-DisplayObjectContainer    =   require './modules/Extensions/DisplayObjectContainer.coffee'
-CanvasRenderer            =   require './modules/Extensions/CanvasRenderer.coffee'
-WebGLRenderer             =   require './modules/Extensions/WebGLRenderer.coffee'
-
+DisplayObjectContainer    =   require './Extensions/DisplayObjectContainer.coffee'
+CanvasRenderer            =   require './Extensions/CanvasRenderer.coffee'
+WebGLRenderer             =   require './Extensions/WebGLRenderer.coffee'
+Array                     =   require './Extensions/Array.coffee'
+Object                     =   require './Extensions/Object.coffee'
 
 
 class Gotham
@@ -29,6 +32,7 @@ class Gotham
   @Tween = Tween
   @Util = Util
   @Network = Network
+  @Filter = Filter
 
   # Gotham Engine Dependency Modules
   @GameLoop = new GameLoop()

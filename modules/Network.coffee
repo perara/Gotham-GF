@@ -4,7 +4,10 @@ NetworkInstance = require './Network/NetworkInstance.coffee'
 class Network
   @NetworkInstance = NetworkInstance
 
-  constructor: (host, port) ->
+  constructor: (host, port, domain) ->
+    @host = host
+    @port = port
+    @domain = domain
 
     @_isConnected = false
     @connection = null
@@ -16,12 +19,14 @@ class Network
 
   connect: (onHubCallback)->
     that = @
-    $.getScript "http://hybel.keel.no:8091/gotham/hubs", (data, textStatus, jqxhr) ->
+    url = "http://" + @host + ":" + @port + "/" + @domain
+
+    $.getScript url + "/hubs", (data, textStatus, jqxhr) ->
       that.connection = $.connection
       console.log "SignalR: Hub information received..."
 
       onHubCallback ->
-        $.connection.hub.url = 'http://hybel.keel.no:8091/gotham/'
+        $.connection.hub.url = url
         $.connection.hub.start().done (e) ->
           console.log "SignalR: Connected to " + e.url + " with ID: " + e.id
           for item in Object.keys(e.proxies)

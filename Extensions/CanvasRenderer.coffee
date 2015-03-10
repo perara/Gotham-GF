@@ -1,4 +1,4 @@
-mozAddWheelListener = require '../../dependencies/mozAddWheelListener'
+mozAddWheelListener = require '../Dependencies/mozAddWheelListener'
 
 PIXI.CanvasRenderer.prototype.wheelScrollObjects = []
 
