@@ -2,7 +2,18 @@
 
 class Sprite extends PIXI.Sprite
 
-  hoverTexture = null
+
+  constructor: (texture) ->
+    super
+
+    @hoverTexture = null
+    @normalTexture = texture
+
+
+
+
+
+
 
 
 

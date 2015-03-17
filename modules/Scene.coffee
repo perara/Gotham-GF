@@ -38,6 +38,11 @@ class Scene extends PIXI.Stage
       object._created = true
 
 
+  removeObject: (object) ->
+    delete childrenMap[object.name]
+    @removeChild object
+
+
 
 
 

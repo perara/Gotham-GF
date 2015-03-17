@@ -57,8 +57,6 @@ class Renderer
   # @return [void] None
   setScene: (name) ->
     scene = @scenes[name]
-
-
     @pixi.stage = scene
 
   addScene: (name, scene) ->
