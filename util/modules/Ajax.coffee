@@ -1,7 +1,11 @@
 ﻿
 
+# AJAX Class to retrieve and post without the use of JQUERY
+# IT does only rely on the normal javascript library
 class Ajax
 
+  # Fetches the XML Document from  the request,
+  # It can also handle Internet Explorer via ActiveX
   @getXmlDoc: ->
     xmlDoc = null
 
@@ -12,6 +16,9 @@ class Ajax
     return xmlDoc;
 
 
+  # GET request to URL, which then returns the data to the callback
+  # @param [String] The url of the request
+  # @param [Callback] The resulting success callback of the request
   @GET: (url, callback) ->
     xmlDoc = Ajax.getXmlDoc()
     xmlDoc.open 'GET', url, true 
@@ -20,8 +27,6 @@ class Ajax
       if xmlDoc.readyState == 4 && xmlDoc.status == 200
         callback JSON.parse(xmlDoc.response), xmlDoc
     xmlDoc.send()
-
-
 
 
 module.exports = Ajax

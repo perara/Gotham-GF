@@ -9,6 +9,10 @@
 #
 class Slider extends Gotham.Graphics.Sprite
 
+  # Constructor Which Creates the Slider
+  # The slider can then be configured as a regular sprite
+  # @param [Gotham.Texture] knobTexture Texture of the knob
+  # @param [Gotham.Texture] background Texture of the slider background
   constructor: (knobTexture, background) ->
     super
     that = @
@@ -71,8 +75,10 @@ class Slider extends Gotham.Graphics.Sprite
     @addChild knob
 
 
+  # Calculates Current slider percentage based on knob's position
+  # Accounts for scale and all that jazz
+  # @param [Integer] x Knob's current X position
   calculateProgress: (x) ->
-
     return ((x * @scale.x)  / (@width - (@knob.width * @scale.x))) * 100
 
 

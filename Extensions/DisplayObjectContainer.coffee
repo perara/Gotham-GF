@@ -1,27 +1,38 @@
 
+# @property [Callback] callback for when wheel scrolling is done
 PIXI.DisplayObjectContainer.prototype.onWheelScroll = null
 
+# @property [Network] The network object
 PIXI.DisplayObjectContainer.prototype.network = null
+
+# Function to add an clientside network method/function
+# @param [String] methodName Name of the method
+# @param [Function] method The function itself
 PIXI.DisplayObjectContainer.prototype.addNetworkMethod = (methodName , method) ->
   @network.client[methodName] = method
 
-
+# SignalR networkHub.
+# This adds the possibility to hook a network hub onto an DisplayObject (IE Sprite)
+# Useful when creating objects in an game
+# @param [String] hubName Name of the Network Hub
 PIXI.DisplayObjectContainer.prototype.setNetworkHub = (hubName) ->
   @network = GothamGame.network.connection[hubName]
 
+# Function which brings an item in the children array to front
 PIXI.DisplayObjectContainer.prototype.bringToFront = ->
   if this.parent
-    console.log "Front!"
+    #console.log "Front!"
     parent = this.parent
     parent.removeChild(this)
     parent.addChild(this)
 
-# onInteractiveChange fires whenever setInteractive is fired
+# @property [Callback] onInteractiveChange fires whenever setInteractive is fired
 PIXI.DisplayObjectContainer.prototype.onInteractiveChange = null
 
 # Function which sets the interactivity
 # It also fires onInteractiveChange
 # This should be used when using GOTHAM instead of object.interactive = X
+# @param [Boolean] state True or False, (Enable/Disable)
 PIXI.DisplayObjectContainer.prototype.setInteractive = (state) ->
 
   # Fires Event
@@ -63,16 +74,15 @@ PIXI.DisplayObjectContainer.prototype.setInteractive = (state) ->
 
 
 
-
+# Adds an entire Array as an child to "this" object
+# @param [Array] array List of children
 PIXI.DisplayObjectContainer.prototype.addChildArray = (array) ->
   for child in array
     @addChild child
 
 
-
-
-
-
+# Activates panning on "this" object, (Moving the object around)
+# @param [Callback] mouseMoveRestriction Callback for adding an custom restriction for the panning, Example when it should stop (Borders, and limits)
 PIXI.DisplayObjectContainer.prototype.activatePan = (mouseMoveRestriction) ->
   that = @
   parent = that.parent

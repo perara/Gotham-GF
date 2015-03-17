@@ -8,21 +8,25 @@
 #
 class Scene extends PIXI.Stage
 
-  Container = null
-
-  # @param backgroundColor [Hex] Color in Hex format
+  # Runs the create() function and calls the super constructor
   constructor: ->
     super
     @create()
 
   childrenMap = {}
 
+  # Function which should be overrided by the Scene
   create: ->
     #throw new Error "create() must be overriden by a scene!"
 
+  # Fetches a object from the children map
+  # @param [String] name Fetches object with the given name
+  # @return [Object] Child object (Drawable)
   getObject: (name) ->
     return childrenMap[name]
 
+  # Adds a object to the scene
+  # @param [Drawable] object The object to be added as an child
   addObject: (object) ->
     # Add to the Container children Map
     if not object.name?
@@ -38,15 +42,11 @@ class Scene extends PIXI.Stage
       object._created = true
 
 
+  # Removes a object from the child map/array
+  # @param [Object] object Object which to be removed
   removeObject: (object) ->
     delete childrenMap[object.name]
     @removeChild object
-
-
-
-
-
-
 
 
 

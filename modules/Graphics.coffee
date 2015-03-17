@@ -1,38 +1,51 @@
-﻿# CoffeeScript
-Renderer        = require './Renderer.coffee'
-Scene           = require './Scene.coffee'
+﻿
 
-Polygon         = require './Graphics/Polygon.coffee'
-Rectangle       = require './Graphics/Rectangle.coffee'
-Text            = require './Graphics/Text.coffee'
-GraphicsObj     = require './Graphics/Graphics.coffee'
-Container       = require './Graphics/Container.coffee'
-Texture         = require './Graphics/Texture.coffee'
-Sprite          = require './Graphics/Sprite.coffee'
-
-
-# This class has a virtual method, that doesn't
-# exist in the source but appears in the documentation.
+# The Graphics class
+# This is the heart of all graphics/draw objects in Gotham
+# It contains wrappers for most of pixi.js's graphics classes
 #
-# @method #set(key, value)
-#   Sets a value on key
-#   @param [Symbol] key describe key param
-#   @param [Object] value describe value param
 #
 class Graphics
 
-  @Polygon      = Polygon
-  @Rectangle    = Rectangle
-  @Renderer     = Renderer
-  @Scene        = Scene
-  @Text         = Text
-  @Graphics     = GraphicsObj
-  @Container    = Container
-  @Texture      = Texture
-  @Sprite       = Sprite
+  # @property [Class Renderer] Renderer Class
+  @Renderer         = require './Renderer.coffee'
+
+  # @property [Class Scene] Scene Class
+  @Scene            = require './Scene.coffee'
+
+
+  # @property [Class Polygon] Polygon Class
+  @Polygon          = require './Graphics/Polygon.coffee'
+
+  # @property [Class Rectangle] Rectangle Class
+  @Rectangle        = require './Graphics/Rectangle.coffee'
+
+  # @property [Class Text] Text Class
+  @Text             = require './Graphics/Text.coffee'
+
+  # @property [Class Graphics] Graphics Class
+  @Graphics         = require './Graphics/Graphics.coffee'
+
+  # @property [Class Comtainer] Container Class
+  @Container        = require './Graphics/Container.coffee'
+
+  # @property [Class Texture] Texture Class
+  @Texture          = require './Graphics/Texture.coffee'
+
+  # @property [Class Sprite] Sprite Class
+  @Sprite           = require './Graphics/Sprite.coffee'
  
   
-  # Requires the following json structure [[x,y,x2,y2][x,y,x2,y2]]
+  # Converts a json structure to a polygon
+  # The supported format is the following:
+  # @example JSON Format
+  #   json = [[x,y,x2,y2][x,y,x2,y2]]
+  #
+  # @param [Object JSON] json The json object
+  # @param [Integer] skipRatio The Skip frequency.
+  # @param [Object] scale scale option
+  # @option scale [Double] x The X axis scale
+  # @option scale [Double] y The Y axis scale
   @PolygonFromJSON: (json, skipRatio, scale) ->
     
     # How many coordinates to skip
@@ -80,13 +93,20 @@ class Graphics
   #
   @PolygonToGraphics: (polygon, interactive) ->
 
+    # Create some empty arrays
     polygonList = []
     graphicsList = []
 
+    # Check if input is array or only a polygon
+    # add to polygonList if only an object
+    # else set polygon array to polygonList (If array)
     if polygon.constructor != Array
       polygonList.push(polygon)
     else
       polygonList = polygon
+
+
+
 
     for polygon, key  in polygonList
 
@@ -104,6 +124,7 @@ class Graphics
 
 
 
+      # Draw Graphics element
       grp = new Gotham.Graphics.Graphics()
       grp.minX = minX
       grp.minY = minY
@@ -113,21 +134,14 @@ class Graphics
       grp.polygon = polygon
       grp.drawPolygon(polygon.points);
 
+      # Set interactive if flag is true
       if interactive?
         grp.interactive = true
         grp.buttonMode = true
         grp.hitArea = new Gotham.Graphics.Polygon(polygon.points);
 
-
-
-
+    # Return list of graphics elements
     return graphicsList
-
-
-
-
-
-
 
 
 module.exports = Graphics

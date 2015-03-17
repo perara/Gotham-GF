@@ -1,18 +1,19 @@
 ﻿
-
+# Container class which inherits PIXI.DisplayObjectContainer
+#
 class Container extends PIXI.DisplayObjectContainer
 
   _created = false
-  constructor: ->
-    super
 
+  #constructor: ->
+  #  super
+
+  # Must be overridden
   create: ->
     throw new Exception "Override Create Method"
 
+  # Must be overridden
   update: ->
     throw new Exception "Override Update Method"
-
-
-
 
 module.exports = Container

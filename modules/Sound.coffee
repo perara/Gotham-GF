@@ -71,11 +71,10 @@ class Sound
   unmute: ->
     @_sound.unmute()
 
+  # Sets the loop state of the Howl sound
+  # @return [void] None
   loop: (state) ->
     @_sound.loop(state)
   
-
-
-
 
 module.exports = Sound

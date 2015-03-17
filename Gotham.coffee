@@ -8,12 +8,12 @@ window.Taffy        =     require './Dependencies/taffy-min'
 
 # pixi.js Extensions
 require './Extensions/DisplayObjectContainer.coffee'
-require './Extensions/CanvasRenderer.coffee'
-require './Extensions/WebGLRenderer.coffee'
+require './Extensions/PixiRenderer.coffee'
 require './Extensions/Array.coffee'
 require './Extensions/Object.coffee'
 
-
+# The Gotham Game Framework Class
+# Construct all modules as static members
 class Gotham
   window.Gotham = Gotham
 

@@ -1,9 +1,10 @@
 ﻿
 
-
+# Text class which inherits PIXI.Text
+#
 class Text extends PIXI.Text
 
-  # TODO
+  # Constructs the object, Calling the super constructor
   constructor: (text, style, x, y)->
     super
     @setText(text)

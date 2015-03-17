@@ -1,7 +1,11 @@
-﻿# CoffeeScript
-
+﻿
+# Tools for searching in Collections
 class SearchTools
 
+  # Find a key in an object
+  # @param [Object] object Object to search in
+  # @param [String] key The key requested to find
+  # @param [Integer] maxDepth The max search depth
   @FindKey: (object, key, maxDepth) ->
     if not maxDepth?
       maxDepth = 7

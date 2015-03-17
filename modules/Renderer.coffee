@@ -1,4 +1,8 @@
 ﻿
+
+# Renderer of the Gotham Game framework
+# Uses pixi's renderer which is then wrapped around
+# This is mostly an internal class for Gotham
 class Renderer
 
   
@@ -54,11 +58,15 @@ class Renderer
       renderer.pixi.render(renderer.pixi.stage)
 
   # Sets current stage to defined name, errors out if not exists
+  # @param [String] name Name of the Scene
   # @return [void] None
   setScene: (name) ->
     scene = @scenes[name]
     @pixi.stage = scene
 
+  # Adds a new scene to the renderer
+  # @param [String] name Name of the Scene
+  # @param [Scene] scene The Scene object
   addScene: (name, scene) ->
     scene._renderer = @
     @scenes[name] = scene

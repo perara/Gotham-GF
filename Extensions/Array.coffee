@@ -1,5 +1,7 @@
 
 
+# Adds a remove property to the Javascript Array object
+# This function can remove by value
 Array::remove = ->
   what = undefined
   a = arguments
