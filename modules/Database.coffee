@@ -24,7 +24,7 @@ class Database
   # @return [TaffyDB] Returns the table
   #
   createTable: (tableName) ->
-    @tables[tableName] = Taffy()
+    @tables[tableName] = Taffy.taffy()
     return @tables[tableName]
 
   # Creates a new table

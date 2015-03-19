@@ -26,7 +26,7 @@ class Gotham
   @Network      = require './Modules/Network.coffee'
   @Filter       = require './Modules/Filter.coffee'
   @Controls     = require './Modules/Controls.coffee'
-
+  @Database     = require './Modules/Database.coffee'
   # Gotham Engine Dependency Modules
   @GameLoop     = new (require './Modules/GameLoop.coffee')()
   @Preload      = new (require './Modules/Preload.coffee')()

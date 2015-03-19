@@ -9,6 +9,7 @@ class Controls
 
   # @property [Slider] Class for the Slider object
   @Slider = require './Controls/Slider.coffee'
+  @Button = require './Controls/Button.coffee'
 
 
 
