@@ -16,8 +16,12 @@ class GameLoop
   constructor: (fps) ->
     that = @
 
+    @renderer = ->
+
+    @_tasks = []
+
     # Check if fps is set, if not set the fps to 60
-    if not fps then @fps = 60 else @fps = fps
+    if not fps then @fps = 200 else @fps = fps
 
     # Sets how fast PIXI calls the Interaction checks
     #PIXI.INTERACTION_FREQUENCY = 60;
@@ -28,11 +32,8 @@ class GameLoop
       that.update(time)
     requestAnimationFrame animate
 
-
-  # @property [Object] Contains functions for logic update and draw updates. These are added by the user
-  methods =
-      "logic" : []
-      "draw" : []
+  setRenderer: (renderer) ->
+    @renderer = renderer
 
 
   # The update loop function
@@ -44,29 +45,27 @@ class GameLoop
   #
   update: (time) ->
 
-    # Update Logic
-    for key, logic of methods["logic"]
-      logic()
-
-    # Update Drawing
-    for key, draw of methods["draw"]
-      draw()
+    @renderer()
 
     # Update Tweening
-    Gotham.Tween.update(time);
+    Gotham.Tween.update(time)
+
+    # Run Tasks , Delete if done
+    for _task in @_tasks
+      s = _task()
+      if not s then @_tasks.remove _task
 
 
-  # Adds a logic function to the update loop
-  # @param [function] The logic function to run in update()
-  # @return [void] Nothing
-  addLogic: (method) ->
-    methods["logic"].push(method)
+  # Function which adds a task to be completed in the render loop
+  # This runs until the Task returns false, will then be deleted from queue
+  #
+  # @param task {Function} The Task function
+  addTask: (task)->
+    @_tasks.push task
 
-  # Adds a draw function to the update loop
-  # @param [function] The draw function to run in update()
-  # @return [void] Nothing
-  addDraw: (method) ->
-    methods["draw"].push(method)
+
+
+
 
 
 

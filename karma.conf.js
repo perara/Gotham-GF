@@ -11,8 +11,9 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            './Tests/*.js',
-            './*.js'
+            './dist/Gotham-dep.js',
+            './dist/Gotham.js',
+            './src/Tests/*.coffee'
         ],
 
         // list of files to exclude
@@ -20,7 +21,7 @@ module.exports = function(config) {
 
         // preprocess matching files before serving them to the browser
         preprocessors: {
-            '**/*.coffee' : ['coffee']
+            './src/Tests/*.coffee' : ['coffee']
             //'src/*.js': ['coverage']
         },
 

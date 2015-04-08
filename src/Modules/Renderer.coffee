@@ -54,8 +54,8 @@ class Renderer
     document.body.appendChild @pixi.view
 
     # Add a render loop function to the Gotham.GameLoop
-    Gotham.GameLoop.addDraw () ->
-      renderer.pixi.render(renderer.pixi.stage)
+    Gotham.GameLoop.setRenderer () ->
+      renderer.pixi.render(renderer.pixi.stage);
 
   # Sets current stage to defined name, errors out if not exists
   # @param [String] name Name of the Scene

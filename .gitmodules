@@ -1,0 +1,3 @@
+[submodule "src/Modules/Tween"]
+	path = src/Modules/Tween
+	url = git@github.com:perara/Tween.cs.git

@@ -15,7 +15,6 @@ PIXI.WebGLRenderer.prototype.addWheelScrollObject =  (object) ->
 PIXI.WebGLRenderer.prototype.setWheelScroll = (state) ->
 
   if not state?
-
     mozAddWheelListener @view, (e) ->
   else
     mozAddWheelListener @view, (e) ->

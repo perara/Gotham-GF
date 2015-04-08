@@ -13,6 +13,8 @@ Array::remove = ->
       @splice ax, 1
   this
 
+Array::last = ->
+  return this[this.length - 1]
 
 
 

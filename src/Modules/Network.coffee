@@ -14,6 +14,8 @@ class Network
     @host = host
     @port = port
     @domain = domain
+    @webAPI =
+      port: 8085
 
     @_isConnected = false
     @connection = null
@@ -35,12 +37,28 @@ class Network
       console.log "SignalR: Hub information received..."
 
       onHubCallback ->
+
+        # Set the SignalR host URL
         $.connection.hub.url = url
+
+        # Starts the connection
         $.connection.hub.start().done (e) ->
+
+          # Print Info
           console.log "SignalR: Connected to " + e.url + " with ID: " + e.id
+
+          # Iterate through the proxies
           for item in Object.keys(e.proxies)
+
             if typeof e.proxies[item].onConnect == 'function'
               e.proxies[item].onConnect(e.proxies[item])
+
+
+
+  getJSON: (route, callback) ->
+    console.log ("Fetch JSON: http://#{@host}:#{@webAPI.port}#{route}")
+    $.getJSON "http://#{@host}:#{@webAPI.port}#{route}", (json) ->
+      callback(json)
 
 
 
