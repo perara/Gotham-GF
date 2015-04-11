@@ -374,7 +374,7 @@ Gotham = (function() {
 
   Gotham.Sound = require('./Modules/Sound.coffee');
 
-  Gotham.Tween = require('./Modules/Tween.cs/Tween.coffee');
+  Gotham.Tween = require('./Modules/Tween/Tween.coffee');
 
   Gotham.Util = require('./Util/Util.coffee');
 
@@ -394,7 +394,7 @@ module.exports = window.Gotham = Gotham;
 
 
 
-},{"./Extensions/Array.coffee":2,"./Extensions/DisplayObjectContainer.coffee":3,"./Extensions/Object.coffee":4,"./Extensions/PixiRenderer.coffee":5,"./Extensions/String.coffee":6,"./Modules/Controls/Button.coffee":8,"./Modules/Controls/Slider.coffee":9,"./Modules/Database.coffee":10,"./Modules/GameLoop.coffee":11,"./Modules/Graphics/Container.coffee":12,"./Modules/Graphics/Graphics.coffee":13,"./Modules/Graphics/Polygon.coffee":14,"./Modules/Graphics/Rectangle.coffee":15,"./Modules/Graphics/Sprite.coffee":16,"./Modules/Graphics/Text.coffee":17,"./Modules/Graphics/Texture.coffee":18,"./Modules/Graphics/Tools.coffee":19,"./Modules/Network.coffee":20,"./Modules/Pattern/MVC/Controller.coffee":21,"./Modules/Pattern/MVC/View.coffee":22,"./Modules/Preload.coffee":23,"./Modules/Renderer.coffee":24,"./Modules/Scene.coffee":25,"./Modules/Sound.coffee":26,"./Modules/Tween.cs/Tween.coffee":27,"./Util/Util.coffee":28}],8:[function(require,module,exports){
+},{"./Extensions/Array.coffee":2,"./Extensions/DisplayObjectContainer.coffee":3,"./Extensions/Object.coffee":4,"./Extensions/PixiRenderer.coffee":5,"./Extensions/String.coffee":6,"./Modules/Controls/Button.coffee":8,"./Modules/Controls/Slider.coffee":9,"./Modules/Database.coffee":10,"./Modules/GameLoop.coffee":11,"./Modules/Graphics/Container.coffee":12,"./Modules/Graphics/Graphics.coffee":13,"./Modules/Graphics/Polygon.coffee":14,"./Modules/Graphics/Rectangle.coffee":15,"./Modules/Graphics/Sprite.coffee":16,"./Modules/Graphics/Text.coffee":17,"./Modules/Graphics/Texture.coffee":18,"./Modules/Graphics/Tools.coffee":19,"./Modules/Network.coffee":20,"./Modules/Pattern/MVC/Controller.coffee":21,"./Modules/Pattern/MVC/View.coffee":22,"./Modules/Preload.coffee":23,"./Modules/Renderer.coffee":24,"./Modules/Scene.coffee":25,"./Modules/Sound.coffee":26,"./Modules/Tween/Tween.coffee":27,"./Util/Util.coffee":28}],8:[function(require,module,exports){
 var Button,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
