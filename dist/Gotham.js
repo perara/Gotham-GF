@@ -380,7 +380,7 @@ Gotham = (function() {
 
   Gotham.Network = require('./Modules/Network.coffee');
 
-  Gotham.Database = require('./Modules/Database.coffee');
+  Gotham.Database = new (require('./Modules/Database.coffee'))();
 
   Gotham.GameLoop = new (require('./Modules/GameLoop.coffee'))();
 
@@ -549,6 +549,10 @@ Database = (function() {
     }
   };
 
+  Database.prototype.getTables = function() {
+    return this.tables;
+  };
+
   return Database;
 
 })();
@@ -583,21 +587,17 @@ GameLoop = (function() {
   };
 
   GameLoop.prototype.update = function(time) {
-    var _task, i, len, ref, results, s;
+    var _task, i, len, ref, s;
     this.renderer();
-    Gotham.Tween.update(time);
     ref = this._tasks;
-    results = [];
     for (i = 0, len = ref.length; i < len; i++) {
       _task = ref[i];
       s = _task();
       if (!s) {
-        results.push(this._tasks.remove(_task));
-      } else {
-        results.push(void 0);
+        this._tasks.remove(_task);
       }
     }
-    return results;
+    return Gotham.Tween.update(time);
   };
 
   GameLoop.prototype.addTask = function(task) {
@@ -863,16 +863,14 @@ module.exports = Tools;
 var Network;
 
 Network = (function() {
-  function Network(host, port, domain) {
+  function Network(host, port) {
     var ref;
     this.host = host;
     this.port = port;
-    this.domain = domain;
-    this.webAPI = {
-      port: 8085
-    };
-    this._isConnected = false;
-    this.connection = null;
+    this.Socket = this._socket = null;
+    this.onConnect = function() {};
+    this.onReconnect = function() {};
+    this.onReconnecting = function() {};
     if ((ref = !port) != null ? ref : this.port = 8080) {
 
     } else {
@@ -880,38 +878,19 @@ Network = (function() {
     }
   }
 
-  Network.prototype.connect = function(onHubCallback) {
-    var that, url;
+  Network.prototype.connect = function(callback) {
+    var that;
     that = this;
-    url = "http://" + this.host + ":" + this.port + "/" + this.domain;
-    return $.getScript(url + "/hubs", function(data, textStatus, jqxhr) {
-      that.connection = $.connection;
-      console.log("SignalR: Hub information received...");
-      return onHubCallback(function() {
-        $.connection.hub.url = url;
-        return $.connection.hub.start().done(function(e) {
-          var i, item, len, ref, results;
-          console.log("SignalR: Connected to " + e.url + " with ID: " + e.id);
-          ref = Object.keys(e.proxies);
-          results = [];
-          for (i = 0, len = ref.length; i < len; i++) {
-            item = ref[i];
-            if (typeof e.proxies[item].onConnect === 'function') {
-              results.push(e.proxies[item].onConnect(e.proxies[item]));
-            } else {
-              results.push(void 0);
-            }
-          }
-          return results;
-        });
-      });
+    this.Socket = this._socket = io.connect(this.host + ":" + this.port);
+    this._socket.on('connect', function() {
+      that.onConnect(this);
+      return that.onConnect = function() {};
     });
-  };
-
-  Network.prototype.getJSON = function(route, callback) {
-    console.log("Fetch JSON: http://" + this.host + ":" + this.webAPI.port + route);
-    return $.getJSON("http://" + this.host + ":" + this.webAPI.port + route, function(json) {
-      return callback(json);
+    this._socket.on('reconnect', function() {
+      return that.onReconnect(this);
+    });
+    return this._socket.on('reconnecting', function() {
+      return that.onReconnecting(this);
     });
   };
 
@@ -937,7 +916,6 @@ Controller = (function() {
     this._processes = [];
     this.name = name;
     this.View = ViewObject;
-    this.__network = null;
   }
 
   Controller.prototype.create = function() {
@@ -946,24 +924,6 @@ Controller = (function() {
 
   Controller.prototype.addProcess = function(func) {
     return this._processes.push(func);
-  };
-
-  Controller.prototype.setNetwork = function(network) {
-    console.log(network);
-    console.log(this.name);
-    return this.__network = network.connection[this.name.camelCase()];
-  };
-
-  Controller.prototype.getNetwork = function() {
-    return this.__network;
-  };
-
-  Controller.prototype.addNetworkListener = function(event, callback) {
-    return this.__network[event] = callback;
-  };
-
-  Controller.prototype.addNetworkCallback = function(name, callback) {
-    return this.__network.client[name] = callback;
   };
 
   return Controller;
@@ -1009,111 +969,155 @@ module.exports = View;
 var Preload;
 
 Preload = (function() {
+  var DownloadImage, DownloadJSON, DownloadSound;
+
   function Preload() {
-    this._Gotham = Gotham;
-    this._totalObjects = 0;
-    this._loadedObjects = 0;
-    this._onLoad = function() {};
-    this._onComplete = function() {};
-    this.storage = {
-      audio: [],
-      video: [],
-      image: [],
-      json: []
-    };
-    this.jsonFromUrl = function(url, name) {
-      var storage, that;
-      that = this;
-      storage = this.storage;
-      return Gotham.Util.Ajax.GET(url, function(data, response) {
-        storage.json[name] = data;
-        that._loadedObjects++;
-        that._onLoad(this.src, this._name, (that._loadedObjects / that._totalObjects) * 100.0);
-        if (that.isPreloadComplete()) {
-          return that._onComplete();
-        }
-      });
-    };
-    this.imageFromUrl = function(url, name) {
-      var texture, that;
-      that = this;
-      texture = Gotham.Graphics.Texture.fromImage(url);
-      texture._name = name;
-      return texture.addEventListener("update", function() {
-        this.addEventListener("update", function() {});
-        that._loadedObjects++;
-        that._onLoad(this.src, this._name, (that._loadedObjects / that._totalObjects) * 100.0);
-        if (that.isPreloadComplete()) {
-          return that._onComplete();
-        }
-      });
-    };
-    this.soundFromUrl = function(item, name, options) {
-      var _howlerSound, howlParameters, sound, that;
-      that = this;
-      howlParameters = {
-        urls: [item],
-        onload: function() {
-          that._loadedObjects++;
-          that._onLoad(this._src, this._name, (that._loadedObjects / that._totalObjects) * 100.0);
-          if (that.isPreloadComplete()) {
-            return that._onComplete();
-          }
-        }
-      };
-      if (options != null) {
-        howlParameters.merge(options);
-      }
-      _howlerSound = new Howl(howlParameters);
-      sound = new Gotham.Sound(_howlerSound);
-      sound._name = name;
-      return sound;
-    };
+    this.db_image = Gotham.Database.createTable("preload_images");
+    this.db_audio = Gotham.Database.createTable("preload_audio");
+    this.db_data = Gotham.Database.createTable("preload_data");
+    this.onLoad = function() {};
+    this.onComplete = function() {};
+    this._numNetworkLoaded = 0;
+    this._totalCount = 0;
   }
 
-  Preload.prototype.onLoad = function(callback) {
-    return this._onLoad = callback;
+  Preload.prototype.getTotalCount = function() {
+    return this._totalCount;
   };
 
-  Preload.prototype.onComplete = function(callback) {
-    return this._onComplete = callback;
+  Preload.prototype.incrementTotalCount = function() {
+    return this._totalCount++;
+  };
+
+  Preload.prototype.getNumLoaded = function() {
+    var db, dbs, i, len, total;
+    dbs = [this.db_audio, this.db_image, this.db_data];
+    total = this._numNetworkLoaded;
+    for (i = 0, len = dbs.length; i < len; i++) {
+      db = dbs[i];
+      total += db().count();
+    }
+    return total;
+  };
+
+  DownloadJSON = function(url, callback) {
+    return Gotham.Util.Ajax.GET(url, function(data, response) {
+      return callback(data);
+    });
+  };
+
+  DownloadImage = function(url, callback) {
+    var texture;
+    texture = Gotham.Graphics.Texture.fromImage(url);
+    return texture.addEventListener("update", function() {
+      this.addEventListener("update", function() {});
+      return callback(texture);
+    });
+  };
+
+  DownloadSound = function(url, options, callback) {
+    var howlParameters, howler, sound;
+    howlParameters = {
+      urls: [url]
+    };
+    if (options != null) {
+      howlParameters.merge(options);
+    }
+    howler = new Howl(howlParameters);
+    sound = new Gotham.Sound(howler);
+    sound._name = name;
+    return howler.on('load', function() {
+      return callback(sound);
+    });
+  };
+
+  Preload.prototype._onComplete = function() {
+    return this.onComplete();
+  };
+
+  Preload.prototype._onLoad = function(source, type, name) {
+    var percent;
+    percent = (this.getNumLoaded() / this.getTotalCount()) * 100.0;
+    this.onLoad(source, type, name, percent);
+    if (Math.round(percent) === 100) {
+      return this._onComplete();
+    }
   };
 
   Preload.prototype.isPreloadComplete = function() {
     return ((this._loadedObjects / this._totalObjects) * 100.0) === 100;
   };
 
-  Preload.prototype.image = function(item, name) {
-    this._totalObjects++;
-    return this.getType("image")[name] = this.imageFromUrl(item, name);
+  Preload.prototype.image = function(url, name) {
+    var that;
+    that = this;
+    this.incrementTotalCount();
+    return DownloadImage(url, function(image) {
+      that.db_image.insert({
+        name: name,
+        object: image,
+        type: 'image'
+      });
+      return that._onLoad(image, 'Image', name);
+    });
   };
 
-  Preload.prototype.mp3 = function(item, name, options) {
-    this._totalObjects++;
-    return this.getType("audio")[name] = this.soundFromUrl(item, name, options);
+  Preload.prototype.mp3 = function(url, name, options) {
+    var that;
+    that = this;
+    this.incrementTotalCount();
+    return DownloadSound(url, options, function(sound) {
+      that.db_audio.insert({
+        name: name,
+        object: sound,
+        type: 'audio'
+      });
+      return that._onLoad(sound, 'Audio', name);
+    });
   };
 
-  Preload.prototype.json = function(item, name) {
-    this._totalObjects++;
-    return this.getType("json")[name] = this.jsonFromUrl(item, name);
+  Preload.prototype.json = function(url, name) {
+    var that;
+    that = this;
+    this.incrementTotalCount();
+    return DownloadJSON(url, function(json) {
+      that.db_data.insert({
+        name: name,
+        object: json,
+        type: 'json'
+      });
+      return that._onLoad(json, 'JSON', name);
+    });
+  };
+
+  Preload.prototype.network = function(name, table, socket) {
+    var that;
+    that = this;
+    this.incrementTotalCount();
+    socket.Socket.emit(name);
+    return socket.Socket.on(name, function(data) {
+      that._numNetworkLoaded = that._numNetworkLoaded + 1;
+      table.merge(data);
+      return that._onLoad(data, 'Data', name);
+    });
   };
 
   Preload.prototype.fetch = function(name, type) {
-    if (type == null) {
-      console.log("Optimization potential detected: Define Type");
-      return Gotham.Util.SearchTools.FindKey(this.storage, name);
-    }
-    return this.getType(type)[name];
+    var db;
+    db = this.getDatabase(type);
+    return db({
+      name: name
+    }).first().object;
   };
 
-  Preload.prototype.getType = function(type) {
+  Preload.prototype.getDatabase = function(type) {
     switch (type) {
       case "image":
-        return this.storage.image;
+        return this.db_image;
       case "audio":
-        return this.storage.audio;
+        return this.db_audio;
       case "json":
-        return this.storage.json;
+        return this.db_data;
       default:
         throw new Error("Format Not Supported, Preload");
     }
@@ -1301,46 +1305,94 @@ module.exports = Sound;
 
 
 },{"../dependencies/howler.js":33}],27:[function(require,module,exports){
-var Tween;
+'use strict';
+var Tween,
+  modulo = function(a, b) { return (+a % (b = +b) + b) % b; };
 
 Tween = (function() {
-  Tween._objects = [];
+  var ChainItem;
 
-  Tween._oldObjects = [];
+  ChainItem = (function() {
+    function ChainItem() {
+      this.property = null;
+      this.duration = null;
+      this.startTime = null;
+      this.endTime = null;
+      this.inited = false;
+      this.type = null;
+      this.next = null;
+      this.previous = null;
+      this.elapsed = 0;
+    }
+
+    return ChainItem;
+
+  })();
+
+  Tween._tweens = [];
 
   Tween._currentTime = 0;
 
   function Tween(object) {
     this._object = object;
+    this._chain = [];
     this._properties = [];
-    this._tweenChain = [];
-    this._startDelay = 0;
     this._easing = Tween.Easing.Linear.None;
     this._interpolation = Tween.Interpolation.Linear;
-    this._onUpdate = null;
-    this._onComplete = null;
-    this._onStart = null;
+    this._onUpdate = function() {};
+    this._onComplete = function() {};
+    this._onStart = function() {};
     this._started = false;
-    this._paused = false;
     this._complete = false;
-    this._remainingRuns = 0;
-    Tween._objects.push(this);
+    this._lastTime = 0;
+    this._runCounter = 0;
+    this._remainingRuns = 1;
+    Tween._tweens.push(this);
   }
 
   Tween.prototype.getTweenChain = function() {
-    return this._tweenChain;
+    return this._chain;
+  };
+
+  Tween.prototype.addToChain = function(newPath) {
+    var first, last;
+    if (this._chain.length > 0) {
+      last = this._chain[this._chain.length - 1];
+      last.next = newPath;
+      first = this._chain[0];
+      first.previous = newPath;
+      newPath.previous = last;
+      newPath.next = first;
+    } else {
+      newPath.previous = newPath;
+      newPath.next = newPath;
+    }
+    return this._chain.push(newPath);
   };
 
   Tween.prototype.start = function() {
+    this._started = true;
     return this._onStart(this._object);
   };
 
-  Tween.prototype.stop = function() {};
+  Tween.prototype.stop = function() {
+    this._started = false;
+    return this._complete = true;
+  };
 
-  Tween.prototype.pause = function() {};
+  Tween.prototype.pause = function() {
+    return this._started = false;
+  };
 
-  Tween.prototype.startDelay = function(time) {
-    return this._startDelay = time;
+  Tween.prototype.unpause = function() {
+    var chainItem, elapsedTime, time, timeLeft;
+    this._started = true;
+    time = performance.now();
+    chainItem = this._chain[modulo(this._runCounter, this._chain.length)];
+    elapsedTime = (chainItem.endTime - chainItem.startTime) * chainItem.elapsed;
+    timeLeft = chainItem.duration - elapsedTime;
+    chainItem.endTime = time + timeLeft;
+    return chainItem.startTime = chainItem.endTime - chainItem.duration;
   };
 
   Tween.prototype.easing = function(easing) {
@@ -1348,23 +1400,23 @@ Tween = (function() {
   };
 
   Tween.prototype.to = function(property, duration) {
-    var j, len, path, prop, ref, results;
-    path = {
-      "property": property,
-      "duration": duration,
-      "startTime": null,
-      "endTime": null,
-      "inited": false,
-      "type": "translate"
-    };
-    this._tweenChain.push(path);
+    var j, len1, newPath, prop, ref;
     ref = Tween.flattenKeys(property);
-    results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
+    for (j = 0, len1 = ref.length; j < len1; j++) {
       prop = ref[j];
-      results.push(this._properties.push(prop));
+      this._properties.push(prop);
     }
-    return results;
+    newPath = new ChainItem();
+    newPath.property = property;
+    newPath.duration = duration;
+    newPath.startTime = null;
+    newPath.endTime = null;
+    newPath.inited = false;
+    newPath.type = "translate";
+    newPath.next = null;
+    newPath.previous = null;
+    newPath.elapsed = 0;
+    return this.addToChain(newPath);
   };
 
   Tween.prototype.delay = function(time) {
@@ -1376,9 +1428,11 @@ Tween = (function() {
       "duration": time,
       "startTime": null,
       "endTime": null,
-      "type": "delay"
+      "type": "delay",
+      "previous": null,
+      "next": null
     };
-    return this._tweenChain.push(delayItem);
+    return this.addToChain(delayItem);
   };
 
   Tween.prototype.repeat = function(num) {
@@ -1390,9 +1444,9 @@ Tween = (function() {
   };
 
   Tween.prototype.addCutsomProperties = function(properties) {
-    var j, len, property, results;
+    var j, len1, property, results;
     results = [];
-    for (j = 0, len = properties.length; j < len; j++) {
+    for (j = 0, len1 = properties.length; j < len1; j++) {
       property = properties[j];
       results.push(this.addProperty(property));
     }
@@ -1412,82 +1466,110 @@ Tween = (function() {
   };
 
   Tween.update = function(time) {
-    var current, elapsed, end, endTime, j, key, l, lastItem, len, len1, objects, prop, property, ref, results, start, startTime, target, tween, tweenObject, value;
+    var chainItem, elapsed, end, endTime, j, key, l, len1, len2, nextPos, prop, property, ref, ref1, results, start, startTime, tween, value;
     Gotham.Tween._currentTime = time;
-    objects = Tween._objects;
-    if (objects.length > 0) {
-      results = [];
-      for (j = 0, len = objects.length; j < len; j++) {
-        tweenObject = objects[j];
-        if (tweenObject === void 0) {
-          continue;
+    if (Tween._tweens.length <= 0) {
+      return;
+    }
+    ref = Tween._tweens;
+    results = [];
+    for (j = 0, len1 = ref.length; j < len1; j++) {
+      tween = ref[j];
+      if (!tween) {
+        continue;
+      }
+      if (!tween._started) {
+        continue;
+      }
+      if (time < tween._startTime) {
+        continue;
+      }
+      if (tween._complete) {
+        tween._onComplete(tween._object);
+        Tween._tweens.remove(tween);
+        continue;
+      }
+      if (tween._chain.length <= 0 || tween._remainingRuns <= 0) {
+        tween._complete = true;
+        continue;
+      }
+      chainItem = tween._chain[modulo(tween._runCounter, tween._chain.length)];
+      if (!chainItem.inited) {
+        chainItem.startTime = performance.now();
+        chainItem.endTime = chainItem.startTime + chainItem.duration;
+        chainItem.inited = true;
+        if (chainItem.type === "delay") {
+          break;
         }
-        if (time < tweenObject._startTime) {
-          continue;
-        }
-        if (tweenObject._complete) {
-          continue;
-        }
-        if (tweenObject._tweenChain.length > 0) {
-          tween = tweenObject._tweenChain[0];
-          if (!tween.inited) {
-            tween["startTime"] = time;
-            tween["endTime"] = tween["startTime"] + tween["duration"];
-            tween["startPos"] = {};
-            ref = tweenObject._properties;
-            for (l = 0, len1 = ref.length; l < len1; l++) {
-              property = ref[l];
-              key = property.split('.')[0];
-              value = tweenObject._object[key];
-              tween["startPos"][key] = value;
-            }
-            tween.inited = true;
-          }
-          if (time > tween.endTime) {
-            tweenObject._tweenChain.shift();
-            if (tweenObject._remainingRuns-- > 0) {
-              lastItem = tweenObject._tweenChain[tweenObject._tweenChain.length - 1];
-              tween["startTime"] = null;
-              tween["endTime"] = null;
-              tween["inited"] = false;
-              tweenObject._tweenChain.push(tween);
-            }
-          }
-          if (tween.type === "delay") {
-            continue;
-          }
-          startTime = tween.startTime;
-          endTime = tween.endTime;
-          start = tween.startPos;
-          end = tween.property;
-          elapsed = (time - startTime) / tween.duration;
-          elapsed = elapsed > 1 ? 1 : elapsed;
-          value = tweenObject._easing(elapsed);
-          results.push((function() {
-            var len2, o, ref1, results1;
-            ref1 = tweenObject._properties;
-            results1 = [];
-            for (o = 0, len2 = ref1.length; o < len2; o++) {
-              prop = ref1[o];
-              eval("tweenObject._object." + prop + " = start." + prop + " + ( end." + prop + " - start." + prop + " ) * value");
-              current = eval("tweenObject._object." + prop);
-              target = eval("end." + prop);
-              if ((current - target) === 0) {
-                results1.push(tween["endTime"] = time - 1);
-              } else {
-                results1.push(void 0);
-              }
-            }
-            return results1;
-          })());
-        } else {
-          tweenObject._complete = true;
-          Tween._objects.remove(tweenObject);
-          results.push(Tween._oldObjects.push(tweenObject));
+        chainItem.startPos = {};
+        ref1 = tween._properties;
+        for (l = 0, len2 = ref1.length; l < len2; l++) {
+          property = ref1[l];
+          key = property.split('.')[0];
+          value = tween._object[key];
+          chainItem.startPos[key] = typeof value === 'object' ? $.extend(false, {}, value) : value;
         }
       }
-      return results;
+      if (time > chainItem.endTime) {
+        tween._runCounter++;
+        chainItem.startTime = null;
+        chainItem.endTime = null;
+        chainItem.inited = false;
+        if (modulo(tween._runCounter, tween._chain.length) === 0) {
+          tween._remainingRuns -= 1;
+        }
+        continue;
+        if (chainItem.type === "delay") {
+          continue;
+        }
+      }
+      startTime = chainItem.startTime;
+      endTime = startTime + chainItem.duration;
+      start = chainItem.startPos;
+      end = chainItem.property;
+      elapsed = (performance.now() - startTime) / chainItem.duration;
+      chainItem.elapsed = elapsed;
+      elapsed = elapsed > 1 ? 1 : elapsed;
+      value = tween._easing(elapsed);
+      tween._onUpdate(chainItem);
+      results.push((function() {
+        var len3, o, ref2, results1;
+        ref2 = tween._properties;
+        results1 = [];
+        for (o = 0, len3 = ref2.length; o < len3; o++) {
+          prop = ref2[o];
+          nextPos = Tween.resolve(start, prop) + (Tween.resolve(end, prop) - Tween.resolve(start, prop)) * value;
+          results1.push(Tween.resolve(tween._object, prop, null, nextPos));
+        }
+        return results1;
+      })());
     }
+    return results;
+  };
+
+  Tween.resolve = function(obj, path, def, setValue) {
+    var i, len, previous;
+    i = void 0;
+    len = void 0;
+    previous = obj;
+    i = 0;
+    path = path.split('.');
+    len = path.length;
+    while (i < len) {
+      if (!obj || typeof obj !== 'object') {
+        return def;
+      }
+      previous = obj;
+      obj = obj[path[i]];
+      i++;
+    }
+    if (obj === void 0) {
+      return def;
+    }
+    if (setValue) {
+      previous[path[len - 1]] = setValue;
+    }
+    return obj;
   };
 
   Tween.flattenKeys = function(obj, delimiter, max_depth) {

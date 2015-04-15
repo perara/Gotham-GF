@@ -37,5 +37,6 @@ class Database
     catch
       throw new ReferenceError "No table exists with that name: '" + tableName + "'"
 
-
+  getTables: ->
+    return @tables
 module.exports = Database

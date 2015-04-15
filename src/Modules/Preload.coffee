@@ -16,91 +16,88 @@ class Preload
   # Setups the preloader
   # Creating Storage array
   constructor: ->
-    @_Gotham = Gotham
-    @_totalObjects = 0
-    @_loadedObjects = 0
-    @_onLoad = ->
-    @_onComplete = ->
-  
-    # Storage container
-    @storage = 
-      audio: []
-      video: []
-      image: []
-      json: []
 
-    # Private Members
-    @jsonFromUrl = (url, name) ->
-      that = @
-      storage = @storage
-      Gotham.Util.Ajax.GET url, (data, response) ->
-        storage.json[name] = data
-  
-        that._loadedObjects++
-        that._onLoad(@src, @_name, (that._loadedObjects / that._totalObjects ) * 100.0)
-        if that.isPreloadComplete()
-          that._onComplete()
-      
-      
-      
+    # Define Databases
+    @db_image = Gotham.Database.createTable "preload_images"
+    @db_audio = Gotham.Database.createTable "preload_audio"
+    @db_data = Gotham.Database.createTable "preload_data"
+    #@db_video = Gotham.Database.createTable "preload_video"
 
-    @imageFromUrl = (url, name) ->
-      that = @
+    # Callbacks
+    @onLoad = ->
+    @onComplete = ->
 
-      texture = Gotham.Graphics.Texture.fromImage(url)
-      texture._name = name
-      texture.addEventListener "update", ->
+    @_numNetworkLoaded = 0
+    @_totalCount = 0
 
-        # Unset the Update Listener
-        this.addEventListener "update", ->
 
-        # Increment Loaded objects
-        that._loadedObjects++
+  getTotalCount: ->
+    return @_totalCount
 
-        # URL, Name, Percent
-        that._onLoad(@src, @_name, (that._loadedObjects / that._totalObjects ) * 100.0)
+  incrementTotalCount: ->
+    @_totalCount++
 
-        # Check if preload is complete, call onComplete if true
-        if that.isPreloadComplete() 
-          that._onComplete()
-    
-    @soundFromUrl = (item, name, options) ->
-      that = @
+  getNumLoaded: ->
+    dbs = [@db_audio, @db_image, @db_data]
+    total = @_numNetworkLoaded
+    for db in dbs
+      total += db().count()
+    return total
 
-      # HowlerJS Parameters
-      howlParameters =   
-        urls: [item]
-        onload : ->
-          that._loadedObjects++
-          that._onLoad(@_src, @_name, (that._loadedObjects / that._totalObjects ) * 100.0)
-          if that.isPreloadComplete() 
-            that._onComplete()
-    
-      # If Option is set, merge with Howler.js options
-      if options?
-        howlParameters.merge(options)
 
-      # Load the Sound
-      _howlerSound = new Howl(howlParameters)
 
-      sound = new Gotham.Sound(_howlerSound)
-      sound._name = name
+  DownloadJSON = (url, callback) ->
+    Gotham.Util.Ajax.GET url, (data, response) ->
+      callback(data)
 
-      return sound
-  
+  DownloadImage = (url, callback) ->
 
-  # Callback which fires when an object is being loaded
-  #
-  # @param [Callback] callback the callback which are returned
-  onLoad: (callback) ->
-    @_onLoad = callback
+    texture = Gotham.Graphics.Texture.fromImage(url)
+    texture.addEventListener "update", ->
+
+      # Unset the Update Listener
+      this.addEventListener "update", ->
+
+      callback(texture)
+
+  DownloadSound = (url, options, callback) ->
+
+
+    # HowlerJS Parameters
+    howlParameters =
+      urls: [url]
+
+
+    # If Option is set, merge with Howler.js options
+    if options?
+      howlParameters.merge(options)
+
+    # Load the Sound
+    howler = new Howl(howlParameters)
+    sound = new Gotham.Sound(howler)
+    sound._name = name
+    howler.on 'load', ->
+      callback(sound)
+
 
   # Callback which fires when preloading is complete
   #
   # @param [Callback] callback the callback which are returned
-  onComplete: (callback) ->
-    @_onComplete = callback
+  _onComplete: () ->
+    @onComplete()
 
+
+  # Callback which fires when preloading is complete
+  #
+  # @param [Callback] callback the callback which are returned
+  _onLoad: (source,type, name) ->
+    percent = (@getNumLoaded() / @getTotalCount() ) * 100.0
+
+    @onLoad(source, type, name, percent)
+
+    # Call complete if 100%
+    if Math.round(percent) == 100
+      @_onComplete()
 
   #
   # Check for weither preloading is complete or not
@@ -111,53 +108,84 @@ class Preload
 
   # Function for preloading image
   #
-  # @param [Object] item The item to Preload
+  # @param [Object] url The item to Preload
   # @param [String] name The name of the object
-  image: (item, name) ->
-    @_totalObjects++
-    @getType("image")[name] = @imageFromUrl(item, name)
+  image: (url, name) ->
+    that = @
+
+    @incrementTotalCount()
+    DownloadImage url, (image) ->
+      that.db_image.insert { name: name, object: image, type: 'image'}
+      that._onLoad(image, 'Image', name)
 
   # Function for preloading mp3
   #
-  # @param [Object] item The item to Preload
+  # @param [Object] url The item to Preload
   # @param [String] name The name of the object
   # @param [Object] options Options for howler
-  mp3: (item, name, options) -> 
-    @_totalObjects++
-    @getType("audio")[name] = @soundFromUrl(item, name, options)
+  mp3: (url, name, options) ->
+    that = @
 
+    @incrementTotalCount()
+    DownloadSound url, options, (sound) ->
+      that.db_audio.insert { name: name, object: sound, type: 'audio'}
+      that._onLoad(sound, 'Audio', name)
 
   # Function for preloading json
   #
-  # @param [Object] item The item to Preload
+  # @param [Object] url The item to Preload
   # @param [String] name The name of the object
-  json: (item, name) ->
-    @_totalObjects++
-    @getType("json")[name] = @jsonFromUrl(item, name)
+  json: (url, name) ->
+    that = @
+
+    @incrementTotalCount()
+    DownloadJSON url, (json) ->
+      that.db_data.insert { name: name, object: json, type: 'json'}
+      that._onLoad(json,'JSON', name)
+
+  # Function for preloading network data
+  #
+  # @param [Object] name - The callback name
+  # @param [Table] table - The database table
+  # @param [Table] socket - The connected socket
+  network: (name, table, socket) ->
+    that = @
+
+    @incrementTotalCount()
+    socket.Socket.emit name
+    socket.Socket.on name , (data) ->
+      that._numNetworkLoaded = that._numNetworkLoaded + 1
+
+      if typeof data == 'array'
+        table.merge data
+      else
+        table.insert data
+
+      that._onLoad(data, 'Data', name)
+
+
+
+
+
 
 
   # Function for fetching an preloaded item
   # @param [String] name Name of the file
   # @param [String] type The type of the file
   fetch: (name, type) ->
-    
-    # If no type is defined, attempt to find. (Give warning)
-    if not type?
-      console.log "Optimization potential detected: Define Type"
-      return Gotham.Util.SearchTools.FindKey(@storage, name)
-
-    return @getType(type)[name]
+    db = @getDatabase(type)
+    return db({name: name}).first().object
 
   # Function which returns the storage for the given type
   # @param [String] type The type of the storage
-  getType: (type) ->
+  getDatabase: (type) ->
     switch type
       when "image"
-        return @storage.image
+        return @db_image
       when "audio" 
-        return @storage.audio
+        return @db_audio
       when "json"
-        return @storage.json
+        return @db_data
       else
         throw new Error "Format Not Supported, Preload"
     return @storage

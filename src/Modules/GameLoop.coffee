@@ -47,13 +47,15 @@ class GameLoop
 
     @renderer()
 
-    # Update Tweening
-    Gotham.Tween.update(time)
-
     # Run Tasks , Delete if done
     for _task in @_tasks
       s = _task()
       if not s then @_tasks.remove _task
+
+    # Update Tweening
+    Gotham.Tween.update(time)
+
+
 
 
   # Function which adds a task to be completed in the render loop

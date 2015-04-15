@@ -71,7 +71,7 @@ class Gotham
   @Network      =       require './Modules/Network.coffee'
 
   # @property [Gotham.Database] Database Class
-  @Database     =       require './Modules/Database.coffee'
+  @Database     =       new (require './Modules/Database.coffee')()
 
   # @property [Gotham.GameLoop] Game Loop Class
   @GameLoop     =       new (require './Modules/GameLoop.coffee')()

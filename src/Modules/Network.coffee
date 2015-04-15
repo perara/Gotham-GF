@@ -15,6 +15,10 @@ class Network
     @port = port
     @Socket = @_socket = null
 
+    @onConnect = ->
+    @onReconnect = ->
+    @onReconnecting = ->
+
 
     if not port ?
       @port = 8080
@@ -29,7 +33,19 @@ class Network
 
     @Socket = @_socket = io.connect "#{@host}:#{@port}"
     @_socket.on 'connect', ->
-      callback(@_socket)
+
+      # Send onConnect callback
+      that.onConnect(@)
+
+      # Remove connect callback (dont want it to fire on reconnect)
+      that.onConnect = ->
+
+    @_socket.on 'reconnect', ->
+      that.onReconnect(@)
+    @_socket.on 'reconnecting', ->
+      that.onReconnecting(@)
+
+
 
 
 module.exports = Network
