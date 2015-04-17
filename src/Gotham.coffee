@@ -1,11 +1,10 @@
 ﻿# pixi.js Extensions
 
-require './Extensions/DisplayObjectContainer.coffee'
+require './Extensions/Container.coffee'
 require './Extensions/PixiRenderer.coffee'
 require './Extensions/Array.coffee'
 require './Extensions/Object.coffee'
 require './Extensions/String.coffee'
-
 
 # The Gotham Game Framework Class
 # Construct all modules as static members

@@ -12,9 +12,12 @@
 class Button extends Gotham.Graphics.Sprite
 
   # Constructors the button calling the super class of Gotham.Graphics.Sprite --> PIXI.Sprite
-  constructor: (text, width, height) ->
+  constructor: (text, width, height, textSize, isClickOnly) ->
     that = @
+    @_isClickOnly = isClickOnly
     @_isToggled = false
+
+    textSize = if not textSize then 40 else textSize
 
     button_texture = new Gotham.Graphics.Graphics
     button_texture.lineStyle(1, 0xD3D3D3);
@@ -28,10 +31,10 @@ class Button extends Gotham.Graphics.Sprite
     @tint = 0x000000
     @width = width
     @height = height
-    @setInteractive true
+    @interactive =  true
 
     # Create button text
-    button_text = new Gotham.Graphics.Text(text, {font: "bold 40px Arial", fill: "#ffffff", align: "left"});
+    button_text = new Gotham.Graphics.Text(text, {font: "bold #{textSize}px Arial", fill: "#ffffff", align: "left"});
     button_text.position.x = (@width / @scale.x) / 2
     button_text.position.y = (@height / @scale.y) / 2
     button_text.width = @width / @scale.x
@@ -43,8 +46,12 @@ class Button extends Gotham.Graphics.Sprite
 
 
     @click = (e) ->
-      @_isToggled = !@_isToggled
 
+      if @_isClickOnly
+        @onClick()
+        return
+
+      @_isToggled = !@_isToggled
       if @_isToggled
         @tint = 0xD3D3D3
         @toggleOn()
@@ -52,7 +59,10 @@ class Button extends Gotham.Graphics.Sprite
         @tint = 0x000000
         @toggleOff()
 
+  setBackground: (hex) ->
+    @tint = hex
 
+  onClick: ->
   toggleOn: ->
   toggleOff: ->
 

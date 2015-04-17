@@ -7,11 +7,12 @@ class Text extends PIXI.Text
   # Constructs the object, Calling the super constructor
   constructor: (text, style, x, y)->
     super
-    @setText(text)
+    @text = text
     @position.x = x
     @position.y = y
+
     if style?
-      @setStyle(style)
+      @style = style
  
     
 

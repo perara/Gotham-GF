@@ -194,9 +194,295 @@ PIXI.DisplayObjectContainer.prototype.setPanning = function(callback) {
   };
 };
 
+PIXI.DisplayObjectContainer.prototype.onMouseDown = function() {};
+
+PIXI.DisplayObjectContainer.prototype.onMouseUp = function() {};
+
+PIXI.DisplayObjectContainer.prototype.onMove = function() {};
+
+PIXI.DisplayObjectContainer.prototype.movable = function() {
+  if (!this.interactive) {
+    this.interactive = true;
+  }
+  this.mousedown = this.touchstart = function(data) {
+    this.data = data;
+    this.dragging = true;
+    this._sx = this.data.getLocalPosition(this).x * this.scale.x;
+    this._sy = this.data.getLocalPosition(this).y * this.scale.y;
+    return this.onMouseDown(data);
+  };
+  this.mouseup = this.mouseupoutside = this.touchend = this.touchendoutside = function(data) {
+    this.alpha = 1;
+    this.dragging = false;
+    this.data = null;
+    return this.onMouseUp(data);
+  };
+  return this.mousemove = this.touchmove = function(data) {
+    var newPosition;
+    if (this.dragging) {
+      newPosition = this.data.getLocalPosition(this.parent);
+      this.position.x = newPosition.x - this._sx;
+      this.position.y = newPosition.y - this._sy;
+      return this.onMove(data);
+    }
+  };
+};
+
 
 
 },{}],4:[function(require,module,exports){
+/**
+ * Created by PerArne on 16.04.2015.
+ */
+/**
+ * @method rebuildInteractiveGraph
+ * @private
+ */
+PIXI.InteractionManager.prototype.rebuildInteractiveGraph = function()
+{
+    this.dirty = false;
+
+    var len = this.interactiveItems.length;
+
+    for (var i = 0; i < len; i++) {
+        this.interactiveItems[i].interactiveChildren = false;
+    }
+
+    this.interactiveItems = [];
+
+    // Go through and collect all the objects that are interactive..
+    this.collectInteractiveSprite(this.stage, this.stage);
+
+    if (this.stage.interactive)
+    {
+        this.interactiveItems.push(this.stage);
+    }
+};
+
+PIXI.InteractionData.prototype.stopped = false;
+
+PIXI.InteractionData.prototype.stopPropagation = function() {
+    this.stopped = true;
+};
+
+PIXI.InteractionData.prototype.startPropagation = function() {
+    this.stopped = false;
+};
+
+/**
+ * Is called when the mouse moves across the renderer element
+ *
+ * @method onMouseMove
+ * @param event {Event} The DOM event of the mouse moving
+ * @private
+ */
+PIXI.InteractionManager.prototype.onMouseMove = function(event)
+{
+    if (this.dirty)
+    {
+        this.rebuildInteractiveGraph();
+    }
+
+    this.mouse.originalEvent = event;
+
+    // TODO optimize by not check EVERY TIME! maybe half as often? //
+    var rect = this.interactionDOMElement.getBoundingClientRect();
+
+    this.mouse.global.x = (event.clientX - rect.left) * (this.target.width / rect.width) / this.resolution;
+    this.mouse.global.y = (event.clientY - rect.top) * ( this.target.height / rect.height) / this.resolution;
+
+    var length = this.interactiveItems.length;
+
+    for (var i = 0; i < length; i++)
+    {
+        var item = this.interactiveItems[i];
+
+        // Call the function!
+        if (item.mousemove)
+        {
+            item.mousemove(this.mouse);
+
+            if (this.mouse.stopped) break;
+        }
+    }
+};
+
+/**
+ * Is called when the mouse button is pressed down on the renderer element
+ *
+ * @method onMouseDown
+ * @param event {Event} The DOM event of a mouse button being pressed down
+ * @private
+ */
+PIXI.InteractionManager.prototype.onMouseDown = function(event)
+{
+    if (this.dirty)
+    {
+        this.rebuildInteractiveGraph();
+    }
+
+    this.mouse.originalEvent = event;
+
+    if (PIXI.AUTO_PREVENT_DEFAULT)
+    {
+        this.mouse.originalEvent.preventDefault();
+    }
+
+    // loop through interaction tree...
+    // hit test each item! ->
+    // get interactive items under point??
+    //stage.__i
+    var length = this.interactiveItems.length;
+
+    var e = this.mouse.originalEvent;
+    var isRightButton = e.button === 2 || e.which === 3;
+    var downFunction = isRightButton ? 'rightdown' : 'mousedown';
+    var clickFunction = isRightButton ? 'rightclick' : 'click';
+    var buttonIsDown = isRightButton ? '__rightIsDown' : '__mouseIsDown';
+    var isDown = isRightButton ? '__isRightDown' : '__isDown';
+
+    // while
+    // hit test
+    for (var i = 0; i < length; i++)
+    {
+        var item = this.interactiveItems[i];
+
+        if (item[downFunction] || item[clickFunction])
+        {
+            item[buttonIsDown] = true;
+            item.__hit = this.hitTest(item, this.mouse);
+
+            if (item.__hit)
+            {
+                //call the function!
+                if (item[downFunction])
+                {
+                    item[downFunction](this.mouse);
+                }
+                item[isDown] = true;
+
+                // just the one!
+                if (!item.interactiveChildren) break;
+
+                if (this.mouse.stopped) break;
+            }
+        }
+    }
+};
+
+/**
+ * Is called when the mouse is moved out of the renderer element
+ *
+ * @method onMouseOut
+ * @param event {Event} The DOM event of a mouse being moved out
+ * @private
+ */
+PIXI.InteractionManager.prototype.onMouseOut = function(event)
+{
+    if (this.dirty)
+    {
+        this.rebuildInteractiveGraph();
+    }
+
+    this.mouse.originalEvent = event;
+
+    var length = this.interactiveItems.length;
+
+    this.interactionDOMElement.style.cursor = 'inherit';
+
+    for (var i = 0; i < length; i++)
+    {
+        var item = this.interactiveItems[i];
+        if (item.__isOver)
+        {
+            this.mouse.target = item;
+            if (item.mouseout)
+            {
+                item.mouseout(this.mouse);
+
+                if (this.mouse.stopped) break;
+            }
+            item.__isOver = false;
+        }
+    }
+
+    this.mouseOut = true;
+
+    // move the mouse to an impossible position
+    this.mouse.global.x = -10000;
+    this.mouse.global.y = -10000;
+};
+
+/**
+ * Is called when the mouse button is released on the renderer element
+ *
+ * @method onMouseUp
+ * @param event {Event} The DOM event of a mouse button being released
+ * @private
+ */
+PIXI.InteractionManager.prototype.onMouseUp = function(event)
+{
+    if (this.dirty)
+    {
+        this.rebuildInteractiveGraph();
+    }
+
+    this.mouse.originalEvent = event;
+
+    var length = this.interactiveItems.length;
+    var up = false;
+
+    var e = this.mouse.originalEvent;
+    var isRightButton = e.button === 2 || e.which === 3;
+
+    var upFunction = isRightButton ? 'rightup' : 'mouseup';
+    var clickFunction = isRightButton ? 'rightclick' : 'click';
+    var upOutsideFunction = isRightButton ? 'rightupoutside' : 'mouseupoutside';
+    var isDown = isRightButton ? '__isRightDown' : '__isDown';
+
+    for (var i = 0; i < length; i++)
+    {
+        var item = this.interactiveItems[i];
+
+        if (item[clickFunction] || item[upFunction] || item[upOutsideFunction])
+        {
+            item.__hit = this.hitTest(item, this.mouse);
+
+            if (item.__hit && !up)
+            {
+                //call the function!
+                if (item[upFunction])
+                {
+                    item[upFunction](this.mouse);
+                }
+                if (item[isDown])
+                {
+                    if (item[clickFunction])
+                    {
+                        item[clickFunction](this.mouse);
+                    }
+                }
+
+                if (!item.interactiveChildren)
+                {
+                    up = true;
+                }
+            }
+            else
+            {
+                if (item[isDown])
+                {
+                    if (item[upOutsideFunction]) item[upOutsideFunction](this.mouse);
+                }
+            }
+
+            item[isDown] = false;
+
+            if (this.mouse.stopped) break;
+        }
+    }
+};
+},{}],5:[function(require,module,exports){
 
 /*
  * object.watch polyfill
@@ -251,7 +537,7 @@ if (!Object.prototype.unwatch) {
 
 
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var mozAddWheelListener;
 
 mozAddWheelListener = require('../Dependencies/mozAddWheelListener');
@@ -304,7 +590,7 @@ PIXI.CanvasRenderer.prototype.setWheelScroll = function(state) {
 
 
 
-},{"../Dependencies/mozAddWheelListener":1}],6:[function(require,module,exports){
+},{"../Dependencies/mozAddWheelListener":1}],7:[function(require,module,exports){
 String.prototype.contains = function(it) {
   return this.indexOf(it) !== -1;
 };
@@ -327,9 +613,15 @@ String.prototype.camelCase = function() {
   }).replace(/\s+/g, '');
 };
 
+String.prototype.toTitleCase = function() {
+  return this.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+};
 
 
-},{}],7:[function(require,module,exports){
+
+},{}],8:[function(require,module,exports){
 var Gotham;
 
 require('./Extensions/DisplayObjectContainer.coffee');
@@ -341,6 +633,8 @@ require('./Extensions/Array.coffee');
 require('./Extensions/Object.coffee');
 
 require('./Extensions/String.coffee');
+
+require('./Extensions/InteractionManager');
 
 Gotham = (function() {
   function Gotham() {}
@@ -394,7 +688,7 @@ module.exports = window.Gotham = Gotham;
 
 
 
-},{"./Extensions/Array.coffee":2,"./Extensions/DisplayObjectContainer.coffee":3,"./Extensions/Object.coffee":4,"./Extensions/PixiRenderer.coffee":5,"./Extensions/String.coffee":6,"./Modules/Controls/Button.coffee":8,"./Modules/Controls/Slider.coffee":9,"./Modules/Database.coffee":10,"./Modules/GameLoop.coffee":11,"./Modules/Graphics/Container.coffee":12,"./Modules/Graphics/Graphics.coffee":13,"./Modules/Graphics/Polygon.coffee":14,"./Modules/Graphics/Rectangle.coffee":15,"./Modules/Graphics/Sprite.coffee":16,"./Modules/Graphics/Text.coffee":17,"./Modules/Graphics/Texture.coffee":18,"./Modules/Graphics/Tools.coffee":19,"./Modules/Network.coffee":20,"./Modules/Pattern/MVC/Controller.coffee":21,"./Modules/Pattern/MVC/View.coffee":22,"./Modules/Preload.coffee":23,"./Modules/Renderer.coffee":24,"./Modules/Scene.coffee":25,"./Modules/Sound.coffee":26,"./Modules/Tween/Tween.coffee":27,"./Util/Util.coffee":28}],8:[function(require,module,exports){
+},{"./Extensions/Array.coffee":2,"./Extensions/DisplayObjectContainer.coffee":3,"./Extensions/InteractionManager":4,"./Extensions/Object.coffee":5,"./Extensions/PixiRenderer.coffee":6,"./Extensions/String.coffee":7,"./Modules/Controls/Button.coffee":9,"./Modules/Controls/Slider.coffee":10,"./Modules/Database.coffee":11,"./Modules/GameLoop.coffee":12,"./Modules/Graphics/Container.coffee":13,"./Modules/Graphics/Graphics.coffee":14,"./Modules/Graphics/Polygon.coffee":15,"./Modules/Graphics/Rectangle.coffee":16,"./Modules/Graphics/Sprite.coffee":17,"./Modules/Graphics/Text.coffee":18,"./Modules/Graphics/Texture.coffee":19,"./Modules/Graphics/Tools.coffee":20,"./Modules/Network.coffee":21,"./Modules/Pattern/MVC/Controller.coffee":22,"./Modules/Pattern/MVC/View.coffee":23,"./Modules/Preload.coffee":24,"./Modules/Renderer.coffee":25,"./Modules/Scene.coffee":26,"./Modules/Sound.coffee":27,"./Modules/Tween/Tween.coffee":28,"./Util/Util.coffee":29}],9:[function(require,module,exports){
 var Button,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -402,9 +696,10 @@ var Button,
 Button = (function(superClass) {
   extend(Button, superClass);
 
-  function Button(text, width, height) {
+  function Button(text, width, height, isClickOnly) {
     var button_text, button_texture, that;
     that = this;
+    this._isClickOnly = isClickOnly;
     this._isToggled = false;
     button_texture = new Gotham.Graphics.Graphics;
     button_texture.lineStyle(1, 0xD3D3D3);
@@ -432,6 +727,10 @@ Button = (function(superClass) {
     };
     this.addChild(button_text);
     this.click = function(e) {
+      if (this._isClickOnly) {
+        this.onClick();
+        return;
+      }
       this._isToggled = !this._isToggled;
       if (this._isToggled) {
         this.tint = 0xD3D3D3;
@@ -442,6 +741,12 @@ Button = (function(superClass) {
       }
     };
   }
+
+  Button.prototype.setBackground = function(hex) {
+    return this.tint = hex;
+  };
+
+  Button.prototype.onClick = function() {};
 
   Button.prototype.toggleOn = function() {};
 
@@ -455,7 +760,7 @@ module.exports = Button;
 
 
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var Slider,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -527,7 +832,7 @@ module.exports = Slider;
 
 
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var Database;
 
 Database = (function() {
@@ -561,7 +866,7 @@ module.exports = Database;
 
 
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var GameLoop;
 
 GameLoop = (function() {
@@ -575,6 +880,7 @@ GameLoop = (function() {
     } else {
       this.fps = fps;
     }
+    PIXI.INTERACTION_FREQUENCY = 60;
     animate = function(time) {
       requestAnimationFrame(animate);
       return that.update(time);
@@ -612,7 +918,7 @@ module.exports = GameLoop;
 
 
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var Container,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -644,7 +950,7 @@ module.exports = Container;
 
 
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var Graphics,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -666,7 +972,7 @@ module.exports = Graphics;
 
 
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 var Polygon,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -686,7 +992,7 @@ module.exports = Polygon;
 
 
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var Rectangle,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -706,7 +1012,7 @@ module.exports = Rectangle;
 
 
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var Sprite,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -728,7 +1034,7 @@ module.exports = Sprite;
 
 
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var Text,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -754,7 +1060,7 @@ module.exports = Text;
 
 
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 var Texture,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -774,7 +1080,7 @@ module.exports = Texture;
 
 
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 var Tools;
 
 Tools = (function() {
@@ -859,7 +1165,7 @@ module.exports = Tools;
 
 
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var Network;
 
 Network = (function() {
@@ -902,7 +1208,7 @@ module.exports = Network;
 
 
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var Controller;
 
 Controller = (function() {
@@ -934,7 +1240,7 @@ module.exports = Controller;
 
 
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var View,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -965,7 +1271,7 @@ module.exports = View;
 
 
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var Preload;
 
 Preload = (function() {
@@ -1097,7 +1403,11 @@ Preload = (function() {
     socket.Socket.emit(name);
     return socket.Socket.on(name, function(data) {
       that._numNetworkLoaded = that._numNetworkLoaded + 1;
-      table.merge(data);
+      if (typeof data === 'array') {
+        table.merge(data);
+      } else {
+        table.insert(data);
+      }
       return that._onLoad(data, 'Data', name);
     });
   };
@@ -1132,7 +1442,7 @@ module.exports = Preload;
 
 
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var Renderer;
 
 Renderer = (function() {
@@ -1190,7 +1500,7 @@ module.exports = Renderer;
 
 
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var Scene,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -1246,7 +1556,7 @@ module.exports = Scene;
 
 
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var Howler, Sound;
 
 Howler = require('../dependencies/howler.js');
@@ -1304,7 +1614,7 @@ module.exports = Sound;
 
 
 
-},{"../dependencies/howler.js":33}],27:[function(require,module,exports){
+},{"../dependencies/howler.js":34}],28:[function(require,module,exports){
 'use strict';
 var Tween,
   modulo = function(a, b) { return (+a % (b = +b) + b) % b; };
@@ -1330,6 +1640,17 @@ Tween = (function() {
   })();
 
   Tween._tweens = [];
+
+  Tween.clear = function() {
+    var j, len1, ref, results, tween;
+    ref = Tween._tweens;
+    results = [];
+    for (j = 0, len1 = ref.length; j < len1; j++) {
+      tween = ref[j];
+      results.push(tween._complete = true);
+    }
+    return results;
+  };
 
   Tween._currentTime = 0;
 
@@ -1912,7 +2233,7 @@ module.exports = Tween;
 
 
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 var Util;
 
 Util = (function() {
@@ -1934,7 +2255,7 @@ module.exports = Util;
 
 
 
-},{"./modules/Ajax.coffee":29,"./modules/Compression.coffee":30,"./modules/Geocoding.coffee":31,"./modules/SearchTools.coffee":32}],29:[function(require,module,exports){
+},{"./modules/Ajax.coffee":30,"./modules/Compression.coffee":31,"./modules/Geocoding.coffee":32,"./modules/SearchTools.coffee":33}],30:[function(require,module,exports){
 var Ajax;
 
 Ajax = (function() {
@@ -1971,7 +2292,7 @@ module.exports = Ajax;
 
 
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 var Compression;
 
 Compression = (function() {
@@ -1994,7 +2315,7 @@ module.exports = new Compression();
 
 
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 var Geocoding;
 
 Geocoding = (function() {
@@ -2024,7 +2345,7 @@ module.exports = Geocoding;
 
 
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var SearchTools;
 
 SearchTools = (function() {
@@ -2065,7 +2386,7 @@ module.exports = SearchTools;
 
 
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 /*!
  *  howler.js v1.1.25
  *  howlerjs.com
@@ -3419,4 +3740,4 @@ module.exports = SearchTools;
   }
 
 })();
-},{}]},{},[7]);
+},{}]},{},[8]);

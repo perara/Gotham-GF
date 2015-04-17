@@ -53,10 +53,11 @@ class Preload
   DownloadImage = (url, callback) ->
 
     texture = Gotham.Graphics.Texture.fromImage(url)
-    texture.addEventListener "update", ->
+
+    texture.addListener "update", ->
 
       # Unset the Update Listener
-      this.addEventListener "update", ->
+      this.addListener "update", ->
 
       callback(texture)
 

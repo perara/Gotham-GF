@@ -8,4 +8,4 @@ window.Taffy                        =     require './taffy-min'
 window.CRG                          =     require './country_reverse_geocoding.js'
 window.Parallel                     =     require './parallel.js'
 window.io                           =     require './socket.io.js'
-require './json.async.js'w
+require './json.async.js'

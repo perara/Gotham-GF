@@ -66,7 +66,7 @@ class Slider extends Gotham.Graphics.Sprite
 
 
         that.progress = Math.round(that.calculateProgress(@x))
-        progress_text.setText(that.progress + "%")
+        progress_text.text = that.progress + "%"
         if that.onProgress
           that.onProgress(that.progress)
 

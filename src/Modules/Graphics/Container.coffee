@@ -1,7 +1,7 @@
 ﻿
 # Container class which inherits PIXI.DisplayObjectContainer
 #
-class Container extends PIXI.DisplayObjectContainer
+class Container extends PIXI.Container
 
   _created = false
 

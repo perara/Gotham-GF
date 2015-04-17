@@ -24,7 +24,7 @@ class GameLoop
     if not fps then @fps = 200 else @fps = fps
 
     # Sets how fast PIXI calls the Interaction checks
-    #PIXI.INTERACTION_FREQUENCY = 60;
+    PIXI.INTERACTION_FREQUENCY = 60
 
     # Starts the update loop
     animate = (time) ->

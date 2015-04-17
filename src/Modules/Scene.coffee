@@ -6,7 +6,7 @@
 #
 # See {http://www.goodboydigital.com/pixijs/docs/classes/Stage.html PIXI.Stage} for properties
 #
-class Scene extends PIXI.Stage
+class Scene extends PIXI.Container
 
   # Runs the create() function and calls the super constructor
   constructor: ->
