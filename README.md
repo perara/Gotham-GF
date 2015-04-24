@@ -2,7 +2,7 @@ GOTHAM - Game Framework
 ======
 *GOTHAMGF* is a subproject of the Gotham - Global Online Traffic Hacking and Monitoring application.
 
-The descision to build atop PIXI.JS was made after Phaser.JS did not meet the requirements of the project.
+The descision to build atop PIXI.JS was made after Phaser.JS did not meet the requirements of the project. (Structure)
 
 It started as a wrapper (and still is, kinda), but is now considered a game framework becuase of its multimedia capabilities.
 It is licensed under the [MIT Licence](http://opensource.org/licenses/MIT) 
@@ -30,7 +30,9 @@ Thanks To
 
 [Codo](https://github.com/coffeedoc/codo) - Documentation Tool
 
-[SignalR](http://signalr.net/) - Networking
+[Socket.IO](http://signalr.net/) - Networking
+
+[TaffyDB](http://www.taffydb.com/) - Local Database Handling
 
 Licence
 ======
