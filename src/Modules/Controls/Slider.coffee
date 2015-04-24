@@ -41,20 +41,18 @@ class Slider extends Gotham.Graphics.Sprite
 
 
     # Register dragging, Then calculate where on the Knob the user clicked (@sx)
-    knob.mousedown = knob.touchstart = (data) ->
-      @data = data
-      @sx = data.getLocalPosition(@).x * @scale.x;
+    knob.mousedown = knob.touchstart = (e) ->
+      @sx = e.data.getLocalPosition(@).x * @scale.x;
       @dragging = true
 
     # Deactivate dragging and reset data
-    knob.mouseup = knob.mouseupoutside = knob.touchend = knob.touchendoutside = (data) ->
-      @data = null
+    knob.mouseup = knob.mouseupoutside = knob.touchend = knob.touchendoutside = (e) ->
       @dragging = false
 
     # Check if user is dragging, Then move the knob accordingly
-    knob.mousemove = knob.touchmove = (data) ->
+    knob.mousemove = knob.touchmove = (e) ->
       if @dragging
-        newData = @data.getLocalPosition(@parent)
+        newData = e.data.getLocalPosition(@parent)
         newX = (newData.x - @sx)
 
 

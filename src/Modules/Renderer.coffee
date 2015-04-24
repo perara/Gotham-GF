@@ -71,6 +71,12 @@ class Renderer
     scene._renderer = @
     @scenes[name] = scene
 
+  # Retrieves a scene from the renderer
+  # @param name [String] Name of the scene
+  # @returns [Scene] The scene
+  getScene: (name) ->
+    return @scenes[name]
+
 
 
 

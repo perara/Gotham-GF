@@ -5,7 +5,7 @@ class Controller
 
   constructor: (View, name) ->
     # Create an instance of the View
-    ViewObject = new View
+    ViewObject = new View(@)
 
     # Check that the ViewObject is an actual view
     if not ViewObject._v then throw Error "View is missing in super constructor (Have your view inherited GothamGame.View ?"

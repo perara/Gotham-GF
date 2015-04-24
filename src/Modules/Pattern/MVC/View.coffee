@@ -3,11 +3,12 @@
 
 class View extends Gotham.Graphics.Container
 
-  constructor: ->
+  constructor: (controller) ->
     super
     @_v = true
     @_created = false
     @_processes = []
+    @Controller = controller
 
   # This function should be overriden, It creates the view
   #

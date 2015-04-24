@@ -12,30 +12,36 @@
 class Button extends Gotham.Graphics.Sprite
 
   # Constructors the button calling the super class of Gotham.Graphics.Sprite --> PIXI.Sprite
-  constructor: (text, width, height, textSize, isClickOnly) ->
+  constructor: (text, width, height, options) ->
     that = @
-    @_isClickOnly = isClickOnly
-    @_isToggled = false
 
-    textSize = if not textSize then 40 else textSize
+    # Option Parsing
+    options = if not options? then {} else options
+    _toggle = if options.toggle? then options.toggle else true
+    _textSize = if options.textSize? then options.textSize else 40
+    _texture = if options.texture? then options.texture else null
+    _offset = if options.offset then options.offset else 0
+    _margin = if options.margin then options.margin else 0
+    @margin = _margin
 
-    button_texture = new Gotham.Graphics.Graphics
-    button_texture.lineStyle(1, 0xD3D3D3);
-    button_texture.beginFill 0x000000
-    button_texture.drawRect 0, 0, 100, 50
-    button_texture.endFill()
-    button_texture = button_texture.generateTexture()
-    super button_texture
+    if not _texture?
+      _texture = new Gotham.Graphics.Graphics
+      #_texture.lineStyle(1, 0xD3D3D3);
+      _texture.beginFill 0x000000
+      _texture.drawRect 0, 0, 100, 50
+      _texture.endFill()
+      _texture = _texture.generateTexture()
+
+    super _texture
 
 
-    @tint = 0x000000
     @width = width
     @height = height
     @interactive =  true
 
     # Create button text
-    button_text = new Gotham.Graphics.Text(text, {font: "bold #{textSize}px Arial", fill: "#ffffff", align: "left"});
-    button_text.position.x = (@width / @scale.x) / 2
+    button_text = new Gotham.Graphics.Text(text, {font: "bold #{_textSize}px Arial", fill: "#ffffff", align: "left"});
+    button_text.position.x = ((@width / @scale.x) / 2) + _offset
     button_text.position.y = (@height / @scale.y) / 2
     button_text.width = @width / @scale.x
     button_text.height = @height / @scale.y
@@ -44,19 +50,17 @@ class Button extends Gotham.Graphics.Sprite
       y: 0.5
     @addChild button_text
 
+    @label = button_text
 
     @click = (e) ->
-
-      if @_isClickOnly
+      if not _toggle
         @onClick()
         return
 
-      @_isToggled = !@_isToggled
-      if @_isToggled
-        @tint = 0xD3D3D3
+      @_toggleState = !@_toggleState
+      if @_toggleState
         @toggleOn()
       else
-        @tint = 0x000000
         @toggleOff()
 
   setBackground: (hex) ->
