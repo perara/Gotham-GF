@@ -141,11 +141,11 @@ PIXI.Container.prototype.addChildArray = function(array) {
   return results1;
 };
 
+PIXI.Container.prototype.onMouseMove = function() {};
+
 PIXI.Container.prototype.setPanning = function(callback) {
-  var isDragging, parent, prevX, prevY, that;
+  var isDragging, prevX, prevY, that;
   that = this;
-  parent = that.parent;
-  parent.interactive = true;
   isDragging = false;
   prevX = void 0;
   prevY = void 0;
@@ -157,25 +157,30 @@ PIXI.Container.prototype.setPanning = function(callback) {
     x: 0,
     y: 0
   };
-  parent.mousedown = function(e) {
+  this.mousedown = function(e) {
     var pos;
-    pos = e.data.getLocalPosition(this);
+    that.previousPosition = {
+      x: that.position.x,
+      y: that.position.y
+    };
+    pos = e.data.getLocalPosition(this.parent);
     prevX = pos.x;
     prevY = pos.y;
     return isDragging = true;
   };
-  parent.mouseup = function(e) {
+  this.mouseup = function(e) {
     return isDragging = false;
   };
-  parent.mouseout = function(e) {
+  this.mouseout = function(e) {
     return isDragging = false;
   };
-  return parent.mousemove = function(e) {
+  return this.mousemove = function(e) {
     var newPosition, pos, results;
+    this.onMouseMove(e);
     if (!isDragging) {
       return;
     }
-    pos = e.data.getLocalPosition(this);
+    pos = e.data.getLocalPosition(this.parent);
     that.diff.x = pos.x - prevX;
     that.diff.y = pos.y - prevY;
     newPosition = {
@@ -186,10 +191,12 @@ PIXI.Container.prototype.setPanning = function(callback) {
     if (results.x) {
       that.position.x = newPosition.x;
       prevX = pos.x;
+      that.offset.x += that.diff.x;
     }
     if (results.y) {
       that.position.y = newPosition.y;
-      return prevY = pos.y;
+      prevY = pos.y;
+      return that.offset.y += that.diff.y;
     }
   };
 };
@@ -385,6 +392,8 @@ Gotham = (function() {
   function Gotham() {}
 
   window.Gotham = Gotham;
+
+  Gotham.Running = true;
 
   Gotham.Graphics = {
     Renderer: require('./Modules/Renderer.coffee'),
@@ -833,7 +842,7 @@ var Tools;
 Tools = (function() {
   function Tools() {}
 
-  Tools.PolygonFromJSON = function(json, skipRatio, scale) {
+  Tools.polygonFromJSON = function(json, skipRatio, scale) {
     var _key, count, i, j, key, len, len1, point, pointList, polygon, polygonList;
     if (skipRatio == null) {
       skipRatio = 5;
@@ -860,7 +869,7 @@ Tools = (function() {
     return polygonList;
   };
 
-  Tools.PolygonToGraphics = function(polygon, interactive) {
+  Tools.polygonToGraphics = function(polygon, interactive) {
     var graphicsList, grp, i, j, key, len, len1, minX, minY, point, polygonList, ref, xory;
     polygonList = [];
     graphicsList = [];
@@ -892,7 +901,7 @@ Tools = (function() {
       grp.minY = minY;
       graphicsList.push(grp);
       grp.lineStyle(2, 0x000000, 1);
-      grp.beginFill(0xffffff, 0.5);
+      grp.beginFill(0xffffff, 1.0);
       grp.polygon = polygon;
       grp.drawPolygon(polygon.points);
       if (interactive != null) {
@@ -1023,7 +1032,7 @@ module.exports = View;
 var Preload;
 
 Preload = (function() {
-  var DownloadImage, DownloadJSON, DownloadSound;
+  var downloadImage, downloadJSON, downloadSound;
 
   function Preload() {
     this.db_image = Gotham.Database.createTable("preload_images");
@@ -1054,13 +1063,13 @@ Preload = (function() {
     return total;
   };
 
-  DownloadJSON = function(url, callback) {
+  downloadJSON = function(url, callback) {
     return Gotham.Util.Ajax.GET(url, function(data, response) {
       return callback(data);
     });
   };
 
-  DownloadImage = function(url, callback) {
+  downloadImage = function(url, callback) {
     var texture;
     texture = Gotham.Graphics.Texture.fromImage(url);
     return texture.addListener("update", function() {
@@ -1069,7 +1078,7 @@ Preload = (function() {
     });
   };
 
-  DownloadSound = function(url, options, callback) {
+  downloadSound = function(url, options, callback) {
     var howlParameters, howler, sound;
     howlParameters = {
       urls: [url]
@@ -1106,7 +1115,7 @@ Preload = (function() {
     var that;
     that = this;
     this.incrementTotalCount();
-    return DownloadImage(url, function(image) {
+    return downloadImage(url, function(image) {
       that.db_image.insert({
         name: name,
         object: image,
@@ -1120,7 +1129,7 @@ Preload = (function() {
     var that;
     that = this;
     this.incrementTotalCount();
-    return DownloadSound(url, options, function(sound) {
+    return downloadSound(url, options, function(sound) {
       that.db_audio.insert({
         name: name,
         object: sound,
@@ -1134,7 +1143,7 @@ Preload = (function() {
     var that;
     that = this;
     this.incrementTotalCount();
-    return DownloadJSON(url, function(json) {
+    return downloadJSON(url, function(json) {
       that.db_data.insert({
         name: name,
         object: json,
@@ -1179,7 +1188,6 @@ Preload = (function() {
       default:
         throw new Error("Format Not Supported, Preload");
     }
-    return this.storage;
   };
 
   return Preload;
@@ -1197,7 +1205,10 @@ Renderer = (function() {
   function Renderer(width, height, options, autoResize) {
     var label, rootScene, that;
     that = this;
-    this.pixi = PIXI.autoDetectRenderer(width, height, options);
+    this.pixi = PIXI.autoDetectRenderer(width, height, {
+      autoResize: true,
+      antialias: true
+    });
     window.renderer = this;
     this.pixi.setWheelScroll(true);
     if (autoResize != null) {
@@ -1224,6 +1235,12 @@ Renderer = (function() {
       "root": this.pixi.stage
     };
     document.body.appendChild(this.pixi.view);
+    window.onfocus = function() {
+      return Gotham.Running = true;
+    };
+    window.onblur = function() {
+      return Gotham.Running = false;
+    };
     Gotham.GameLoop.setRenderer(function() {
       return renderer.pixi.render(renderer.pixi.stage);
     });

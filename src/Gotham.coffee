@@ -11,6 +11,9 @@ require './Extensions/String.coffee'
 class Gotham
   window.Gotham = Gotham
 
+  # Flag for when gotham engine is running (Disabled when not window focus)
+  @Running = true
+
   @Graphics =
     # @property [Gotham.Graphics.Renderer] Renderer Class
     Renderer:           require './Modules/Renderer.coffee'

@@ -19,7 +19,10 @@ class Renderer
   constructor: (width, height, options, autoResize) ->
     # Create pixi object
     that =  @
-    @pixi = PIXI.autoDetectRenderer width, height, options
+    @pixi = PIXI.autoDetectRenderer width, height, {
+      autoResize: true
+      antialias: true
+    }
     window.renderer = @
 
     # Activate Wheel Scrolling Support (Defined in Extensions)
@@ -53,7 +56,16 @@ class Renderer
     # Append renderer to the document
     document.body.appendChild @pixi.view
 
-    # Add a render loop function to the Gotham.GameLoop
+
+
+    window.onfocus = ->
+      Gotham.Running = true
+
+    window.onblur = ->
+      Gotham.Running = false
+
+
+# Add a render loop function to the Gotham.GameLoop
     Gotham.GameLoop.setRenderer () ->
       renderer.pixi.render(renderer.pixi.stage);
 

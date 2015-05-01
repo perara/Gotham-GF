@@ -13,7 +13,7 @@ class Tools
   # @param [Object] scale scale option
   # @option scale [Double] x The X axis scale
   # @option scale [Double] y The Y axis scale
-  @PolygonFromJSON: (json, skipRatio, scale) ->
+  @polygonFromJSON: (json, skipRatio, scale) ->
 
     # How many coordinates to skip
     if not skipRatio?
@@ -58,7 +58,7 @@ class Tools
   #
   # @param [Array(Polygon) || Polygon] options the moving options
   #
-  @PolygonToGraphics: (polygon, interactive) ->
+  @polygonToGraphics: (polygon, interactive) ->
 
     # Create some empty arrays
     polygonList = []
@@ -97,7 +97,7 @@ class Tools
       grp.minY = minY
       graphicsList.push grp
       grp.lineStyle(2, 0x000000, 1);
-      grp.beginFill(0xffffff, 0.5);
+      grp.beginFill(0xffffff, 1.0);
       grp.polygon = polygon
       grp.drawPolygon(polygon.points);
 

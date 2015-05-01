@@ -46,11 +46,11 @@ class Preload
 
 
 
-  DownloadJSON = (url, callback) ->
+  downloadJSON = (url, callback) ->
     Gotham.Util.Ajax.GET url, (data, response) ->
       callback(data)
 
-  DownloadImage = (url, callback) ->
+  downloadImage = (url, callback) ->
 
     texture = Gotham.Graphics.Texture.fromImage(url)
 
@@ -61,7 +61,7 @@ class Preload
 
       callback(texture)
 
-  DownloadSound = (url, options, callback) ->
+  downloadSound = (url, options, callback) ->
 
 
     # HowlerJS Parameters
@@ -115,7 +115,7 @@ class Preload
     that = @
 
     @incrementTotalCount()
-    DownloadImage url, (image) ->
+    downloadImage url, (image) ->
       that.db_image.insert { name: name, object: image, type: 'image'}
       that._onLoad(image, 'Image', name)
 
@@ -128,7 +128,7 @@ class Preload
     that = @
 
     @incrementTotalCount()
-    DownloadSound url, options, (sound) ->
+    downloadSound url, options, (sound) ->
       that.db_audio.insert { name: name, object: sound, type: 'audio'}
       that._onLoad(sound, 'Audio', name)
 
@@ -140,7 +140,7 @@ class Preload
     that = @
 
     @incrementTotalCount()
-    DownloadJSON url, (json) ->
+    downloadJSON url, (json) ->
       that.db_data.insert { name: name, object: json, type: 'json'}
       that._onLoad(json,'JSON', name)
 
@@ -155,6 +155,7 @@ class Preload
     @incrementTotalCount()
     socket.Socket.emit name
     socket.Socket.on name , (data) ->
+      console.log data
       that._numNetworkLoaded = that._numNetworkLoaded + 1
 
       if typeof data == 'array'
@@ -189,7 +190,6 @@ class Preload
         return @db_data
       else
         throw new Error "Format Not Supported, Preload"
-    return @storage
   
 
 module.exports = Preload

@@ -65,13 +65,15 @@ PIXI.Container.prototype.addChildArray = (array) ->
     @addChild child
 
 
+PIXI.Container.prototype.onMouseMove = () ->
+
+
 # Activates panning on "this" object, (Moving the object around)
 # @param [Callback] callback Callback for adding an custom restriction for the panning, Example when it should stop (Borders, and limits)
 PIXI.Container.prototype.setPanning = (callback) ->
   that = @
-  parent = that.parent
 
-  parent.interactive = true
+
 
   isDragging = false
   prevX = undefined
@@ -86,30 +88,36 @@ PIXI.Container.prototype.setPanning = (callback) ->
     y: 0
 
 
+  @mousedown = (e) ->
 
-  parent.mousedown = (e) ->
+    that.previousPosition =
+      x: that.position.x
+      y: that.position.y
 
-    pos = e.data.getLocalPosition @
+    pos = e.data.getLocalPosition @parent
     prevX = pos.x
     prevY = pos.y
     isDragging = true
 
-  parent.mouseup = (e) ->
+  @mouseup = (e) ->
     isDragging = false
 
-  parent.mouseout = (e) ->
+  @mouseout = (e) ->
     isDragging = false
 
-  parent.mousemove = (e) ->
+  @mousemove = (e) ->
+    @onMouseMove(e)
     if !isDragging
       return
 
     # Current mouse position
-    pos = e.data.getLocalPosition @
+    pos = e.data.getLocalPosition @parent
 
     # The difference between previous and current poss
     that.diff.x = pos.x - prevX
     that.diff.y = pos.y - prevY
+
+
 
     newPosition =
       x: that.position.x + that.diff.x
@@ -120,9 +128,11 @@ PIXI.Container.prototype.setPanning = (callback) ->
     if results.x
       that.position.x = newPosition.x
       prevX = pos.x
+      that.offset.x += that.diff.x
     if results.y
       that.position.y = newPosition.y
       prevY = pos.y
+      that.offset.y += that.diff.y
 
 PIXI.Container.prototype.onMouseDown = ->
 PIXI.Container.prototype.onMouseUp = ->

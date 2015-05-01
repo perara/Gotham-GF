@@ -44,7 +44,6 @@ class GameLoop
   # @return [void] Nothing
   #
   update: (time) ->
-
     @renderer()
 
     # Run Tasks , Delete if done
