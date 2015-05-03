@@ -18,9 +18,9 @@ class Preload
   constructor: ->
 
     # Define Databases
-    @db_image = Gotham.Database.createTable "preload_images"
-    @db_audio = Gotham.Database.createTable "preload_audio"
-    @db_data = Gotham.Database.createTable "preload_data"
+    @db_image = Gotham.Database.table "preload_images"
+    @db_audio = Gotham.Database.table "preload_audio"
+    @db_data = Gotham.Database.table "preload_data"
     #@db_video = Gotham.Database.createTable "preload_video"
 
     # Callbacks
@@ -41,7 +41,7 @@ class Preload
     dbs = [@db_audio, @db_image, @db_data]
     total = @_numNetworkLoaded
     for db in dbs
-      total += db().count()
+      total += db.data.length
     return total
 
 
@@ -176,7 +176,7 @@ class Preload
   # @param [String] type The type of the file
   fetch: (name, type) ->
     db = @getDatabase(type)
-    return db({name: name}).first().object
+    return db.findOne(name: name).object
 
   # Function which returns the storage for the given type
   # @param [String] type The type of the storage

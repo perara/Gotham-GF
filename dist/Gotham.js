@@ -144,9 +144,9 @@ PIXI.Container.prototype.addChildArray = function(array) {
 PIXI.Container.prototype.onMouseMove = function() {};
 
 PIXI.Container.prototype.setPanning = function(callback) {
-  var isDragging, prevX, prevY, that;
+  var prevX, prevY, that;
   that = this;
-  isDragging = false;
+  this.isDragging = false;
   prevX = void 0;
   prevY = void 0;
   that.offset = {
@@ -166,18 +166,18 @@ PIXI.Container.prototype.setPanning = function(callback) {
     pos = e.data.getLocalPosition(this.parent);
     prevX = pos.x;
     prevY = pos.y;
-    return isDragging = true;
+    return this.isDragging = true;
   };
   this.mouseup = function(e) {
-    return isDragging = false;
+    return this.isDragging = false;
   };
   this.mouseout = function(e) {
-    return isDragging = false;
+    return this.isDragging = false;
   };
   return this.mousemove = function(e) {
     var newPosition, pos, results;
     this.onMouseMove(e);
-    if (!isDragging) {
+    if (!this.isDragging) {
       return;
     }
     pos = e.data.getLocalPosition(this.parent);
@@ -451,7 +451,7 @@ Button = (function(superClass) {
   extend(Button, superClass);
 
   function Button(text, width, height, options) {
-    var _margin, _offset, _textSize, _texture, _toggle, button_text, that;
+    var _alpha, _margin, _offset, _textSize, _texture, _toggle, button_text, that;
     that = this;
     options = options == null ? {} : options;
     _toggle = options.toggle != null ? options.toggle : true;
@@ -459,10 +459,11 @@ Button = (function(superClass) {
     _texture = options.texture != null ? options.texture : null;
     _offset = options.offset ? options.offset : 0;
     _margin = options.margin ? options.margin : 0;
+    _alpha = options.alpha != null ? options.alpha : 1;
     this.margin = _margin;
     if (_texture == null) {
       _texture = new Gotham.Graphics.Graphics;
-      _texture.beginFill(0x000000);
+      _texture.beginFill(0x000000, _alpha);
       _texture.drawRect(0, 0, 100, 50);
       _texture.endFill();
       _texture = _texture.generateTexture();
@@ -472,9 +473,10 @@ Button = (function(superClass) {
     this.height = height;
     this.interactive = true;
     button_text = new Gotham.Graphics.Text(text, {
-      font: "bold " + _textSize + "px Arial",
+      font: "bold " + _textSize + "px Calibri",
       fill: "#ffffff",
-      align: "left"
+      align: "left",
+      dropShadow: true
     });
     button_text.position.x = ((this.width / this.scale.x) / 2) + _offset;
     button_text.position.y = (this.height / this.scale.y) / 2;
@@ -593,25 +595,22 @@ var Database;
 
 Database = (function() {
   function Database() {
-    this.tables = {};
+    this.db = new loki();
+    this._tables = {};
     return this;
   }
 
-  Database.prototype.createTable = function(tableName) {
-    this.tables[tableName] = Taffy.taffy();
-    return this.tables[tableName];
-  };
-
   Database.prototype.table = function(tableName) {
-    try {
-      return this.tables[tableName];
-    } catch (_error) {
-      throw new ReferenceError("No table exists with that name: '" + tableName + "'");
+    if (!this._tables[tableName]) {
+      this._tables[tableName] = this.db.addCollection(tableName, {
+        indices: ['id']
+      });
     }
+    return this._tables[tableName];
   };
 
   Database.prototype.getTables = function() {
-    return this.tables;
+    return this._tables;
   };
 
   return Database;
@@ -631,12 +630,13 @@ GameLoop = (function() {
     that = this;
     this.renderer = function() {};
     this._tasks = [];
-    if (!fps) {
-      this.fps = 200;
-    } else {
-      this.fps = fps;
-    }
-    PIXI.INTERACTION_FREQUENCY = 60;
+    this.FPSMeter = new FPSMeter({
+      decimals: 0,
+      graph: true,
+      theme: 'dark',
+      left: "47%",
+      top: "96%"
+    });
     animate = function(time) {
       requestAnimationFrame(animate);
       return that.update(time);
@@ -650,7 +650,7 @@ GameLoop = (function() {
 
   GameLoop.prototype.update = function(time) {
     var _task, i, len, ref, s;
-    this.renderer();
+    this.FPSMeter.tickStart();
     ref = this._tasks;
     for (i = 0, len = ref.length; i < len; i++) {
       _task = ref[i];
@@ -659,7 +659,9 @@ GameLoop = (function() {
         this._tasks.remove(_task);
       }
     }
-    return Gotham.Tween.update(time);
+    Gotham.Tween.update(time);
+    this.renderer();
+    return this.FPSMeter.tick();
   };
 
   GameLoop.prototype.addTask = function(task) {
@@ -1035,9 +1037,9 @@ Preload = (function() {
   var downloadImage, downloadJSON, downloadSound;
 
   function Preload() {
-    this.db_image = Gotham.Database.createTable("preload_images");
-    this.db_audio = Gotham.Database.createTable("preload_audio");
-    this.db_data = Gotham.Database.createTable("preload_data");
+    this.db_image = Gotham.Database.table("preload_images");
+    this.db_audio = Gotham.Database.table("preload_audio");
+    this.db_data = Gotham.Database.table("preload_data");
     this.onLoad = function() {};
     this.onComplete = function() {};
     this._numNetworkLoaded = 0;
@@ -1058,7 +1060,7 @@ Preload = (function() {
     total = this._numNetworkLoaded;
     for (i = 0, len = dbs.length; i < len; i++) {
       db = dbs[i];
-      total += db().count();
+      total += db.data.length;
     }
     return total;
   };
@@ -1159,6 +1161,7 @@ Preload = (function() {
     this.incrementTotalCount();
     socket.Socket.emit(name);
     return socket.Socket.on(name, function(data) {
+      console.log(data);
       that._numNetworkLoaded = that._numNetworkLoaded + 1;
       if (typeof data === 'array') {
         table.merge(data);
@@ -1172,9 +1175,9 @@ Preload = (function() {
   Preload.prototype.fetch = function(name, type) {
     var db;
     db = this.getDatabase(type);
-    return db({
+    return db.findOne({
       name: name
-    }).first().object;
+    }).object;
   };
 
   Preload.prototype.getDatabase = function(type) {
@@ -1578,7 +1581,7 @@ Tween = (function() {
         continue;
       }
       if (tween._complete) {
-        tween._onComplete(tween._object);
+        tween._onComplete(tween);
         Tween._tweens.splice(Tween._tweens.indexOf(tween), 1);
         continue;
       }
@@ -1609,7 +1612,7 @@ Tween = (function() {
           chainItem.startPos[key] = typeof value === 'object' ? Tween.clone(value) : value;
         }
       }
-      if (time > chainItem.endTime) {
+      if (time > chainItem.endTime && chainItem.elapsed >= 0.99) {
         tween._runCounter++;
         chainItem.startTime = null;
         chainItem.endTime = null;
@@ -1619,15 +1622,12 @@ Tween = (function() {
         }
         continue;
       }
-      if (chainItem.type === "delay") {
-        continue;
-      }
       startTime = chainItem.startTime;
       start = chainItem.startPos;
       end = chainItem.property;
       elapsed = (performance.now() - startTime) / chainItem.duration;
-      chainItem.elapsed = elapsed;
       elapsed = elapsed > 1 ? 1 : elapsed;
+      chainItem.elapsed = elapsed;
       value = tween._easing(elapsed);
       if (tween.onUpdate) {
         tween._onUpdate(chainItem);

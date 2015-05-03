@@ -16,27 +16,19 @@ class Database
   # @return [Database] Returns the database
   #
   constructor: ->
-    @tables = {}
+    @db = new loki()
+    @_tables = {}
     return @
 
   # Creates a new table
   # This table is then stored in the internal _tables object
   # @return [TaffyDB] Returns the table
   #
-  createTable: (tableName) ->
-    @tables[tableName] = Taffy.taffy()
-    return @tables[tableName]
-
-  # Creates a new table
-  # This table is then stored in the internal _tables object
-  # @return [TaffyDB] Returns the table
-  #
   table: (tableName) ->
-    try
-      return @tables[tableName]
-    catch
-      throw new ReferenceError "No table exists with that name: '" + tableName + "'"
+    if not @_tables[tableName]
+      @_tables[tableName] = @db.addCollection(tableName, { indices: ['id'] })
+    return @_tables[tableName]
 
   getTables: ->
-    return @tables
+    return @_tables
 module.exports = Database

@@ -75,7 +75,7 @@ PIXI.Container.prototype.setPanning = (callback) ->
 
 
 
-  isDragging = false
+  @isDragging = false
   prevX = undefined
   prevY = undefined
 
@@ -97,17 +97,17 @@ PIXI.Container.prototype.setPanning = (callback) ->
     pos = e.data.getLocalPosition @parent
     prevX = pos.x
     prevY = pos.y
-    isDragging = true
+    @isDragging = true
 
   @mouseup = (e) ->
-    isDragging = false
+    @isDragging = false
 
   @mouseout = (e) ->
-    isDragging = false
+    @isDragging = false
 
   @mousemove = (e) ->
     @onMouseMove(e)
-    if !isDragging
+    if !@isDragging
       return
 
     # Current mouse position

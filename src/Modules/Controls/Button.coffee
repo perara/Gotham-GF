@@ -22,12 +22,13 @@ class Button extends Gotham.Graphics.Sprite
     _texture = if options.texture? then options.texture else null
     _offset = if options.offset then options.offset else 0
     _margin = if options.margin then options.margin else 0
+    _alpha = if options.alpha? then options.alpha else 1
     @margin = _margin
 
     if not _texture?
       _texture = new Gotham.Graphics.Graphics
       #_texture.lineStyle(1, 0xD3D3D3);
-      _texture.beginFill 0x000000
+      _texture.beginFill 0x000000, _alpha
       _texture.drawRect 0, 0, 100, 50
       _texture.endFill()
       _texture = _texture.generateTexture()
@@ -40,7 +41,7 @@ class Button extends Gotham.Graphics.Sprite
     @interactive =  true
 
     # Create button text
-    button_text = new Gotham.Graphics.Text(text, {font: "bold #{_textSize}px Arial", fill: "#ffffff", align: "left"});
+    button_text = new Gotham.Graphics.Text(text, {font: "bold #{_textSize}px Calibri", fill: "#ffffff", align: "left", dropShadow: true});
     button_text.position.x = ((@width / @scale.x) / 2) + _offset
     button_text.position.y = (@height / @scale.y) / 2
     button_text.width = @width / @scale.x

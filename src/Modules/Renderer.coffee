@@ -56,8 +56,6 @@ class Renderer
     # Append renderer to the document
     document.body.appendChild @pixi.view
 
-
-
     window.onfocus = ->
       Gotham.Running = true
 
@@ -88,14 +86,6 @@ class Renderer
   # @returns [Scene] The scene
   getScene: (name) ->
     return @scenes[name]
-
-
-
-
-
-
-
-
 
 
 module.exports = Renderer
