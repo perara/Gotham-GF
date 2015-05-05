@@ -1,6 +1,12 @@
 
 
-# Network Class, Build atop of SignalR
+###*
+# The network class is built ontop of SocketIO. Provides extra handling on connection and emits from rooms
+# @class Network
+# @module Framework
+# @submodule Framework
+# @namespace Gotham
+###
 class Network
 
 

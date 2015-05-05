@@ -1,6 +1,15 @@
 
 
-
+###*
+# Baseclass for the View
+# @class View
+# @module Framework
+# @submodule Framework.Pattern.MVC
+# @namespace Gotham.Pattern.MVC
+# @constructor
+# @param controller {Gotham.Pattern.MVC.Controller} The Controller Object
+# @extends Gotham.Graphics.Container
+###
 class View extends Gotham.Graphics.Container
 
   constructor: (controller) ->

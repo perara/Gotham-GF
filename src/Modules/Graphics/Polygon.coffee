@@ -1,10 +1,13 @@
 ﻿
 
+###*
 # Polygon class which inherits {http://www.goodboydigital.com/pixijs/docs/classes/Polygon.html PIXI.Polyon}
-#
-# It has additional functionality specifically to load JSON
-#
-# Also automatic handlers for creating a sprite object
+# @class Polygon
+# @module Framework
+# @submodule Framework.Graphics
+# @namespace Gotham.Graphics
+# @extends PIXI.Polygon
+###
 class Polygon extends PIXI.Polygon
 
   # TODO

@@ -1,12 +1,16 @@
 
 
-
-# Control which adds Slider functionality to Gotham
-#
-# @example How to use the slider
-#     slider = new Gotham.Controls.Slider
-#     stage.addChild slider
-#
+###*
+# Slider control is a control which can be dragged from 0 to 100. For example a volume control
+# @class Slider
+# @module Framework
+# @submodule Framework.Controls
+# @namespace Gotham.Controls
+# @extends Gotham.Graphics.Sprite
+# @constructor
+# @param knobTexture {Gotham.Graphics.Texture} Texture of the knob
+# @param background {Gotham.Graphics.Texture} Background texture
+###
 class Slider extends Gotham.Graphics.Sprite
 
   # Constructor Which Creates the Slider

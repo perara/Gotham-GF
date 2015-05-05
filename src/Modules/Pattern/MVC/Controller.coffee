@@ -1,6 +1,15 @@
 
 
-
+###*
+# Baseclass for the controller
+# @class Controller
+# @module Framework
+# @submodule Framework.Pattern.MVC
+# @namespace Gotham.Pattern.MVC
+# @constructor
+# @param View {Gotham.Pattern.MVC.View} The view object
+# @param name {String} Name of the Controller
+###
 class Controller
 
   constructor: (View, name) ->

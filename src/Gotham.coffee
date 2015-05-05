@@ -1,15 +1,21 @@
-﻿# pixi.js Extensions
-
+﻿
 require './Extensions/Container.coffee'
 require './Extensions/PixiRenderer.coffee'
 require './Extensions/Array.coffee'
 require './Extensions/Object.coffee'
 require './Extensions/String.coffee'
 
-# The Gotham Game Framework Class
-# Construct all modules as static members
+###*
+# Acs as a namespace class,
+# @class Gotham
+# @module Framework
+# @submodule Framework
+# @namespace Gotham
+###
 class Gotham
   window.Gotham = Gotham
+
+  @VERSION = "1.0"
 
   # Flag for when gotham engine is running (Disabled when not window focus)
   @Running = true
@@ -81,6 +87,21 @@ class Gotham
   # @property [Gotham.Preload] Preloading class
   @Preload      =       new (require './Modules/Preload.coffee')()
 
+if navigator.userAgent.toLowerCase().indexOf('chrome') > -1
+  args = [
+    '%c %c %c Gotham Game Framework %c %c %c',
+    'background: #323232; padding:5px 0;',
+    'background: #323232; padding:5px 0;',
+    'color: #4169e1; background: #030307; padding:5px 0;',
+    'background: #323232; padding:5px 0;',
+    'background: #323232; padding:5px 0;',
+    'color: #4169e1; background: #030307; padding:5px 0;',
+  ];
+
+  window.console.log.apply(console, args);
+
+else if (window.console)
+  window.console.log "Gotham Game Framework #{@VERSION} - http://gotham.no"
 
 module.exports = window.Gotham  = Gotham
 

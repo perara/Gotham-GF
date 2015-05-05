@@ -1,7 +1,13 @@
 ﻿
 
+###*
 # AJAX Class to retrieve and post without the use of JQUERY
 # IT does only rely on the normal javascript library
+# @class Ajax
+# @module Framework
+# @submodule Framework.Util
+# @namespace Gotham.Util
+###
 class Ajax
 
   # Fetches the XML Document from  the request,

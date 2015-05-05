@@ -1,16 +1,23 @@
 ﻿
+###*
 # Preload Class
 # This class contains storage for audio, video, image and json
 # It keeps track of current loaded object, and the total number of objects
 # It can serve these preloaded files on the fly.
-# @example Preload element
-#   Gotham.Preload.image("/assets/img/settings_close.png", "settings_close", "image")
-#   Gotham.Preload.json("/assets/json/json.json", "map")
 #
-# @example Fetching Element
+# @class Preload
+# @module Framework
+# @submodule Framework
+# @namespace Gotham
+# @example
+#     Gotham.Preload.image("/assets/img/settings_close.png", "settings_close", "image")
+#     Gotham.Preload.json("/assets/json/json.json", "map")
+#
+# @example
 #   Gotham.Preload.fetch("map", "json")
 #   Gotham.Preload.fetch("settings_close", "image")
 #
+###
 class Preload
 
   # Setups the preloader
@@ -155,7 +162,6 @@ class Preload
     @incrementTotalCount()
     socket.Socket.emit name
     socket.Socket.on name , (data) ->
-      console.log data
       that._numNetworkLoaded = that._numNetworkLoaded + 1
 
       if typeof data == 'array'

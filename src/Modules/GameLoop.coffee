@@ -1,13 +1,20 @@
 ﻿
 
+
+###*
 # GameLoop of the engine
 #
 # This is responsible for updating and drawing each frame of
 # the game, It does so by calling requestAnimationFrame.
 #
 # In Addition, it also handles the Tween ticks in its update loop
+#
+# @class GameLoop
+# @module Framework
+# @submodule Framework
+# @namespace Gotham
+###
 class GameLoop
-
 
 
   # Constructs the game loop

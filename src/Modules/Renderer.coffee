@@ -1,21 +1,23 @@
 ﻿
 
+
+###*
 # Renderer of the Gotham Game framework
 # Uses pixi's renderer which is then wrapped around
 # This is mostly an internal class for Gotham
+# @class Renderer
+# @module Framework
+# @submodule Framework
+# @namespace Gotham
+# @constructor
+# @param width [Integer] Width of the rendered area
+# @param height [Integer] Height of the rendered area
+# @param options [Object] Additional Option Parameters
+# @param autoResize [Boolean] Weither the renderer should automaticly resize to window size
+###
 class Renderer
 
-  
-  # Constructs a PIXI renderer and appends it to the body of the document DOM
-  # 
-  # @param Width [Integer] Width of the rendered area
-  # @param Height [Integer] Height of the rendered area
-  # @param Options [Object] Additional Option Parameters
-  # @param autoResize [Boolean] Weither the renderer should automaticly resize to window size
-  # @example Creating a renderer object
-  #   # Create the renderer object
-  #   renderer = new Gotham.Graphics.Renderer(800,600, {})
-  #
+
   constructor: (width, height, options, autoResize) ->
     # Create pixi object
     that =  @

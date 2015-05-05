@@ -1,14 +1,23 @@
 
-
-
-# Class to create a button control
-#
-# @example How to use Button
-#   button = Gotham.Controls.Button
-#   button.onClick ->
-#     console.log "Clicked"
-#   parent.addChild button
-#
+###*
+# Button Control. Predefined button which can be easily manipulated for custom stuff.
+# @class Button
+# @module Framework
+# @submodule Framework.Controls
+# @namespace Gotham.Controls
+# @extends Gotham.Graphics.Sprite
+# @constructor
+# @param text {String} Text label of the button
+# @param width {Number} Width of the button
+# @param height {Number} Height of the button
+# @param [options] {Object} Options of the button
+# @param [options.toggle=true] {Boolean} Weither the button is a toggle button or click button
+# @param [options.textSize=40] {Number} Size of the text label
+# @param [options.texture=null] {Gotham.Graphics.Texture} Which texture to apply to the button
+# @param [options.offset=0] {Number} Offset of the button in pixels
+# @param [options.margin=0] {Number} Margin of the button
+# @param [options.alpha=1] {Number} Alpha of the button (Between 0 an 1)
+###
 class Button extends Gotham.Graphics.Sprite
 
   # Constructors the button calling the super class of Gotham.Graphics.Sprite --> PIXI.Sprite

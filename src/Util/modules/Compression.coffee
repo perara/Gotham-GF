@@ -1,6 +1,12 @@
 
 
-
+###*
+# Utils for compressing
+# @class Compression
+# @module Framework
+# @submodule Framework.Util
+# @namespace Gotham.Util
+###
 class Compression
 
   GZIP:

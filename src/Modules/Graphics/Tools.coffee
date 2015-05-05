@@ -1,5 +1,12 @@
 
 
+###*
+# Graphicsl Tool class for customized data manipulation
+# @class Tools
+# @module Framework
+# @submodule Framework.Graphics
+# @namespace Gotham.Graphics
+###
 class Tools
 
 

@@ -1,15 +1,11 @@
 
-# Database has the capabilities for storing data for an application
-#
-# Database utilizes TaffyDB as its engine, @see http://www.taffydb.com/workingwithdata
-#
-# @example Instantiate and use the class
-#   db = new Gotham.Database()
-#   db_animals = db.createTable "animals"
-#   db_animals.insert {id: 1, name: "Horse"}
-#   db_animals.insert {id: 1, name: "Cow"}
-#   db_animals.insert {id: 1, name: "Dog"}
-#
+###*
+# The database utilizes lokiJS. Contains storage for all tables and easy to retrieve them when needed.
+# @class Database
+# @module Framework
+# @submodule Framework
+# @namespace Gotham
+###
 class Database
 
   # Creates a new database instance

@@ -1,11 +1,20 @@
 ﻿Howler = require '../dependencies/howler.js'
 
+
+
+###*
 # This class wraps the functionality of Howler.JS {http://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library HowlerJS}
 #
 # Is protects Howl Object so that its not accessible from this class.
 #
 # Sound class is generated when preloading the audio file {Preload}
 #
+# @class Sound
+# @module Framework
+# @submodule Framework
+# @namespace Gotham
+# @constructor
+# @param
 # @example Creating a sound object
 #   # Preload the audio file
 #   Gotham.Preload.mp3("./assets/audio/menu.mp3", "boud", volume: 0.2)
@@ -19,7 +28,7 @@
 #   sound.play()
 #   # Stop Audio
 #   sound.stop()
-#
+###
 class Sound
 
   # @param {Howl} Howler Sound Object
@@ -74,7 +83,7 @@ class Sound
   # Sets the loop state of the Howl sound
   # @return [void] None
   loop: (state) ->
-    @_sound.loop(state)
+    @_sound.loop state
   
 
 module.exports = Sound

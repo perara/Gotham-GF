@@ -1,5 +1,13 @@
 ﻿
-# Tools for searching in Collections
+
+
+###*
+# Search tools is a collection of array and object manipulation tools
+# @class SearchTools
+# @module Framework
+# @submodule Framework.Util
+# @namespace Gotham.Util
+###
 class SearchTools
 
   # Find a key in an object

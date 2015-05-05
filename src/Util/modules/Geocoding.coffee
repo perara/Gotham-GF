@@ -1,5 +1,12 @@
 
 
+###*
+# Geocoding util module
+# @class Geocoding
+# @module Framework
+# @submodule Framework.Util
+# @namespace Gotham.Util
+###
 class Geocoding
 
   @getCountry: (lat, lng) ->

@@ -1,6 +1,12 @@
 ﻿
-# Container class which inherits PIXI.DisplayObjectContainer
-#
+###*
+# Container is just a wrapper around Pixi Container
+# @class Container
+# @module Framework
+# @submodule Framework.Graphics
+# @namespace Gotham.Graphics
+# @extends PIXI.Container
+###
 class Container extends PIXI.Container
 
   _created = false
