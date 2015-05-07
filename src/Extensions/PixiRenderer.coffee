@@ -1,4 +1,3 @@
-mozAddWheelListener = require '../Dependencies/mozAddWheelListener'
 
 # @property [Array] List of all objects that have activated wheelScrolling
 PIXI.WebGLRenderer.prototype.wheelScrollObjects = []
@@ -14,12 +13,17 @@ PIXI.WebGLRenderer.prototype.addWheelScrollObject =  (object) ->
 # @param [Boolean]state True or False
 PIXI.WebGLRenderer.prototype.setWheelScroll = (state) ->
 
-  if not state?
-    mozAddWheelListener @view, (e) ->
-  else
-    mozAddWheelListener @view, (e) ->
+  $(window).bind 'mousewheel DOMMouseScroll', (event)->
+    if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0)
+      event.originalEvent.wheelDelta = 1
+      event.wheelDeltaY = 1
+    else
+      event.originalEvent.wheelDelta = -1
+      event.wheelDeltaY = -1
+
+    if state
       for object in PIXI.WebGLRenderer.prototype.wheelScrollObjects
-        object.onWheelScroll(e)
+        object.onWheelScroll(event)
 
 ##
 ##
@@ -40,11 +44,15 @@ PIXI.CanvasRenderer.prototype.addWheelScrollObject =  (object) ->
 # @param [Boolean]state True or False
 PIXI.CanvasRenderer.prototype.setWheelScroll = (state) ->
 
-  if not state?
+  $(window).bind 'mousewheel DOMMouseScroll', (event)->
+    if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0)
+      event.originalEvent.wheelDelta = 1
+      event.wheelDeltaY = 1
+    else
+      event.originalEvent.wheelDelta = -1
+      event.wheelDeltaY = -1
 
-    mozAddWheelListener @view, (e) ->
-  else
-    mozAddWheelListener @view, (e) ->
-      for object in PIXI.CanvasRenderer.prototype.wheelScrollObjects
-        object.onWheelScroll(e)
+    if state
+      for object in PIXI.WebGLRenderer.prototype.wheelScrollObjects
+        object.onWheelScroll(event)
 
