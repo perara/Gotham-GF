@@ -10,6 +10,15 @@ PIXI.Container.prototype.bringToFront = ->
     parent.removeChild(this)
     parent.addChild(this)
 
+# Function which brings an item in the children array to front
+PIXI.Container.prototype.bringToBack = ->
+  if this.parent
+    parent = this.parent
+
+    b = parent.children[0];
+    parent.children[0] = parent.children[parent.children.indexOf(this)];
+    parent.children[parent.children.indexOf(this)] = b;
+
 # @property [Callback] onInteractiveChange fires whenever setInteractive is fired
 PIXI.Container.prototype.onInteractiveChange = null
 
