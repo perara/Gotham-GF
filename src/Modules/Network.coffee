@@ -46,10 +46,10 @@ class Network
       # Remove connect callback (dont want it to fire on reconnect)
       that.onConnect = ->
 
-    @_socket.on 'reconnect', ->
-      that.onReconnect(@)
-    @_socket.on 'reconnecting', ->
-      that.onReconnecting(@)
+      that._socket.on 'reconnect', ->
+        that.onReconnect(@)
+      that._socket.on 'reconnecting', ->
+        that.onReconnecting(@)
 
 
 

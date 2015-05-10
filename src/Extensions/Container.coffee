@@ -16,8 +16,9 @@ PIXI.Container.prototype.bringToBack = ->
     parent = this.parent
 
     b = parent.children[0];
-    parent.children[0] = parent.children[parent.children.indexOf(this)];
-    parent.children[parent.children.indexOf(this)] = b;
+    parent.addChildAt(@, 0)
+    parent.addChild b
+
 
 # @property [Callback] onInteractiveChange fires whenever setInteractive is fired
 PIXI.Container.prototype.onInteractiveChange = null

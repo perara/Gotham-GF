@@ -29,6 +29,7 @@ class Button extends Gotham.Graphics.Sprite
     _toggle = if options.toggle? then options.toggle else true
     _textSize = if options.textSize? then options.textSize else 40
     _texture = if options.texture? then options.texture else null
+    _buttonColor = if options.buttonColor? then options.buttonColor else 0x000000
     _offset = if options.offset then options.offset else 0
     _margin = if options.margin then options.margin else 0
     _alpha = if options.alpha? then options.alpha else 1
@@ -37,7 +38,7 @@ class Button extends Gotham.Graphics.Sprite
     if not _texture?
       _texture = new Gotham.Graphics.Graphics
       #_texture.lineStyle(1, 0xD3D3D3);
-      _texture.beginFill 0x000000, _alpha
+      _texture.beginFill _buttonColor, _alpha
       _texture.drawRect 0, 0, 100, 50
       _texture.endFill()
       _texture = _texture.generateTexture()
