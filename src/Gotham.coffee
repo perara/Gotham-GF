@@ -4,7 +4,7 @@ require './Extensions/PixiRenderer.coffee'
 require './Extensions/Array.coffee'
 require './Extensions/Object.coffee'
 require './Extensions/String.coffee'
-
+require './Extensions/JQuery.coffee'
 ###*
 # Acs as a namespace class,
 # @class Gotham

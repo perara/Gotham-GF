@@ -30,6 +30,8 @@ class Renderer
     # Activate Wheel Scrolling Support (Defined in Extensions)
     @pixi.setWheelScroll(true)
 
+    window.addEventListener 'contextmenu',(e) ->
+      e.preventDefault()
 
     # Add Resize handler if set to true
     if autoResize?

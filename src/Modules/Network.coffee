@@ -21,9 +21,12 @@ class Network
     @port = port
     @Socket = @_socket = null
 
+    @hasConnectedOnce = false
+
     @onConnect = ->
     @onReconnect = ->
     @onReconnecting = ->
+    @onDisconnect = ->
 
 
     if not port ?
@@ -32,24 +35,27 @@ class Network
       @port = port
 
   # Connects to the host returning onHubCallback when connected
-  #
-  # @param [Callback] onHubCallback this callback is ran  when the hub info is retrieved. It then connects to the host
-  connect: (callback)->
+  connect: ()->
     that = @
 
     @Socket = @_socket = io.connect "#{@host}:#{@port}"
     @_socket.on 'connect', ->
 
-      # Send onConnect callback
-      that.onConnect(@)
+      if that.hasConnectedOnce
+        that.onReconnect @
+      else
+        that.onConnect @
 
-      # Remove connect callback (dont want it to fire on reconnect)
-      that.onConnect = ->
+      that.hasConnectedOnce = true
 
-      that._socket.on 'reconnect', ->
-        that.onReconnect(@)
-      that._socket.on 'reconnecting', ->
-        that.onReconnecting(@)
+
+    # On reconnecting status
+    @._socket.on 'reconnecting', ->
+      that.onReconnecting @
+
+    # On disconnecting status
+    @_socket.on 'disconnect', ->
+      that.onDisconnect @
 
 
 
