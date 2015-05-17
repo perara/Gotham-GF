@@ -7,6 +7,8 @@ The descision to build atop PIXI.JS was made after Phaser.JS did not meet the re
 It started as a wrapper (and still is, kinda), but is now considered a game framework becuase of its multimedia capabilities.
 It is licensed under the [MIT Licence](http://opensource.org/licenses/MIT) 
 
+# Documentation
+All documentation can be found [Here](https://perara.github.io/Gotham-GF/)
 
 Requirements
 ======
