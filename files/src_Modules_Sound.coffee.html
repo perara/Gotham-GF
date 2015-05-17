@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src\Modules\Sound.coffee</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+	    <img alt="" src="../assets/css/logo.png" style="max-height: 65%;" title="">
+            
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b></b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/Gotham.Controls.Button", "classes/Gotham.Controls.Slider", "classes/Gotham.Database", "classes/Gotham.GameLoop", "classes/Gotham.Graphics.Container", "classes/Gotham.Graphics.Graphics", "classes/Gotham.Graphics.Polygon", "classes/Gotham.Graphics.Rectangle", "classes/Gotham.Graphics.Sprite", "classes/Gotham.Graphics.Text", "classes/Gotham.Graphics.Texture", "classes/Gotham.Graphics.Tools", "classes/Gotham.Network", "classes/Gotham.Pattern.MVC.Controller", "classes/Gotham.Pattern.MVC.View", "classes/Gotham.Preload", "classes/Gotham.Renderer", "classes/Gotham.Scene", "classes/Gotham.Sound", "classes/Gotham.Util.Ajax", "classes/Gotham.Util.Compression", "classes/Gotham.Util.Geocoding", "classes/Gotham.Util.SearchTools", "classes/Gotham.Util.Util", "classes/TweenCS.ChainItem", "classes/TweenCS.Tween", "modules/Framework", "modules/Framework.Controls", "modules/Framework.Graphics", "modules/Framework.Pattern.MVC", "modules/Framework.Util", "modules/TweenCS"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <h3>APIs</h3>
+	        <div id="sidebar">
+	            <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+	                <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+	                <li><a href="#modules" data-toggle="tab">Modules</a></li>
+	            </ul>
+	    
+	            <div id="api-tabview-filter">
+	                <input type="search" placeholder="Type to filter APIs">
+	            </div>
+	    
+	            <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+	                <div class="tab-pane active" id="classes">
+	                    <ul id="api-classes" class="nav nav-list">
+	                            <li><a href="../classes/Gotham.Controls.Button.html">Gotham.Controls.Button</a></li>
+	                            <li><a href="../classes/Gotham.Controls.Slider.html">Gotham.Controls.Slider</a></li>
+	                            <li><a href="../classes/Gotham.Database.html">Gotham.Database</a></li>
+	                            <li><a href="../classes/Gotham.GameLoop.html">Gotham.GameLoop</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Container.html">Gotham.Graphics.Container</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Graphics.html">Gotham.Graphics.Graphics</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Polygon.html">Gotham.Graphics.Polygon</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Rectangle.html">Gotham.Graphics.Rectangle</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Sprite.html">Gotham.Graphics.Sprite</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Text.html">Gotham.Graphics.Text</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Texture.html">Gotham.Graphics.Texture</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Tools.html">Gotham.Graphics.Tools</a></li>
+	                            <li><a href="../classes/Gotham.Network.html">Gotham.Network</a></li>
+	                            <li><a href="../classes/Gotham.Pattern.MVC.Controller.html">Gotham.Pattern.MVC.Controller</a></li>
+	                            <li><a href="../classes/Gotham.Pattern.MVC.View.html">Gotham.Pattern.MVC.View</a></li>
+	                            <li><a href="../classes/Gotham.Preload.html">Gotham.Preload</a></li>
+	                            <li><a href="../classes/Gotham.Renderer.html">Gotham.Renderer</a></li>
+	                            <li><a href="../classes/Gotham.Scene.html">Gotham.Scene</a></li>
+	                            <li><a href="../classes/Gotham.Sound.html">Gotham.Sound</a></li>
+	                            <li><a href="../classes/Gotham.Util.Ajax.html">Gotham.Util.Ajax</a></li>
+	                            <li><a href="../classes/Gotham.Util.Compression.html">Gotham.Util.Compression</a></li>
+	                            <li><a href="../classes/Gotham.Util.Geocoding.html">Gotham.Util.Geocoding</a></li>
+	                            <li><a href="../classes/Gotham.Util.SearchTools.html">Gotham.Util.SearchTools</a></li>
+	                            <li><a href="../classes/Gotham.Util.Util.html">Gotham.Util.Util</a></li>
+	                            <li><a href="../classes/TweenCS.ChainItem.html">TweenCS.ChainItem</a></li>
+	                            <li><a href="../classes/TweenCS.Tween.html">TweenCS.Tween</a></li>
+	                    </ul>
+	                </div>
+	    
+	                <div class="tab-pane" id="modules">
+	                    <ul id="api-modules" class="nav nav-list">
+	                            <li><a href="../modules/Framework.html">Framework</a></li>
+	                            <li><a href="../modules/Framework.Controls.html">Framework.Controls</a></li>
+	                            <li><a href="../modules/Framework.Graphics.html">Framework.Graphics</a></li>
+	                            <li><a href="../modules/Framework.Pattern.MVC.html">Framework.Pattern.MVC</a></li>
+	                            <li><a href="../modules/Framework.Util.html">Framework.Util</a></li>
+	                            <li><a href="../modules/TweenCS.html">TweenCS</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+                            <h1>src\Modules\Sound.coffee <small>File</small></h1>
+                        </div>
+                        
+                        <div class="file">
+                            <pre class="prettyprint linenums">
+                        ﻿Howler = require &#x27;../dependencies/howler.js&#x27;
+                        
+                        
+                        
+                        ###*
+                        # This class wraps the functionality of Howler.JS {http://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library HowlerJS}
+                        #
+                        # Is protects Howl Object so that its not accessible from this class.
+                        #
+                        # Sound class is generated when preloading the audio file {Preload}
+                        #
+                        # @class Sound
+                        # @module Framework
+                        # @submodule Framework
+                        # @namespace Gotham
+                        # @example
+                        #   **Preload the audio file**
+                        #
+                        #   &#x60;&#x60;Gotham.Preload.mp3(&quot;./assets/audio/menu.mp3&quot;, &quot;boud&quot;, volume: 0.2)&#x60;&#x60;
+                        #
+                        #   **Fetch the sound file**
+                        #
+                        #   &#x60;&#x60;sound = Gotham.Preload.fetch(&quot;boud&quot;, &quot;audio&quot;)&#x60;&#x60;
+                        #
+                        #   **Set Volume**
+                        #
+                        #   &#x60;&#x60;sound.volume(0.3)&#x60;&#x60;
+                        #
+                        #   **Play Audio**
+                        #
+                        #   &#x60;&#x60;sound.play()&#x60;&#x60;
+                        #
+                        #   **Stop Audio**
+                        #
+                        #   &#x60;&#x60;sound.stop()&#x60;&#x60;
+                        # @constructor
+                        # @param {Howl} sound Howler sound object
+                        ###
+                        class Sound
+                        
+                        
+                          constructor: (sound) -&gt;
+                            ###*
+                            # The howler sound object
+                            # @property {Howl} _sound
+                            # @private
+                            ###
+                            @_sound = sound
+                        
+                          ###*
+                          # Call Howl object&#x27;s play function Howl.play()
+                          # @method play
+                          # @return [void] None
+                          ###
+                          play: -&gt;
+                            @_sound.play()
+                        
+                          ###*
+                          # Call Howl object&#x27;s stop function Howl.stop()
+                          # @method stop
+                          # @return [void] None
+                          ###
+                          stop: -&gt;
+                            @_sound.stop()
+                        
+                          ###*
+                          # Call Howl object&#x27;s pause function Howl.pause()
+                          # @method pause
+                          # @return [void] None
+                          ###
+                          pause: -&gt;
+                            @_sound.pause()
+                        
+                          ###*
+                          # Call Howl object&#x27;s play function Howl.play()
+                          # @method volume
+                          # @param val {Double} between 0.0 and 1.0
+                          # @return [void] None
+                          ###
+                          volume: (val) -&gt;
+                            @_sound.volume(val)
+                        
+                          ###*
+                          # Seek Forward the Audio Position on the Howl Object
+                          # @method forward
+                          # @param sec {Integer} Number of seconds to forward
+                          # @return [void] None
+                          ###
+                          forward: (sec) -&gt;
+                            currPos = @_sound.pos()
+                            @_sound.pos(currPos + sec)
+                        
+                          ###*
+                          # Seek Backwards the Audio Position on the Howl Object
+                          # @method backward
+                          # @param sec {Integer} Number of seconds to forward
+                          # @return [void] None
+                          ###
+                          backward: (sec) -&gt;
+                            currPos = @_sound.pos()
+                            @_sound.pos(currPos - sec)
+                        
+                          ###*
+                          # Mute the Sound, Calling Howl Object&#x27;s Mute function
+                          # @method mute
+                          # @return [void] None
+                          ###
+                          mute: -&gt;
+                            @_sound.mute()
+                        
+                          ###*
+                          # Unmute the Sound, Calling Howl Object&#x27;s Mute function
+                          # @method unmute
+                          # @return [void] None
+                          ###
+                          unmute: -&gt;
+                            @_sound.unmute()
+                        
+                          ###*
+                          # Sets the loop state of the Howl sound
+                          # @method loop
+                          # @param state {Boolean} Either true or false based on weither to loop or not
+                          # @return [void] None
+                          ###
+                          loop: (state) -&gt;
+                            @_sound.loop state
+                          
+                        
+                        module.exports = Sound
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src\Modules\Controls\Button.coffee</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+	    <img alt="" src="../assets/css/logo.png" style="max-height: 65%;" title="">
+            
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b></b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/Gotham.Controls.Button", "classes/Gotham.Controls.Slider", "classes/Gotham.Database", "classes/Gotham.GameLoop", "classes/Gotham.Graphics.Container", "classes/Gotham.Graphics.Graphics", "classes/Gotham.Graphics.Polygon", "classes/Gotham.Graphics.Rectangle", "classes/Gotham.Graphics.Sprite", "classes/Gotham.Graphics.Text", "classes/Gotham.Graphics.Texture", "classes/Gotham.Graphics.Tools", "classes/Gotham.Network", "classes/Gotham.Pattern.MVC.Controller", "classes/Gotham.Pattern.MVC.View", "classes/Gotham.Preload", "classes/Gotham.Renderer", "classes/Gotham.Scene", "classes/Gotham.Sound", "classes/Gotham.Util.Ajax", "classes/Gotham.Util.Compression", "classes/Gotham.Util.Geocoding", "classes/Gotham.Util.SearchTools", "classes/Gotham.Util.Util", "classes/TweenCS.ChainItem", "classes/TweenCS.Tween", "modules/Framework", "modules/Framework.Controls", "modules/Framework.Graphics", "modules/Framework.Pattern.MVC", "modules/Framework.Util", "modules/TweenCS"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <h3>APIs</h3>
+	        <div id="sidebar">
+	            <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+	                <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+	                <li><a href="#modules" data-toggle="tab">Modules</a></li>
+	            </ul>
+	    
+	            <div id="api-tabview-filter">
+	                <input type="search" placeholder="Type to filter APIs">
+	            </div>
+	    
+	            <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+	                <div class="tab-pane active" id="classes">
+	                    <ul id="api-classes" class="nav nav-list">
+	                            <li><a href="../classes/Gotham.Controls.Button.html">Gotham.Controls.Button</a></li>
+	                            <li><a href="../classes/Gotham.Controls.Slider.html">Gotham.Controls.Slider</a></li>
+	                            <li><a href="../classes/Gotham.Database.html">Gotham.Database</a></li>
+	                            <li><a href="../classes/Gotham.GameLoop.html">Gotham.GameLoop</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Container.html">Gotham.Graphics.Container</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Graphics.html">Gotham.Graphics.Graphics</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Polygon.html">Gotham.Graphics.Polygon</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Rectangle.html">Gotham.Graphics.Rectangle</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Sprite.html">Gotham.Graphics.Sprite</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Text.html">Gotham.Graphics.Text</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Texture.html">Gotham.Graphics.Texture</a></li>
+	                            <li><a href="../classes/Gotham.Graphics.Tools.html">Gotham.Graphics.Tools</a></li>
+	                            <li><a href="../classes/Gotham.Network.html">Gotham.Network</a></li>
+	                            <li><a href="../classes/Gotham.Pattern.MVC.Controller.html">Gotham.Pattern.MVC.Controller</a></li>
+	                            <li><a href="../classes/Gotham.Pattern.MVC.View.html">Gotham.Pattern.MVC.View</a></li>
+	                            <li><a href="../classes/Gotham.Preload.html">Gotham.Preload</a></li>
+	                            <li><a href="../classes/Gotham.Renderer.html">Gotham.Renderer</a></li>
+	                            <li><a href="../classes/Gotham.Scene.html">Gotham.Scene</a></li>
+	                            <li><a href="../classes/Gotham.Sound.html">Gotham.Sound</a></li>
+	                            <li><a href="../classes/Gotham.Util.Ajax.html">Gotham.Util.Ajax</a></li>
+	                            <li><a href="../classes/Gotham.Util.Compression.html">Gotham.Util.Compression</a></li>
+	                            <li><a href="../classes/Gotham.Util.Geocoding.html">Gotham.Util.Geocoding</a></li>
+	                            <li><a href="../classes/Gotham.Util.SearchTools.html">Gotham.Util.SearchTools</a></li>
+	                            <li><a href="../classes/Gotham.Util.Util.html">Gotham.Util.Util</a></li>
+	                            <li><a href="../classes/TweenCS.ChainItem.html">TweenCS.ChainItem</a></li>
+	                            <li><a href="../classes/TweenCS.Tween.html">TweenCS.Tween</a></li>
+	                    </ul>
+	                </div>
+	    
+	                <div class="tab-pane" id="modules">
+	                    <ul id="api-modules" class="nav nav-list">
+	                            <li><a href="../modules/Framework.html">Framework</a></li>
+	                            <li><a href="../modules/Framework.Controls.html">Framework.Controls</a></li>
+	                            <li><a href="../modules/Framework.Graphics.html">Framework.Graphics</a></li>
+	                            <li><a href="../modules/Framework.Pattern.MVC.html">Framework.Pattern.MVC</a></li>
+	                            <li><a href="../modules/Framework.Util.html">Framework.Util</a></li>
+	                            <li><a href="../modules/TweenCS.html">TweenCS</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+                            <h1>src\Modules\Controls\Button.coffee <small>File</small></h1>
+                        </div>
+                        
+                        <div class="file">
+                            <pre class="prettyprint linenums">
+                        
+                        ###*
+                        # Button Control. Predefined button which can be easily manipulated for custom stuff.
+                        # @class Button
+                        # @module Framework
+                        # @submodule Framework.Controls
+                        # @namespace Gotham.Controls
+                        # @extends Gotham.Graphics.Sprite
+                        # @constructor
+                        # @param text {String} Text label of the button
+                        # @param width {Number} Width of the button
+                        # @param height {Number} Height of the button
+                        # @param [options] {Object} Options of the button
+                        # @param [options.toggle=true] {Boolean} Weither the button is a toggle button or click button
+                        # @param [options.textSize=40] {Number} Size of the text label
+                        # @param [options.buttonColor=0x000000] {Hex} Hex color of buttonColor
+                        # @param [options.texture=null] {Gotham.Graphics.Texture} Which texture to apply to the button
+                        # @param [options.offset=0] {Number} Offset of the button in pixels
+                        # @param [options.margin=0] {Number} Margin of the button
+                        # @param [options.alpha=1] {Number} Alpha of the button (Between 0 an 1)
+                        ###
+                        class Button extends Gotham.Graphics.Sprite
+                        
+                          # Constructors the button calling the super class of Gotham.Graphics.Sprite --&gt; PIXI.Sprite
+                          constructor: (text, width, height, options) -&gt;
+                            that = @
+                        
+                            # Option Parsing
+                            options = if not options? then {} else options
+                            _toggle = if options.toggle? then options.toggle else true
+                            _textSize = if options.textSize? then options.textSize else 40
+                            _texture = if options.texture? then options.texture else null
+                            _buttonColor = if options.buttonColor? then options.buttonColor else 0x000000
+                            _offset = if options.offset then options.offset else 0
+                            _margin = if options.margin then options.margin else 0
+                            _alpha = if options.alpha? then options.alpha else 1
+                            @margin = _margin
+                        
+                            if not _texture?
+                              _texture = new Gotham.Graphics.Graphics
+                              #_texture.lineStyle(1, 0xD3D3D3);
+                              _texture.beginFill _buttonColor, _alpha
+                              _texture.drawRect 0, 0, 100, 50
+                              _texture.endFill()
+                              _texture = _texture.generateTexture()
+                        
+                            super _texture
+                        
+                        
+                            @width = width
+                            @height = height
+                            @interactive =  true
+                        
+                            # Create button text
+                            button_text = new Gotham.Graphics.Text(text, {font: &quot;bold #{_textSize}px Calibri&quot;, fill: &quot;#ffffff&quot;, align: &quot;left&quot;, dropShadow: true});
+                            button_text.position.x = ((@width / @scale.x) / 2) + _offset
+                            button_text.position.y = (@height / @scale.y) / 2
+                            button_text.width = @width / @scale.x
+                            button_text.height = @height / @scale.y
+                            button_text.anchor =
+                              x: 0.5
+                              y: 0.5
+                            @addChild button_text
+                        
+                            ###*
+                            # Label of the button
+                            # @property {String} label
+                            ###
+                            @label = button_text
+                        
+                            ###*
+                            # Click event of the button
+                            # @method click
+                            # @param e {Event} button event
+                            # @private
+                            ###
+                            @click = (e) -&gt;
+                              if not _toggle
+                                @onClick()
+                                return
+                        
+                              @_toggleState = !@_toggleState
+                              if @_toggleState
+                                @toggleOn()
+                              else
+                                @toggleOff()
+                        
+                          ###*
+                          # Set the background of the button
+                          # @method setBackground
+                          # @param hex {Hex} hex of the background color to set
+                          ###
+                          setBackground: (hex) -&gt;
+                            @tint = hex
+                        
+                          ###*
+                          # callback for when button is clicked
+                          # @method onClick
+                          ###
+                          onClick: -&gt;
+                        
+                          ###*
+                          # callback for when button is toggled on
+                          # @method toggleOn
+                          ###
+                          toggleOn: -&gt;
+                        
+                          ###*
+                          # callback for when button is toggled off
+                          # @method toggleOff
+                          ###
+                          toggleOff: -&gt;
+                        
+                        
+                        
+                        module.exports = Button
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

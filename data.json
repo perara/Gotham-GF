@@ -1,0 +1,3703 @@
+{
+    "project": {},
+    "files": {
+        "src\\Modules\\Controls\\Button.coffee": {
+            "name": "src\\Modules\\Controls\\Button.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Controls.Button": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Controls": 1
+            }
+        },
+        "src\\Modules\\Controls\\Slider.coffee": {
+            "name": "src\\Modules\\Controls\\Slider.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Controls.Slider": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Controls": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Container.coffee": {
+            "name": "src\\Modules\\Graphics\\Container.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Container": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Graphics.coffee": {
+            "name": "src\\Modules\\Graphics\\Graphics.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Graphics": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Polygon.coffee": {
+            "name": "src\\Modules\\Graphics\\Polygon.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Polygon": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Rectangle.coffee": {
+            "name": "src\\Modules\\Graphics\\Rectangle.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Rectangle": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Sprite.coffee": {
+            "name": "src\\Modules\\Graphics\\Sprite.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Sprite": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Text.coffee": {
+            "name": "src\\Modules\\Graphics\\Text.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Text": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Texture.coffee": {
+            "name": "src\\Modules\\Graphics\\Texture.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Texture": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Graphics\\Tools.coffee": {
+            "name": "src\\Modules\\Graphics\\Tools.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Graphics.Tools": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Graphics": 1
+            }
+        },
+        "src\\Modules\\Pattern\\MVC\\Controller.coffee": {
+            "name": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Pattern.MVC.Controller": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Pattern.MVC": 1
+            }
+        },
+        "src\\Modules\\Pattern\\MVC\\View.coffee": {
+            "name": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Pattern.MVC.View": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Pattern.MVC": 1
+            }
+        },
+        "src\\Modules\\Tween\\Tween.coffee": {
+            "name": "src\\Modules\\Tween\\Tween.coffee",
+            "modules": {
+                "TweenCS": 1
+            },
+            "classes": {
+                "TweenCS.ChainItem": 1,
+                "TweenCS.Tween": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "TweenCS": 1
+            }
+        },
+        "src\\Modules\\Database.coffee": {
+            "name": "src\\Modules\\Database.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Database": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham": 1
+            }
+        },
+        "src\\Modules\\GameLoop.coffee": {
+            "name": "src\\Modules\\GameLoop.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.GameLoop": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham": 1
+            }
+        },
+        "src\\Modules\\Network.coffee": {
+            "name": "src\\Modules\\Network.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Network": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham": 1
+            }
+        },
+        "src\\Modules\\Preload.coffee": {
+            "name": "src\\Modules\\Preload.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Preload": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham": 1
+            }
+        },
+        "src\\Modules\\Renderer.coffee": {
+            "name": "src\\Modules\\Renderer.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Renderer": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham": 1
+            }
+        },
+        "src\\Modules\\Scene.coffee": {
+            "name": "src\\Modules\\Scene.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Scene": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham": 1
+            }
+        },
+        "src\\Modules\\Sound.coffee": {
+            "name": "src\\Modules\\Sound.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Sound": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham": 1
+            }
+        },
+        "src\\Util\\modules\\Ajax.coffee": {
+            "name": "src\\Util\\modules\\Ajax.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Util.Ajax": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Util": 1
+            }
+        },
+        "src\\Util\\modules\\Compression.coffee": {
+            "name": "src\\Util\\modules\\Compression.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Util.Compression": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Util": 1
+            }
+        },
+        "src\\Util\\modules\\Geocoding.coffee": {
+            "name": "src\\Util\\modules\\Geocoding.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Util.Geocoding": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Util": 1
+            }
+        },
+        "src\\Util\\modules\\SearchTools.coffee": {
+            "name": "src\\Util\\modules\\SearchTools.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Util.SearchTools": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Util": 1
+            }
+        },
+        "src\\Util\\Util.coffee": {
+            "name": "src\\Util\\Util.coffee",
+            "modules": {},
+            "classes": {
+                "Gotham.Util.Util": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Util": 1
+            }
+        },
+        "src\\Gotham.coffee": {
+            "name": "src\\Gotham.coffee",
+            "modules": {
+                "Framework": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Framework": {
+            "name": "Framework",
+            "submodules": {
+                "undefined": 1,
+                "Framework.Controls": 1,
+                "Framework.Graphics": 1,
+                "Framework.Pattern.MVC": 1,
+                "Framework.Util": 1
+            },
+            "classes": {
+                "Gotham.Database": 1,
+                "Gotham.Controls.Button": 1,
+                "Gotham.Controls.Slider": 1,
+                "Gotham.Graphics.Container": 1,
+                "Gotham.Graphics.Graphics": 1,
+                "Gotham.Graphics.Polygon": 1,
+                "Gotham.Graphics.Rectangle": 1,
+                "Gotham.Graphics.Sprite": 1,
+                "Gotham.Graphics.Text": 1,
+                "Gotham.Graphics.Texture": 1,
+                "Gotham.Graphics.Tools": 1,
+                "Gotham.Pattern.MVC.Controller": 1,
+                "Gotham.Pattern.MVC.View": 1,
+                "Gotham.GameLoop": 1,
+                "Gotham.Network": 1,
+                "Gotham.Preload": 1,
+                "Gotham.Renderer": 1,
+                "Gotham.Scene": 1,
+                "Gotham.Sound": 1,
+                "Gotham.Util.Ajax": 1,
+                "Gotham.Util.Compression": 1,
+                "Gotham.Util.Geocoding": 1,
+                "Gotham.Util.SearchTools": 1,
+                "Gotham.Util.Util": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Gotham.Controls": 1,
+                "Gotham.Graphics": 1,
+                "Gotham.Pattern.MVC": 1,
+                "Gotham": 1,
+                "Gotham.Util": 1
+            },
+            "module": "Framework",
+            "file": "src\\Util\\Util.coffee",
+            "line": 5,
+            "description": "Gotham Game Framework\n\nContains all classes for the framework.",
+            "tag": "main",
+            "itemtype": "main"
+        },
+        "Framework.Controls": {
+            "name": "Framework.Controls",
+            "submodules": {},
+            "classes": {
+                "Gotham.Controls.Button": 1,
+                "Gotham.Controls.Slider": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {
+                "Gotham.Controls": 1
+            },
+            "module": "Framework",
+            "namespace": "",
+            "description": "Button Control. Predefined button which can be easily manipulated for custom stuff.",
+            "file": "src\\Modules\\Controls\\Slider.coffee",
+            "line": 3
+        },
+        "Framework.Graphics": {
+            "name": "Framework.Graphics",
+            "submodules": {},
+            "classes": {
+                "Gotham.Graphics.Container": 1,
+                "Gotham.Graphics.Graphics": 1,
+                "Gotham.Graphics.Polygon": 1,
+                "Gotham.Graphics.Rectangle": 1,
+                "Gotham.Graphics.Sprite": 1,
+                "Gotham.Graphics.Text": 1,
+                "Gotham.Graphics.Texture": 1,
+                "Gotham.Graphics.Tools": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {
+                "Gotham.Graphics": 1
+            },
+            "module": "Framework",
+            "namespace": "",
+            "description": "Container is just a wrapper around Pixi Container",
+            "file": "src\\Modules\\Graphics\\Tools.coffee",
+            "line": 3
+        },
+        "Framework.Pattern.MVC": {
+            "name": "Framework.Pattern.MVC",
+            "submodules": {},
+            "classes": {
+                "Gotham.Pattern.MVC.Controller": 1,
+                "Gotham.Pattern.MVC.View": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {
+                "Gotham.Pattern.MVC": 1
+            },
+            "module": "Framework",
+            "namespace": "",
+            "description": "Baseclass for the controller",
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 3
+        },
+        "TweenCS": {
+            "name": "TweenCS",
+            "submodules": {},
+            "classes": {
+                "TweenCS.ChainItem": 1,
+                "TweenCS.Tween": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "TweenCS": 1
+            },
+            "tag": "module",
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 76
+        },
+        "Framework.Util": {
+            "name": "Framework.Util",
+            "submodules": {},
+            "classes": {
+                "Gotham.Util.Ajax": 1,
+                "Gotham.Util.Compression": 1,
+                "Gotham.Util.Geocoding": 1,
+                "Gotham.Util.SearchTools": 1,
+                "Gotham.Util.Util": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {
+                "Gotham.Util": 1
+            },
+            "module": "Framework",
+            "namespace": "",
+            "description": "AJAX Class to retrieve and post without the use of JQUERY\nIT does only rely on the normal javascript library",
+            "file": "src\\Util\\Util.coffee",
+            "line": 5
+        }
+    },
+    "classes": {
+        "Gotham.Controls.Button": {
+            "name": "Gotham.Controls.Button",
+            "shortname": "Gotham.Controls.Button",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Controls",
+            "file": "src\\Modules\\Controls\\Button.coffee",
+            "line": 2,
+            "description": "Button Control. Predefined button which can be easily manipulated for custom stuff.",
+            "submodule": "Framework.Controls",
+            "extends": "Gotham.Graphics.Sprite",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "text",
+                    "description": "Text label of the button",
+                    "type": "String"
+                },
+                {
+                    "name": "width",
+                    "description": "Width of the button",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "Height of the button",
+                    "type": "Number"
+                },
+                {
+                    "name": "options",
+                    "description": "Options of the button",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "toggle",
+                            "description": "Weither the button is a toggle button or click button",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "true"
+                        },
+                        {
+                            "name": "textSize",
+                            "description": "Size of the text label",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "40"
+                        },
+                        {
+                            "name": "buttonColor",
+                            "description": "Hex color of buttonColor",
+                            "type": "Hex",
+                            "optional": true,
+                            "optdefault": "0x000000"
+                        },
+                        {
+                            "name": "texture",
+                            "description": "Which texture to apply to the button",
+                            "type": "Gotham.Graphics.Texture",
+                            "optional": true,
+                            "optdefault": "null"
+                        },
+                        {
+                            "name": "offset",
+                            "description": "Offset of the button in pixels",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
+                            "name": "margin",
+                            "description": "Margin of the button",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
+                            "name": "alpha",
+                            "description": "Alpha of the button (Between 0 an 1)",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "1"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Gotham.Controls.Slider": {
+            "name": "Gotham.Controls.Slider",
+            "shortname": "Gotham.Controls.Slider",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Controls",
+            "file": "src\\Modules\\Controls\\Slider.coffee",
+            "line": 3,
+            "description": "Slider control is a control which can be dragged from 0 to 100. For example a volume control",
+            "submodule": "Framework.Controls",
+            "extends": "Gotham.Graphics.Sprite",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "knobTexture",
+                    "description": "Texture of the knob",
+                    "type": "Gotham.Graphics.Texture"
+                },
+                {
+                    "name": "background",
+                    "description": "Background texture",
+                    "type": "Gotham.Graphics.Texture"
+                }
+            ]
+        },
+        "Gotham.Graphics.Container": {
+            "name": "Gotham.Graphics.Container",
+            "shortname": "Gotham.Graphics.Container",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Container.coffee",
+            "line": 2,
+            "description": "Container is just a wrapper around Pixi Container",
+            "submodule": "Framework.Graphics",
+            "extends": "PIXI.Container"
+        },
+        "Gotham.Graphics.Graphics": {
+            "name": "Gotham.Graphics.Graphics",
+            "shortname": "Gotham.Graphics.Graphics",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Graphics.coffee",
+            "line": 3,
+            "description": "Graphics class which inherits PIXI.Graphics",
+            "submodule": "Framework.Graphics",
+            "extends": "PIXI.Graphics",
+            "is_constructor": 1
+        },
+        "Gotham.Graphics.Polygon": {
+            "name": "Gotham.Graphics.Polygon",
+            "shortname": "Gotham.Graphics.Polygon",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Polygon.coffee",
+            "line": 3,
+            "description": "Polygon class which inherits {http://www.goodboydigital.com/pixijs/docs/classes/Polygon.html PIXI.Polyon}",
+            "submodule": "Framework.Graphics",
+            "extends": "PIXI.Polygon"
+        },
+        "Gotham.Graphics.Rectangle": {
+            "name": "Gotham.Graphics.Rectangle",
+            "shortname": "Gotham.Graphics.Rectangle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Rectangle.coffee",
+            "line": 2,
+            "description": "Rectangle class which inherits PIXI.Rectangle",
+            "submodule": "Framework.Graphics",
+            "extends": "PIXI.Rectangle"
+        },
+        "Gotham.Graphics.Sprite": {
+            "name": "Gotham.Graphics.Sprite",
+            "shortname": "Gotham.Graphics.Sprite",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Sprite.coffee",
+            "line": 2,
+            "description": "Sprite class which extends PIXI Sprite. Includes a hover texture",
+            "submodule": "Framework.Graphics",
+            "extends": "PIXI.Sprite",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "texture",
+                    "description": "The default texture",
+                    "type": "Gotham.Graphics.Texture"
+                }
+            ]
+        },
+        "Gotham.Graphics.Text": {
+            "name": "Gotham.Graphics.Text",
+            "shortname": "Gotham.Graphics.Text",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Text.coffee",
+            "line": 3,
+            "description": "Text class which inherits PIXI.Text",
+            "submodule": "Framework.Graphics",
+            "extends": "PIXI.Text",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "text",
+                    "description": "the text string",
+                    "type": "String"
+                },
+                {
+                    "name": "style",
+                    "description": "The style parameters",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "font",
+                            "description": "default 'bold 20px Arial' The style and size of the font",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "fill",
+                            "description": "A canvas fillstyle that will be used on the text e.g 'red', '#00FF00'",
+                            "type": "String|Number",
+                            "optional": true,
+                            "optdefault": "'black'"
+                        },
+                        {
+                            "name": "align",
+                            "description": "Alignment for multiline text ('left', 'center' or 'right'), does not affect single line text",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "'left'"
+                        },
+                        {
+                            "name": "stroke",
+                            "description": "A canvas fillstyle that will be used on the text stroke e.g 'blue', '#FCFF00'",
+                            "type": "String|Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "strokeThickness",
+                            "description": "A number that represents the thickness of the stroke. Default is 0 (no stroke)",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "0"
+                        },
+                        {
+                            "name": "wordWrap",
+                            "description": "Indicates if word wrap should be used",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "wordWrapWidth",
+                            "description": "The width at which text will wrap, it needs wordWrap to be set to true",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "100"
+                        },
+                        {
+                            "name": "dropShadow",
+                            "description": "Set a drop shadow for the text",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "dropShadowColor",
+                            "description": "A fill style to be used on the dropshadow e.g 'red', '#00FF00'",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "'#000000'"
+                        },
+                        {
+                            "name": "dropShadowAngle",
+                            "description": "Set a angle of the drop shadow",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "Math.PI/4"
+                        },
+                        {
+                            "name": "dropShadowDistance",
+                            "description": "Set a distance of the drop shadow",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "5"
+                        }
+                    ]
+                },
+                {
+                    "name": "x",
+                    "description": "X Coordinate",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "Y Coordinate",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Gotham.Graphics.Texture": {
+            "name": "Gotham.Graphics.Texture",
+            "shortname": "Gotham.Graphics.Texture",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Texture.coffee",
+            "line": 2,
+            "description": "Textue class which does nothing but leech on PIXI.Texture",
+            "submodule": "Framework.Graphics",
+            "extends": "PIXI.Texture",
+            "is_constructor": 1
+        },
+        "Gotham.Graphics.Tools": {
+            "name": "Gotham.Graphics.Tools",
+            "shortname": "Gotham.Graphics.Tools",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Graphics",
+            "file": "src\\Modules\\Graphics\\Tools.coffee",
+            "line": 3,
+            "description": "Graphicsl Tool class for customized data manipulation",
+            "submodule": "Framework.Graphics"
+        },
+        "Gotham.Pattern.MVC.Controller": {
+            "name": "Gotham.Pattern.MVC.Controller",
+            "shortname": "Gotham.Pattern.MVC.Controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Pattern.MVC",
+            "file": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "line": 3,
+            "description": "Baseclass for the controller",
+            "submodule": "Framework.Pattern.MVC",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "View",
+                    "description": "The view object",
+                    "type": "Gotham.Pattern.MVC.View"
+                },
+                {
+                    "name": "name",
+                    "description": "Name of the Controller",
+                    "type": "String"
+                }
+            ]
+        },
+        "Gotham.Pattern.MVC.View": {
+            "name": "Gotham.Pattern.MVC.View",
+            "shortname": "Gotham.Pattern.MVC.View",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Pattern.MVC",
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 3,
+            "description": "Baseclass for the View",
+            "submodule": "Framework.Pattern.MVC",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "controller",
+                    "description": "The Controller Object",
+                    "type": "Gotham.Pattern.MVC.Controller"
+                }
+            ],
+            "extends": "Gotham.Graphics.Container"
+        },
+        "TweenCS.ChainItem": {
+            "name": "TweenCS.ChainItem",
+            "shortname": "TweenCS.ChainItem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "TweenCS",
+            "namespace": "TweenCS",
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 1,
+            "is_constructor": 1
+        },
+        "TweenCS.Tween": {
+            "name": "TweenCS.Tween",
+            "shortname": "TweenCS.Tween",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "TweenCS",
+            "namespace": "TweenCS",
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 76,
+            "description": "The tween class of Gotham\nThis class animates objects of any format\nIt features to reach deep proprerties in an object",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "object",
+                    "description": "The object to tween",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n      # How to use:\n      # Start\n      tweenTo =\n        scale:\n          x: 2\n          y: 2\n      rotation: 0.1\n\n      # End\n      tweenBack =\n        scale:\n          x: 1\n          y: 1\n      rotation: -0.1\n\n      tween = new Tween object\n      tween.startDelay 500\n      tween.repeat(Infinity)\n      tween.easing Tween.Easing.Circular.InOut\n      tween.to tweenTo, 1500\n      tween.to tweenBack, 1500\n      tween.onStart ->\n        console.log @ + \" started!\"\n      tween.start()"
+            ]
+        },
+        "Gotham.Database": {
+            "name": "Gotham.Database",
+            "shortname": "Gotham.Database",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham",
+            "file": "src\\Modules\\Database.coffee",
+            "line": 2,
+            "description": "The database utilizes lokiJS. Contains storage for all tables and easy to retrieve them when needed.",
+            "submodule": "Framework",
+            "is_constructor": 1,
+            "chainable": 1
+        },
+        "Gotham.GameLoop": {
+            "name": "Gotham.GameLoop",
+            "shortname": "Gotham.GameLoop",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham",
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 4,
+            "description": "GameLoop of the engine\n\nThis is responsible for updating and drawing each frame of\nthe game, It does so by calling requestAnimationFrame.\n\nIn Addition, it also handles the Tween ticks in its update loop",
+            "submodule": "Framework",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "fps",
+                    "description": "The FPS limit",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Gotham.Network": {
+            "name": "Gotham.Network",
+            "shortname": "Gotham.Network",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham",
+            "file": "src\\Modules\\Network.coffee",
+            "line": 3,
+            "description": "The network class is built ontop of SocketIO. Provides extra handling on connection and emits from rooms",
+            "submodule": "Framework",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "host",
+                    "description": "Hostname of the server",
+                    "type": "String"
+                },
+                {
+                    "name": "port",
+                    "description": "Port of the server",
+                    "type": "Integer"
+                }
+            ]
+        },
+        "Gotham.Preload": {
+            "name": "Gotham.Preload",
+            "shortname": "Gotham.Preload",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham",
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 2,
+            "description": "Preload Class\nThis class contains storage for audio, video, image and json\nIt keeps track of current loaded object, and the total number of objects\nIt can serve these preloaded files on the fly.",
+            "submodule": "Framework",
+            "is_constructor": 1,
+            "example": [
+                "\n    # Examples\n    # Preloading a Image file\n    Gotham.Preload.image(\"/assets/img/settings_close.png\", \"settings_close\", \"image\")\n    # Preloading a JSON File\n    Gotham.Preload.json(\"/assets/json/json.json\", \"map\")\n    # Fetching the JSON file\n    Gotham.Preload.fetch(\"map\", \"json\")\n    # Fetching the image file\n    Gotham.Preload.fetch(\"settings_close\", \"image\")\n"
+            ]
+        },
+        "Gotham.Renderer": {
+            "name": "Gotham.Renderer",
+            "shortname": "Gotham.Renderer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham",
+            "file": "src\\Modules\\Renderer.coffee",
+            "line": 4,
+            "description": "Renderer of the Gotham Game framework\nUses pixi's renderer which is then wrapped around\nThis is mostly an internal class for Gotham",
+            "submodule": "Framework",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "width",
+                    "description": "Width of the rendered area",
+                    "type": "Integer"
+                },
+                {
+                    "name": "height",
+                    "description": "Height of the rendered area",
+                    "type": "Integer"
+                },
+                {
+                    "name": "options",
+                    "description": "Additional Option Parameters",
+                    "type": "Object"
+                },
+                {
+                    "name": "autoResize",
+                    "description": "Weither the renderer should automaticly resize to window size",
+                    "type": "Boolean"
+                }
+            ]
+        },
+        "Gotham.Scene": {
+            "name": "Gotham.Scene",
+            "shortname": "Gotham.Scene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham",
+            "file": "src\\Modules\\Scene.coffee",
+            "line": 4,
+            "description": "Scene inherits {http://www.goodboydigital.com/pixijs/docs/classes/Stage.html PIXI.Stage}\n\nStages are now Scenes which is now in a {http://en.wikipedia.org/wiki/Scene_graph Scene Graph} Structure\n\nSee {http://www.goodboydigital.com/pixijs/docs/classes/Stage.html PIXI.Stage} for properties",
+            "submodule": "Framework",
+            "is_constructor": 1,
+            "extends": "PIXI.Container"
+        },
+        "Gotham.Sound": {
+            "name": "Gotham.Sound",
+            "shortname": "Gotham.Sound",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham",
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 5,
+            "description": "This class wraps the functionality of Howler.JS {http://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library HowlerJS}\n\nIs protects Howl Object so that its not accessible from this class.\n\nSound class is generated when preloading the audio file {Preload}",
+            "submodule": "Framework",
+            "example": [
+                "\n  **Preload the audio file**\n\n  ``Gotham.Preload.mp3(\"./assets/audio/menu.mp3\", \"boud\", volume: 0.2)``\n\n  **Fetch the sound file**\n\n  ``sound = Gotham.Preload.fetch(\"boud\", \"audio\")``\n\n  **Set Volume**\n\n  ``sound.volume(0.3)``\n\n  **Play Audio**\n\n  ``sound.play()``\n\n  **Stop Audio**\n\n  ``sound.stop()``"
+            ],
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "sound",
+                    "description": "Howler sound object",
+                    "type": "Howl"
+                }
+            ]
+        },
+        "Gotham.Util.Ajax": {
+            "name": "Gotham.Util.Ajax",
+            "shortname": "Gotham.Util.Ajax",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Util",
+            "file": "src\\Util\\modules\\Ajax.coffee",
+            "line": 3,
+            "description": "AJAX Class to retrieve and post without the use of JQUERY\nIT does only rely on the normal javascript library",
+            "submodule": "Framework.Util"
+        },
+        "Gotham.Util.Compression": {
+            "name": "Gotham.Util.Compression",
+            "shortname": "Gotham.Util.Compression",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Util",
+            "file": "src\\Util\\modules\\Compression.coffee",
+            "line": 3,
+            "description": "Utils for compressing",
+            "submodule": "Framework.Util"
+        },
+        "Gotham.Util.Geocoding": {
+            "name": "Gotham.Util.Geocoding",
+            "shortname": "Gotham.Util.Geocoding",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Util",
+            "file": "src\\Util\\modules\\Geocoding.coffee",
+            "line": 3,
+            "description": "Geocoding util module",
+            "submodule": "Framework.Util"
+        },
+        "Gotham.Util.SearchTools": {
+            "name": "Gotham.Util.SearchTools",
+            "shortname": "Gotham.Util.SearchTools",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Util",
+            "file": "src\\Util\\modules\\SearchTools.coffee",
+            "line": 4,
+            "description": "Search tools is a collection of array and object manipulation tools",
+            "submodule": "Framework.Util"
+        },
+        "Gotham.Util.Util": {
+            "name": "Gotham.Util.Util",
+            "shortname": "Gotham.Util.Util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Framework",
+            "namespace": "Gotham.Util",
+            "file": "src\\Util\\Util.coffee",
+            "line": 5,
+            "description": "Utilities class for Gotham Game Engine\nContains classes which may come handy in data manipulation",
+            "submodule": "Framework.Util"
+        }
+    },
+    "classitems": [
+        {
+            "file": "src\\Modules\\Controls\\Button.coffee",
+            "line": 65,
+            "description": "Label of the button",
+            "itemtype": "property",
+            "name": "label",
+            "type": "String",
+            "class": "Gotham.Controls.Button",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Button.coffee",
+            "line": 71,
+            "description": "Click event of the button",
+            "itemtype": "method",
+            "name": "click",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "button event",
+                    "type": "Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Controls.Button",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Button.coffee",
+            "line": 88,
+            "description": "Set the background of the button",
+            "itemtype": "method",
+            "name": "setBackground",
+            "params": [
+                {
+                    "name": "hex",
+                    "description": "hex of the background color to set",
+                    "type": "Hex"
+                }
+            ],
+            "class": "Gotham.Controls.Button",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Button.coffee",
+            "line": 96,
+            "description": "callback for when button is clicked",
+            "itemtype": "method",
+            "name": "onClick",
+            "class": "Gotham.Controls.Button",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Button.coffee",
+            "line": 102,
+            "description": "callback for when button is toggled on",
+            "itemtype": "method",
+            "name": "toggleOn",
+            "class": "Gotham.Controls.Button",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Button.coffee",
+            "line": 108,
+            "description": "callback for when button is toggled off",
+            "itemtype": "method",
+            "name": "toggleOff",
+            "class": "Gotham.Controls.Button",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Slider.coffee",
+            "line": 22,
+            "description": "onProgress callback",
+            "itemtype": "property",
+            "name": "onProgress",
+            "type": "Function",
+            "class": "Gotham.Controls.Slider",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Slider.coffee",
+            "line": 28,
+            "description": "Slider progress",
+            "itemtype": "property",
+            "name": "progress",
+            "type": "Number",
+            "class": "Gotham.Controls.Slider",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Slider.coffee",
+            "line": 37,
+            "description": "THe knob sprite",
+            "itemtype": "property",
+            "name": "knob",
+            "type": "Gotham.Graphics.Sprite",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Controls.Slider",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Controls\\Slider.coffee",
+            "line": 90,
+            "description": "Calculates Current slider percentage based on knob's position\nAccounts for scale and all that jazz",
+            "itemtype": "method",
+            "name": "calculateProgress",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Knob's current X position",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "percentage in number format",
+                "type": "Number"
+            },
+            "class": "Gotham.Controls.Slider",
+            "module": "Framework",
+            "submodule": "Framework.Controls",
+            "namespace": "Gotham.Controls"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Container.coffee",
+            "line": 12,
+            "description": "The created state of the container",
+            "itemtype": "property",
+            "name": "_created",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Graphics.Container",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Container.coffee",
+            "line": 22,
+            "description": "Create function, must be overriden",
+            "itemtype": "method",
+            "name": "create",
+            "class": "Gotham.Graphics.Container",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Container.coffee",
+            "line": 29,
+            "description": "Must be overridden",
+            "itemtype": "method",
+            "name": "update",
+            "class": "Gotham.Graphics.Container",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Graphics.coffee",
+            "line": 19,
+            "description": "X offset",
+            "itemtype": "property",
+            "name": "_dx",
+            "type": "Number",
+            "class": "Gotham.Graphics.Graphics",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Graphics.coffee",
+            "line": 25,
+            "description": "Y offset",
+            "itemtype": "property",
+            "name": "_dy",
+            "type": "Number",
+            "class": "Gotham.Graphics.Graphics",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Sprite.coffee",
+            "line": 19,
+            "description": "Texture for when the sprite is hovered",
+            "itemtype": "property",
+            "name": "",
+            "type": "Gotham.Graphics.Texture",
+            "class": "Gotham.Graphics.Sprite",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Sprite.coffee",
+            "line": 25,
+            "description": "Original texture",
+            "itemtype": "property",
+            "name": "normalTexture",
+            "type": "Gotham.Graphics.Texture",
+            "class": "Gotham.Graphics.Sprite",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Tools.coffee",
+            "line": 12,
+            "description": "Converts a json structure to a polygon\nThe supported format is the following:",
+            "itemtype": "method",
+            "name": "polygonFromJSON",
+            "example": [
+                "\n        # The format\n        json = [[x,y,x2,y2][x,y,x2,y2]]"
+            ],
+            "params": [
+                {
+                    "name": "json",
+                    "description": "The json object",
+                    "type": "Object"
+                },
+                {
+                    "name": "skipRatio",
+                    "description": "The Skip frequency.",
+                    "type": "Integer"
+                },
+                {
+                    "name": "scale",
+                    "description": "scale option",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "x",
+                            "description": "x scale",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "y",
+                            "description": "y scale",
+                            "type": "Number"
+                        }
+                    ]
+                }
+            ],
+            "class": "Gotham.Graphics.Tools",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Graphics\\Tools.coffee",
+            "line": 60,
+            "description": "Converts a Polygon into a Graphics element",
+            "itemtype": "method",
+            "name": "polygonToGraphics",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "the moving options",
+                    "type": "Array(Polygon) || Polygon"
+                },
+                {
+                    "name": "interactive",
+                    "description": "weither the graphics should be interactive or not",
+                    "type": "Boolean"
+                }
+            ],
+            "example": [
+                "\n        #\n        # Convert list of polygons to list of Graphic objects\n        graphicsList = Gotham.Graphics.PolygonToGraphics(polygonList)\n\n        # Convert a polygon to a graphics object\n        graphicObj = Gotham.Graphics.PolygonToGraphics(polygon)\n"
+            ],
+            "class": "Gotham.Graphics.Tools",
+            "module": "Framework",
+            "submodule": "Framework.Graphics",
+            "namespace": "Gotham.Graphics"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "line": 22,
+            "description": "The created state of the controller",
+            "itemtype": "property",
+            "name": "_created",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Pattern.MVC.Controller",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "line": 29,
+            "description": "Processes belonging to this controller (Ran by GameLoop)",
+            "itemtype": "property",
+            "name": "_processes",
+            "type": "Array",
+            "class": "Gotham.Pattern.MVC.Controller",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "line": 35,
+            "description": "Name of the controller",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "class": "Gotham.Pattern.MVC.Controller",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "line": 41,
+            "description": "View of the controller",
+            "itemtype": "property",
+            "name": "View",
+            "type": "Gotham.Pattern.MVC.View",
+            "class": "Gotham.Pattern.MVC.Controller",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "line": 49,
+            "description": "This function should be overriden, It creates the controller",
+            "itemtype": "method",
+            "name": "create",
+            "class": "Gotham.Pattern.MVC.Controller",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\Controller.coffee",
+            "line": 56,
+            "description": "Adds a process which is executed in the game loo",
+            "itemtype": "method",
+            "name": "addProcess",
+            "params": [
+                {
+                    "name": "func",
+                    "description": "the function to execute in the game loop",
+                    "type": "Function"
+                }
+            ],
+            "class": "Gotham.Pattern.MVC.Controller",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 18,
+            "description": "This is a identifier that tells internal stuff that its a view.",
+            "itemtype": "property",
+            "name": "_v",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Pattern.MVC.View",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 25,
+            "description": "A boolean which determine create state of the view",
+            "itemtype": "property",
+            "name": "_created",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Pattern.MVC.View",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 32,
+            "description": "Processed which is executed by this view (in the game loop)",
+            "itemtype": "property",
+            "name": "_processes",
+            "type": "Array",
+            "class": "Gotham.Pattern.MVC.View",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 38,
+            "description": "The controller belonging to this view",
+            "itemtype": "property",
+            "name": "",
+            "type": "Gotham.Pattern.MVC.Controller",
+            "class": "Gotham.Pattern.MVC.View",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 44,
+            "description": "This function should be overriden, It creates the view",
+            "itemtype": "method",
+            "name": "create",
+            "class": "Gotham.Pattern.MVC.View",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Pattern\\MVC\\View.coffee",
+            "line": 51,
+            "description": "Adds a process which is executed in the game loop",
+            "itemtype": "method",
+            "name": "addProcess",
+            "params": [
+                {
+                    "name": "func",
+                    "description": "Function to execute in the game loop",
+                    "type": "Function"
+                }
+            ],
+            "class": "Gotham.Pattern.MVC.View",
+            "module": "Framework",
+            "submodule": "Framework.Pattern.MVC",
+            "namespace": "Gotham.Pattern.MVC"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 11,
+            "description": "Which property this chain modifies",
+            "itemtype": "property",
+            "name": "property",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 18,
+            "description": "The chain item duration",
+            "itemtype": "property",
+            "name": "duration",
+            "type": "Integer",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 25,
+            "description": "The start timestamp of the chainItem",
+            "itemtype": "property",
+            "name": "startTime",
+            "type": "Long",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 32,
+            "description": "The end timestamp of the chainItem",
+            "itemtype": "property",
+            "name": "endTime",
+            "type": "Long",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 39,
+            "description": "If the chainItem has been initialized",
+            "itemtype": "property",
+            "name": "inited",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 46,
+            "description": "Which type this chain item is, Delay, Translation etc.",
+            "itemtype": "property",
+            "name": "type",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 53,
+            "description": "Next chainItem in the loop",
+            "itemtype": "property",
+            "name": "next",
+            "type": "TweenCS.ChainItem",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 60,
+            "description": "Previous chainItem in the loop",
+            "itemtype": "property",
+            "name": "previous",
+            "type": "TweenCS.ChainItem",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 67,
+            "description": "The elapsed percentage of the chainItem (Between 0 and 1)",
+            "itemtype": "property",
+            "name": "elapsed",
+            "type": "Number",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.ChainItem",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 114,
+            "description": "Static list of all ongoing tweens",
+            "itemtype": "property",
+            "name": "_tweens",
+            "type": "Array[Tween]",
+            "static": 1,
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 122,
+            "description": "Clear all ongoing tweens in loop",
+            "itemtype": "method",
+            "name": "clear",
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 131,
+            "description": "Current runtime time, Retreived from GameLoop's update()",
+            "itemtype": "property",
+            "name": "_currentTime",
+            "type": "Long",
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 144,
+            "description": "The object to do tweening on",
+            "itemtype": "property",
+            "name": "_object",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 152,
+            "description": "Chain of tweens to be applied to object (ChainItems)",
+            "itemtype": "property",
+            "name": "_chain",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 161,
+            "description": "The properties to process while tweening",
+            "itemtype": "property",
+            "name": "_properties",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 168,
+            "description": "The easing to use, Default is Linear",
+            "itemtype": "property",
+            "name": "_easing",
+            "type": "Tween.Easing",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 175,
+            "description": "Which interpolation to use, default is Linear",
+            "itemtype": "property",
+            "name": "_interpolation",
+            "type": "Tween.Interpolation",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 182,
+            "description": "onUpdate callback",
+            "itemtype": "method",
+            "name": "_onUpdate",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 189,
+            "description": "onComplete callback",
+            "itemtype": "method",
+            "name": "_onComplete",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 196,
+            "description": "onStart callback",
+            "itemtype": "method",
+            "name": "_onStart",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 203,
+            "description": "If the tween collection has started or not",
+            "itemtype": "property",
+            "name": "_started",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 210,
+            "description": "If the tween collection is complete or not",
+            "itemtype": "property",
+            "name": "_complete",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 217,
+            "description": "The tween start delay",
+            "itemtype": "property",
+            "name": "_startDelay",
+            "type": "Number",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 224,
+            "description": "Number of runs done (Incremented per chainItem",
+            "itemtype": "property",
+            "name": "_runCounter",
+            "type": "Number",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 231,
+            "description": "Number of remaining runs for this tween",
+            "itemtype": "property",
+            "name": "_remainingRuns",
+            "type": "Number",
+            "access": "private",
+            "tagname": "",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 241,
+            "description": "Retrieve all chainItems of the Tween",
+            "itemtype": "method",
+            "name": "getTweenChain",
+            "return": {
+                "description": "The tween Chain",
+                "type": "TweenCS.ChainItem"
+            },
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 249,
+            "description": "Adds a new TweenCS.ChainItem to the chain",
+            "itemtype": "method",
+            "name": "addToChain",
+            "params": [
+                {
+                    "name": "newPath",
+                    "description": "The chain item",
+                    "type": "TweenCS.ChainItem"
+                }
+            ],
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 284,
+            "description": "Sets Delay of the start",
+            "itemtype": "method",
+            "name": "startDelay",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "Delay in milliseconds",
+                    "type": "Number"
+                }
+            ],
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 292,
+            "description": "Starts the tween. _onStart callback is called",
+            "itemtype": "method",
+            "name": "start",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 300,
+            "description": "Stops the tween",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 308,
+            "description": "Pauses the tween.",
+            "itemtype": "method",
+            "name": "pause",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 315,
+            "description": "Unpauses the tween.",
+            "itemtype": "method",
+            "name": "unpause",
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 346,
+            "description": "Set the easing algorithm for the tween\nThe easing algorithms are found in the Tween.Easing object.",
+            "itemtype": "method",
+            "name": "easing",
+            "params": [
+                {
+                    "name": "easing",
+                    "description": "The easing algorithm",
+                    "type": "Tween.Easing"
+                }
+            ],
+            "example": [
+                "\n        obj.easing(Tween.Easing.Linear.None)"
+            ],
+            "chainable": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 361,
+            "description": "Adds a function to the tween chain. Neat for when you want logic to run between two tweens",
+            "itemtype": "method",
+            "name": "func",
+            "chainable": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 383,
+            "description": "Add tween action to the tween chain",
+            "itemtype": "method",
+            "name": "to",
+            "params": [
+                {
+                    "name": "property",
+                    "description": "The \"goal\" property of the tween (Where you want the target object to end up)",
+                    "type": "Object"
+                },
+                {
+                    "name": "duration",
+                    "description": "Duration of the tween from start --> end (In milliseconds)",
+                    "type": "Long"
+                }
+            ],
+            "chainable": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 423,
+            "description": "Add a delay between two tween goto's",
+            "itemtype": "method",
+            "name": "delay",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "Delay in Milliseconds",
+                    "type": "Long"
+                }
+            ],
+            "chainable": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 446,
+            "description": "How many times you want to repeat the Tween\nTo repeat \"forever\", use Infinity",
+            "itemtype": "method",
+            "name": "repeat",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "Number of times to repeat",
+                    "type": "Integer"
+                }
+            ],
+            "chainable": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 463,
+            "description": "The onUpdate callback\nIs called when the tween is updated",
+            "itemtype": "method",
+            "name": "onUpdate",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "The onUpdate callback",
+                    "type": "Callback"
+                }
+            ],
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 473,
+            "description": "The onComplete callback\nIs called when the tween is completed",
+            "itemtype": "method",
+            "name": "onComplete",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "The onComplete callback",
+                    "type": "Callback"
+                }
+            ],
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 482,
+            "description": "The onStart callback\nIs called when the tween is started",
+            "itemtype": "method",
+            "name": "onStart",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "The onStart callback",
+                    "type": "Callback"
+                }
+            ],
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 491,
+            "description": "Update loop of the tween engine ensures that tweening actually happens\nIT is called from GameLoop.update()",
+            "itemtype": "method",
+            "name": "update",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "Render runtime in milliseconds",
+                    "type": "Long"
+                }
+            ],
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 611,
+            "description": "Clones a object",
+            "itemtype": "method",
+            "name": "clone",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "the object to clone",
+                    "type": "Object"
+                }
+            ],
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 624,
+            "description": "Resolves a string property. Ex: \"a.b\". which is obj[\"a\"][\"b\"]",
+            "itemtype": "method",
+            "name": "resolve",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "the object to resolve",
+                    "type": "Object"
+                },
+                {
+                    "name": "path",
+                    "description": "the object path",
+                    "type": "String"
+                },
+                {
+                    "name": "def",
+                    "description": "default if not found",
+                    "type": "Object"
+                },
+                {
+                    "name": "setValue",
+                    "description": "Value to set on the path",
+                    "type": "Object"
+                }
+            ],
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 658,
+            "description": "Function for finding properties recursively in an Object",
+            "itemtype": "method",
+            "name": "flattenKeys",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Start/Parent Node",
+                    "type": "Object"
+                },
+                {
+                    "name": "delimiter",
+                    "description": "The Delimeter of the result. Default: \".\"",
+                    "type": "String"
+                },
+                {
+                    "name": "max_depth",
+                    "description": "Max Depth of the recursion",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "Array with the resulting properties",
+                "type": "Array"
+            },
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS"
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 689,
+            "itemtype": "property",
+            "name": "Easing",
+            "type": "Object",
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS",
+            "subprops": [
+                {
+                    "name": "Linear",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Linear.None",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quadratic",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Quadratic.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quadratic.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quadratic.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Cubic",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Cubic.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Cubic.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Cubic.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quartic",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Quartic.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quartic.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quartic.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quintic",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Quintic.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quintic.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Quintic.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Sinusoidal",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Sinusoidal.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Sinusoidal.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Sinusoidal.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Exponential",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Exponential.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Exponential.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Exponential.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Circular",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Circular.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Circular.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Circular.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Elastic",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Elastic.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Elastic.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Elastic.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Back",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Back.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Back.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Back.InOut",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Bounce",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Bounce.In",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Bounce.Out",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Bounce.InOut",
+                    "description": "",
+                    "type": "Function"
+                }
+            ]
+        },
+        {
+            "file": "src\\Modules\\Tween\\Tween.coffee",
+            "line": 877,
+            "itemtype": "property",
+            "name": "Interpolation",
+            "type": "Object",
+            "static": 1,
+            "class": "TweenCS.Tween",
+            "module": "TweenCS",
+            "namespace": "TweenCS",
+            "subprops": [
+                {
+                    "name": "Linear",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Bezier",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "CatmullRom",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Utils",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Utils.Linear",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Utils.Bernstein",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Utils.Factorial",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "Utils.CatmullRom",
+                    "description": "",
+                    "type": "Function"
+                }
+            ]
+        },
+        {
+            "file": "src\\Modules\\Database.coffee",
+            "line": 16,
+            "description": "The database instance (LokiJS)",
+            "itemtype": "property",
+            "name": "db",
+            "type": "LokiJS",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Database",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Database.coffee",
+            "line": 23,
+            "description": "Tables for the database",
+            "itemtype": "property",
+            "name": "_tables",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Database",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Database.coffee",
+            "line": 33,
+            "description": "Creates a new table\nThis table is then stored in the internal _tables object",
+            "itemtype": "method",
+            "name": "table",
+            "params": [
+                {
+                    "name": "tableName",
+                    "description": "The table name",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "[LokiJS] Returns the table"
+            },
+            "class": "Gotham.Database",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Database.coffee",
+            "line": 45,
+            "description": "Retrieve all tables",
+            "itemtype": "method",
+            "name": "getTables",
+            "return": {
+                "description": "All objects",
+                "type": "Object"
+            },
+            "class": "Gotham.Database",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 27,
+            "description": "The renderer instance",
+            "itemtype": "property",
+            "name": "renderer",
+            "type": "Gotham.Renderer",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.GameLoop",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 34,
+            "description": "Tasks to execute in the game loop",
+            "itemtype": "property",
+            "name": "_tasks",
+            "type": "Callback[]",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.GameLoop",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 41,
+            "description": "FPS Meter Instance. Shows FPS on screen",
+            "itemtype": "property",
+            "name": "FPSMeter",
+            "type": "FPSMeter",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.GameLoop",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 48,
+            "description": "Stats the animation loop",
+            "itemtype": "method",
+            "name": "animate",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.GameLoop",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 59,
+            "description": "Sets the renderer of the game loop",
+            "itemtype": "method",
+            "name": "setRenderer",
+            "params": [
+                {
+                    "name": "renderer",
+                    "description": "",
+                    "type": "Gotham.Renderer"
+                }
+            ],
+            "class": "Gotham.GameLoop",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 67,
+            "description": "The update loop function\nThis function are started in the constructor and runs in the preset FPS\nIt updates logic and draw + Tween",
+            "itemtype": "method",
+            "name": "update",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "Duration of the application runtime",
+                    "type": "Long"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.GameLoop",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\GameLoop.coffee",
+            "line": 97,
+            "description": "Function which adds a task to be completed in the render loop\nThis runs until the Task returns false, will then be deleted from queue",
+            "itemtype": "method",
+            "name": "addTask",
+            "params": [
+                {
+                    "name": "task",
+                    "description": "The Task function",
+                    "type": "Function"
+                }
+            ],
+            "class": "Gotham.GameLoop",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 19,
+            "description": "The host to connect to",
+            "itemtype": "property",
+            "name": "host",
+            "type": "String",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 25,
+            "description": "The port to connect on",
+            "itemtype": "property",
+            "name": "port",
+            "type": "Number",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 35,
+            "description": "The Socket object",
+            "itemtype": "property",
+            "name": "Socket",
+            "type": "SocketIO",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 41,
+            "description": "Variable which determine if the socket has been connected once.",
+            "itemtype": "property",
+            "name": "hasConnectedOnce",
+            "type": "Boolean",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 48,
+            "description": "Callback for when the client has connected",
+            "itemtype": "method",
+            "name": "onConnect",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 54,
+            "description": "Callback for when the client has recconected",
+            "itemtype": "method",
+            "name": "onReconnect",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 60,
+            "description": "Callback for when the client is reconnecting",
+            "itemtype": "method",
+            "name": "onReconnecting",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 66,
+            "description": "Callback for when the connection is lost",
+            "itemtype": "method",
+            "name": "onDisconnect",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Network.coffee",
+            "line": 73,
+            "description": "Connects to the server",
+            "itemtype": "method",
+            "name": "connect",
+            "class": "Gotham.Network",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 31,
+            "description": "The table of image preloading",
+            "itemtype": "property",
+            "name": "db_image",
+            "type": "LokiJS",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 38,
+            "description": "The table of audio preloading",
+            "itemtype": "property",
+            "name": "db_audio",
+            "type": "LokiJS",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 45,
+            "description": "The table of data (json) preloading",
+            "itemtype": "property",
+            "name": "db_data",
+            "type": "LokiJS",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 55,
+            "description": "Callback for when a item is loaded",
+            "itemtype": "method",
+            "name": "onLoad",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 61,
+            "description": "Callback for when all items are loaded",
+            "itemtype": "method",
+            "name": "onComplete",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 67,
+            "description": "Number of network items loaded",
+            "itemtype": "property",
+            "name": "_numNetworkLoaded",
+            "type": "Integer",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 74,
+            "description": "Total count for preloaded items",
+            "itemtype": "property",
+            "name": "_totalCount",
+            "type": "Integer",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 82,
+            "description": "Get total number items subject for preloading",
+            "itemtype": "method",
+            "name": "getTotalCount",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 91,
+            "description": "Increments the total item count",
+            "itemtype": "method",
+            "name": "incrementTotalCount",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 99,
+            "description": "Get number of items current loaded",
+            "itemtype": "method",
+            "name": "getNumLoaded",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "Total of elements currently loaded",
+                "type": "Number"
+            },
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 113,
+            "description": "Function for downloading a json file, Runs callback when done",
+            "itemtype": "method",
+            "name": "downloadJSON",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "the url",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The complete callback",
+                    "type": "Callback"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 124,
+            "description": "Function for downloading a image, runs callback on end",
+            "itemtype": "method",
+            "name": "downloadJSON",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "the url",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The complete callback",
+                    "type": "Callback"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 143,
+            "description": "Function for downloading a sound elements, runs callback on end",
+            "itemtype": "method",
+            "name": "downloadSound",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "the url",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "Sound options",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "The complete callback",
+                    "type": "Callback"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 170,
+            "description": "Callback which fires when preloading is complete",
+            "itemtype": "method",
+            "name": "_onComplete",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 178,
+            "description": "Callback which fires when preloading is complete",
+            "itemtype": "method",
+            "name": "_onLoad",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The loaded object",
+                    "type": "Object"
+                },
+                {
+                    "name": "type",
+                    "description": "The object type (Sound, Image, etc)",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The object name",
+                    "type": "String"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 195,
+            "description": "Check for weither preloading is complete or not",
+            "itemtype": "method",
+            "name": "isPreloadComplete",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "Weither preloading is complete or not",
+                "type": "Boolean"
+            },
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 204,
+            "description": "Function for preloading image",
+            "itemtype": "method",
+            "name": "image",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The item to Preload",
+                    "type": "Object"
+                },
+                {
+                    "name": "name",
+                    "description": "The name of the object",
+                    "type": "String"
+                }
+            ],
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 218,
+            "description": "Function for preloading mp3",
+            "itemtype": "method",
+            "name": "mp3",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The item to Preload",
+                    "type": "Object"
+                },
+                {
+                    "name": "name",
+                    "description": "The name of the object",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "Options for howler",
+                    "type": "Object"
+                }
+            ],
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 233,
+            "description": "Function for preloading json",
+            "itemtype": "method",
+            "name": "json",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The item to Preload",
+                    "type": "Object"
+                },
+                {
+                    "name": "name",
+                    "description": "The name of the object",
+                    "type": "String"
+                }
+            ],
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 247,
+            "description": "Function for preloading network data",
+            "itemtype": "method",
+            "name": "network",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The callback name",
+                    "type": "Object"
+                },
+                {
+                    "name": "table",
+                    "description": "The database table",
+                    "type": "Table"
+                },
+                {
+                    "name": "socket",
+                    "description": "The connected socket",
+                    "type": "SocketIO"
+                }
+            ],
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 269,
+            "description": "Function for fetching an preloaded item",
+            "itemtype": "method",
+            "name": "fetch",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Name of the file",
+                    "type": "String"
+                },
+                {
+                    "name": "type",
+                    "description": "The type of the file",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The element retrieved",
+                "type": "Object"
+            },
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Preload.coffee",
+            "line": 280,
+            "description": "Function which returns the storage for the given type",
+            "itemtype": "method",
+            "name": "getDatabase",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of the storage",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The database retrieved",
+                "type": "Database"
+            },
+            "class": "Gotham.Preload",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Renderer.coffee",
+            "line": 25,
+            "description": "The pixi renderer instance",
+            "itemtype": "property",
+            "name": "pixi",
+            "type": "PIXI.Renderer",
+            "class": "Gotham.Renderer",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Renderer.coffee",
+            "line": 64,
+            "description": "All scene objects, By default \"root\" is defined",
+            "itemtype": "property",
+            "name": "scenes",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Renderer",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Renderer.coffee",
+            "line": 86,
+            "description": "Sets current stage to defined name, errors out if not exists",
+            "itemtype": "method",
+            "name": "setScene",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The scene name",
+                    "type": "String"
+                }
+            ],
+            "class": "Gotham.Renderer",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Renderer.coffee",
+            "line": 95,
+            "description": "Adds a new scene to the renderer",
+            "itemtype": "method",
+            "name": "addScene",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Name of the Scene",
+                    "type": "String"
+                },
+                {
+                    "name": "scene",
+                    "description": "The Scene object",
+                    "type": "Gotham.Scene"
+                }
+            ],
+            "class": "Gotham.Renderer",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Renderer.coffee",
+            "line": 105,
+            "description": "Retrieves a scene from the renderer",
+            "itemtype": "method",
+            "name": "getScene",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Name of the scene",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The scene object with the given name",
+                "type": "Gotham.Scene"
+            },
+            "class": "Gotham.Renderer",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Scene.coffee",
+            "line": 23,
+            "description": "The children objects of the scene. These objects are typically views\nNB! Should not be accessed randomly",
+            "itemtype": "property",
+            "name": "__children",
+            "type": "Object[]",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Scene",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Scene.coffee",
+            "line": 33,
+            "description": "The create function of the scene, Should be overridden.",
+            "itemtype": "method",
+            "name": "create",
+            "class": "Gotham.Scene",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Scene.coffee",
+            "line": 40,
+            "description": "Gets a child by name",
+            "itemtype": "method",
+            "name": "getObject",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Child name",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The child",
+                "type": "DisplayObject"
+            },
+            "class": "Gotham.Scene",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Scene.coffee",
+            "line": 50,
+            "description": "Adds a child to the Scene",
+            "itemtype": "method",
+            "name": "addObject",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "The display object to remove",
+                    "type": "DisplayObject"
+                }
+            ],
+            "return": {
+                "description": "The display object removed, undefined if none",
+                "type": "DisplayObject"
+            },
+            "class": "Gotham.Scene",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Scene.coffee",
+            "line": 74,
+            "description": "Removes a child from the Scene",
+            "itemtype": "method",
+            "name": "removeObject",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "The display object to remove",
+                    "type": "DisplayObject"
+                }
+            ],
+            "return": {
+                "description": "The display object removed, undefined if none",
+                "type": "DisplayObject"
+            },
+            "class": "Gotham.Scene",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 43,
+            "description": "The howler sound object",
+            "itemtype": "property",
+            "name": "_sound",
+            "type": "Howl",
+            "access": "private",
+            "tagname": "",
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 50,
+            "description": "Call Howl object's play function Howl.play()",
+            "itemtype": "method",
+            "name": "play",
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 58,
+            "description": "Call Howl object's stop function Howl.stop()",
+            "itemtype": "method",
+            "name": "stop",
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 66,
+            "description": "Call Howl object's pause function Howl.pause()",
+            "itemtype": "method",
+            "name": "pause",
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 74,
+            "description": "Call Howl object's play function Howl.play()",
+            "itemtype": "method",
+            "name": "volume",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "between 0.0 and 1.0",
+                    "type": "Double"
+                }
+            ],
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 83,
+            "description": "Seek Forward the Audio Position on the Howl Object",
+            "itemtype": "method",
+            "name": "forward",
+            "params": [
+                {
+                    "name": "sec",
+                    "description": "Number of seconds to forward",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 93,
+            "description": "Seek Backwards the Audio Position on the Howl Object",
+            "itemtype": "method",
+            "name": "backward",
+            "params": [
+                {
+                    "name": "sec",
+                    "description": "Number of seconds to forward",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 103,
+            "description": "Mute the Sound, Calling Howl Object's Mute function",
+            "itemtype": "method",
+            "name": "mute",
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 111,
+            "description": "Unmute the Sound, Calling Howl Object's Mute function",
+            "itemtype": "method",
+            "name": "unmute",
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Modules\\Sound.coffee",
+            "line": 119,
+            "description": "Sets the loop state of the Howl sound",
+            "itemtype": "method",
+            "name": "loop",
+            "params": [
+                {
+                    "name": "state",
+                    "description": "Either true or false based on weither to loop or not",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "[void] None"
+            },
+            "class": "Gotham.Sound",
+            "module": "Framework",
+            "submodule": "Framework",
+            "namespace": "Gotham"
+        },
+        {
+            "file": "src\\Util\\modules\\Ajax.coffee",
+            "line": 13,
+            "description": "Fetches the XML Document from  the request,\nIt can also handle Internet Explorer via ActiveX",
+            "itemtype": "method",
+            "name": "getXmlDoc",
+            "static": 1,
+            "class": "Gotham.Util.Ajax",
+            "module": "Framework",
+            "submodule": "Framework.Util",
+            "namespace": "Gotham.Util"
+        },
+        {
+            "file": "src\\Util\\modules\\Ajax.coffee",
+            "line": 28,
+            "description": "GET request to URL, which then returns the data to the callback",
+            "itemtype": "method",
+            "name": "GET",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The url of the request",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The resulting success callback of the request",
+                    "type": "Callback"
+                }
+            ],
+            "static": 1,
+            "class": "Gotham.Util.Ajax",
+            "module": "Framework",
+            "submodule": "Framework.Util",
+            "namespace": "Gotham.Util"
+        },
+        {
+            "file": "src\\Util\\modules\\Compression.coffee",
+            "line": 12,
+            "description": "GZIP Compression",
+            "itemtype": "property",
+            "name": "GZIP",
+            "type": "Object",
+            "static": 1,
+            "class": "Gotham.Util.Compression",
+            "module": "Framework",
+            "submodule": "Framework.Util",
+            "namespace": "Gotham.Util",
+            "subprops": [
+                {
+                    "name": "decompress",
+                    "description": "",
+                    "type": "Function"
+                }
+            ]
+        },
+        {
+            "file": "src\\Util\\modules\\Geocoding.coffee",
+            "line": 12,
+            "description": "Identifies a country by latitude and longitude",
+            "itemtype": "method",
+            "name": "getCountry",
+            "params": [
+                {
+                    "name": "lat",
+                    "description": "Latitude",
+                    "type": "Number"
+                },
+                {
+                    "name": "lng",
+                    "description": "Longitude",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "country object",
+                "type": "Object"
+            },
+            "class": "Gotham.Util.Geocoding",
+            "module": "Framework",
+            "submodule": "Framework.Util",
+            "namespace": "Gotham.Util"
+        },
+        {
+            "file": "src\\Util\\modules\\SearchTools.coffee",
+            "line": 13,
+            "description": "Find a key in an object",
+            "itemtype": "method",
+            "name": "FindKey",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "Object to search in",
+                    "type": "Object"
+                },
+                {
+                    "name": "key",
+                    "description": "The key requested to find",
+                    "type": "String"
+                },
+                {
+                    "name": "maxDepth",
+                    "description": "The max search depth",
+                    "type": "Integer"
+                }
+            ],
+            "static": 1,
+            "class": "Gotham.Util.SearchTools",
+            "module": "Framework",
+            "submodule": "Framework.Util",
+            "namespace": "Gotham.Util"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src\\Modules\\Tween\\Tween.coffee:241"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src\\Modules\\Renderer.coffee:105"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src\\Util\\modules\\Geocoding.coffee:12"
+        }
+    ]
+}
