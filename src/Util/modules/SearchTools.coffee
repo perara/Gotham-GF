@@ -10,10 +10,14 @@
 ###
 class SearchTools
 
+  ###*
   # Find a key in an object
-  # @param [Object] object Object to search in
-  # @param [String] key The key requested to find
-  # @param [Integer] maxDepth The max search depth
+  # @method FindKey
+  # @param object {Object} Object to search in
+  # @param key {String} The key requested to find
+  # @param maxDepth {Integer} The max search depth
+  # @static
+  ###
   @FindKey: (object, key, maxDepth) ->
     if not maxDepth?
       maxDepth = 7

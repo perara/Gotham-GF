@@ -7,6 +7,7 @@
 # @submodule Framework.Graphics
 # @namespace Gotham.Graphics
 # @extends PIXI.Graphics
+# @constructor
 ###
 class Graphics extends PIXI.Graphics
 
@@ -14,7 +15,17 @@ class Graphics extends PIXI.Graphics
   # Also add Delta coordinates to the class
   constructor: ->
     super
+
+    ###*
+    # X offset
+    # @property {Number} _dx
+    ###
     @_dx = 0
+
+    ###*
+    # Y offset
+    # @property {Number} _dy
+    ###
     @_dy = 0
 
 

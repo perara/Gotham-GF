@@ -6,18 +6,19 @@ require './Extensions/Object.coffee'
 require './Extensions/String.coffee'
 require './Extensions/JQuery.coffee'
 ###*
-# Acs as a namespace class,
-# @class Gotham
+# Gotham Game Framework
+#
+# Contains all classes for the framework.
 # @module Framework
 # @submodule Framework
-# @namespace Gotham
+# @main Gotham
 ###
 class Gotham
   window.Gotham = Gotham
 
   @VERSION = "1.0"
 
-  # Flag for when gotham engine is running (Disabled when not window focus)
+
   @Running = true
 
   @Graphics =

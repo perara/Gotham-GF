@@ -10,10 +10,10 @@
 # @submodule Framework
 # @namespace Gotham
 # @constructor
-# @param width [Integer] Width of the rendered area
-# @param height [Integer] Height of the rendered area
-# @param options [Object] Additional Option Parameters
-# @param autoResize [Boolean] Weither the renderer should automaticly resize to window size
+# @param width {Integer} Width of the rendered area
+# @param height {Integer} Height of the rendered area
+# @param options {Object} Additional Option Parameters
+# @param autoResize {Boolean} Weither the renderer should automaticly resize to window size
 ###
 class Renderer
 
@@ -21,10 +21,16 @@ class Renderer
   constructor: (width, height, options, autoResize) ->
     # Create pixi object
     that =  @
+
+    ###*
+    # The pixi renderer instance
+    # @property {PIXI.Renderer} pixi
+    ###
     @pixi = PIXI.autoDetectRenderer width, height, {
       autoResize: true
       antialias: true
     }
+
     window.renderer = @
 
     # Activate Wheel Scrolling Support (Defined in Extensions)
@@ -54,6 +60,12 @@ class Renderer
     
     # Sets current stage and maps it as Root in object
     @pixi.stage = rootScene
+
+    ###*
+    # All scene objects, By default "root" is defined
+    # @property {Object} scenes
+    # @private
+    ###
     @scenes =
       "root": @pixi.stage
 
@@ -67,27 +79,35 @@ class Renderer
       Gotham.Running = false
 
 
-# Add a render loop function to the Gotham.GameLoop
+    # Add a render loop function to the Gotham.GameLoop
     Gotham.GameLoop.setRenderer () ->
       renderer.pixi.render(renderer.pixi.stage);
 
+  ###*
   # Sets current stage to defined name, errors out if not exists
-  # @param [String] name Name of the Scene
-  # @return [void] None
+  # @method setScene
+  # @param name {String} The scene name
+  ###
   setScene: (name) ->
     scene = @scenes[name]
     @pixi.stage = scene
 
+  ###*
   # Adds a new scene to the renderer
-  # @param [String] name Name of the Scene
-  # @param [Scene] scene The Scene object
+  # @method addScene
+  # @param name {String} Name of the Scene
+  # @param scene {Gotham.Scene} The Scene object
+  ###
   addScene: (name, scene) ->
     scene._renderer = @
     @scenes[name] = scene
 
+  ###*
   # Retrieves a scene from the renderer
-  # @param name [String] Name of the scene
-  # @returns [Scene] The scene
+  # @method getScene
+  # @param name {String} Name of the scene
+  # @returns {Gotham.Scene} The scene object with the given name
+  ###
   getScene: (name) ->
     return @scenes[name]
 

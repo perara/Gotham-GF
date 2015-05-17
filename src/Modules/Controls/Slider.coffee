@@ -15,19 +15,30 @@ class Slider extends Gotham.Graphics.Sprite
 
   # Constructor Which Creates the Slider
   # The slider can then be configured as a regular sprite
-  # @param [Gotham.Texture] knobTexture Texture of the knob
-  # @param [Gotham.Texture] background Texture of the slider background
   constructor: (knobTexture, background) ->
     super
     that = @
 
+    ###*
+    # onProgress callback
+    # @property onProgress {Function}
+    ###
     @onProgress = null
+
+    ###*
+    # Slider progress
+    # @property progress {Number}
+    ###
     @progress = 0
 
     @texture = background
     @tint = 0xFFFF00
 
-
+    ###*
+    # THe knob sprite
+    # @property knob {Gotham.Graphics.Sprite}
+    # @private
+    ###
     knob = @knob = new Gotham.Graphics.Sprite knobTexture
     knob.width = @height
     knob.height = @height
@@ -76,10 +87,13 @@ class Slider extends Gotham.Graphics.Sprite
 
     @addChild knob
 
-
+  ###*
   # Calculates Current slider percentage based on knob's position
   # Accounts for scale and all that jazz
-  # @param [Integer] x Knob's current X position
+  # @method calculateProgress
+  # @param x {Number} Knob's current X position
+  # @return {Number} percentage in number format
+  ###
   calculateProgress: (x) ->
     return ((x * @scale.x)  / (@width - (@knob.width * @scale.x))) * 100
 

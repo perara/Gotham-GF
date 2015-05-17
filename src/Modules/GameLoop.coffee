@@ -13,41 +13,65 @@
 # @module Framework
 # @submodule Framework
 # @namespace Gotham
+# @constructor
+# @param fps {Number} The FPS limit
 ###
 class GameLoop
 
 
   # Constructs the game loop
   # This initiates the updateLoop
-  # @param [Integer] The fps upper limit
   constructor: (fps) ->
     that = @
 
-
+    ###*
+    # The renderer instance
+    # @property renderer {Gotham.Renderer}
+    # @private
+    ###
     @renderer = ->
 
+    ###*
+    # Tasks to execute in the game loop
+    # @property _tasks {Callback[]}
+    # @private
+    ###
     @_tasks = []
 
+    ###*
+    # FPS Meter Instance. Shows FPS on screen
+    # @property FPSMeter {FPSMeter}
+    # @private
+    ###
     @FPSMeter = new FPSMeter( { decimals: 0, graph: true, theme: 'dark', left: "47%", top: "96%" });
 
-    # Starts the update loop
+    ###*
+    # Stats the animation loop
+    # @method animate
+    # @private
+    ###
     animate = (time) ->
       requestAnimationFrame( animate );
       that.update(time)
 
     requestAnimationFrame animate
 
+  ###*
+  # Sets the renderer of the game loop
+  # @method setRenderer
+  # @param renderer {Gotham.Renderer}
+  ###
   setRenderer: (renderer) ->
     @renderer = renderer
 
-
+  ###*
   # The update loop function
   # This function are started in the constructor and runs in the preset FPS
   # It updates logic and draw + Tween
-  #
-  # @param [long] Duration of the application runtime
-  # @return [void] Nothing
-  #
+  # @method update
+  # @param time {Long} Duration of the application runtime
+  # @private
+  ###
   update: (time) ->
     @FPSMeter.tickStart();
 
@@ -70,11 +94,12 @@ class GameLoop
 
 
 
-
+  ###*
   # Function which adds a task to be completed in the render loop
   # This runs until the Task returns false, will then be deleted from queue
-  #
+  # @method addTask
   # @param task {Function} The Task function
+  ###
   addTask: (task)->
     @_tasks.push task
 

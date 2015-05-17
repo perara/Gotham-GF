@@ -9,17 +9,20 @@
 ###
 class Tools
 
-
+  ###*
   # Converts a json structure to a polygon
   # The supported format is the following:
-  # @example JSON Format
-  #   json = [[x,y,x2,y2][x,y,x2,y2]]
+  # @method polygonFromJSON
+  # @example
+  #         # The format
+  #         json = [[x,y,x2,y2][x,y,x2,y2]]
   #
-  # @param [Object JSON] json The json object
-  # @param [Integer] skipRatio The Skip frequency.
-  # @param [Object] scale scale option
-  # @option scale [Double] x The X axis scale
-  # @option scale [Double] y The Y axis scale
+  # @param json {Object} The json object
+  # @param skipRatio {Integer} The Skip frequency.
+  # @param scale {Object} scale option
+  # @param scale.x {Number} x scale
+  # @param scale.y {Number} y scale
+  ###
   @polygonFromJSON: (json, skipRatio, scale) ->
 
     # How many coordinates to skip
@@ -54,17 +57,20 @@ class Tools
     return polygonList
 
 
-
+  ###*
   # Converts a Polygon into a Graphics element
+  # @method polygonToGraphics
+  # @param options {Array(Polygon) || Polygon} the moving options
+  # @param interactive {Boolean} weither the graphics should be interactive or not
+  # @example
+  #         #
+  #         # Convert list of polygons to list of Graphic objects
+  #         graphicsList = Gotham.Graphics.PolygonToGraphics(polygonList)
   #
-  # @example Convert list of polygons to list of Graphic objects
-  #   graphicsList = Gotham.Graphics.PolygonToGraphics(polygonList)
+  #         # Convert a polygon to a graphics object
+  #         graphicObj = Gotham.Graphics.PolygonToGraphics(polygon)
   #
-  # @example Convert a polygon to a graphics object
-  #   graphicObj = Gotham.Graphics.PolygonToGraphics(polygon)
-  #
-  # @param [Array(Polygon) || Polygon] options the moving options
-  #
+  ###
   @polygonToGraphics: (polygon, interactive) ->
 
     # Create some empty arrays

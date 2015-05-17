@@ -19,25 +19,40 @@ class Scene extends PIXI.Container
   # Runs the create() function and calls the super constructor
   constructor: ->
     super
+
+    ###*
+    # The children objects of the scene. These objects are typically views
+    # NB! Should not be accessed randomly
+    # @property {Object[]} __children
+    # @private
+    ###
     @__children = {}
     @create()
 
 
-  # Function which should be overrided by the Scene
+  ###*
+  # The create function of the scene, Should be overridden.
+  # @method create
+  ###
   create: ->
     #throw new Error "create() must be overriden by a scene!"
 
+  ###*
   # Gets a child by name
-  #
+  # @method getObject
   # @param name {String} Child name
   # @return {DisplayObject} The child
+  ###
   getObject: (name) ->
     return @__children[name]
 
-  # Adds a child to the Stage
-  #
+
+  ###*
+  # Adds a child to the Scene
+  # @method addObject
   # @param child {DisplayObject} The display object to remove
   # @return {DisplayObject} The display object removed, undefined if none
+  ###
   addObject: (child)->
 
     @addChild child.View
@@ -56,11 +71,12 @@ class Scene extends PIXI.Container
 
     return child
 
-
-  # Removes a child
-  #
+  ###*
+  # Removes a child from the Scene
+  # @method removeObject
   # @param child {DisplayObject} The display object to remove
   # @return {DisplayObject} The display object removed, undefined if none
+  ###
   removeObject: (child) ->
     delete @__children[child.name]
 

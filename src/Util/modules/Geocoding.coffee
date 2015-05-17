@@ -9,6 +9,13 @@
 ###
 class Geocoding
 
+  ###*
+  # Identifies a country by latitude and longitude
+  # @method getCountry
+  # @param lat {Number} Latitude
+  # @param lng {Number} Longitude
+  # @returns {Object} country object
+  ###
   @getCountry: (lat, lng) ->
     return window.CRG.country_reverse_geocoding().get_country(lat,lng);
 

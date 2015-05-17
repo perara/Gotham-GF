@@ -9,6 +9,12 @@
 ###
 class Compression
 
+  ###*
+  # GZIP Compression
+  # @property {Object} GZIP
+  # @property {Function} GZIP.decompress
+  # @static
+  ###
   GZIP:
     decompress: (bytes)->
       gunzip = new Zlib.Zlib.Gunzip atob(bytes)

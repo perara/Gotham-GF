@@ -6,40 +6,79 @@
 # @module Framework
 # @submodule Framework
 # @namespace Gotham
+# @constructor
+# @param host {String} Hostname of the server
+# @param port {Integer} Port of the server
 ###
 class Network
 
 
   # Contstructor of the network class
   # Sets up required info to connect to server
-  #
-  # @param [String] host Hostname of the server
-  # @param [Integer] port Port of the server
-  # @param [Domain] domain SignalR domain (For example: ws://test.com/domain
   constructor: (host, port) ->
+    ###*
+    # The host to connect to
+    # @property {String} host
+    ###
     @host = host
-    @port = port
-    @Socket = @_socket = null
 
-    @hasConnectedOnce = false
-
-    @onConnect = ->
-    @onReconnect = ->
-    @onReconnecting = ->
-    @onDisconnect = ->
-
-
+    ###*
+    # The port to connect on
+    # @property {Number} port
+    ###
     if not port ?
       @port = 8080
     else
       @port = port
 
-  # Connects to the host returning onHubCallback when connected
-  connect: ()->
+
+    ###*
+    # The Socket object
+    # @property {SocketIO} Socket
+    ###
+    @Socket = null
+
+    ###*
+    # Variable which determine if the socket has been connected once.
+    # @property {Boolean} hasConnectedOnce
+    # @private
+    ###
+    @hasConnectedOnce = false
+
+    ###*
+    # Callback for when the client has connected
+    # @method onConnect
+    ###
+    @onConnect = ->
+
+    ###*
+    # Callback for when the client has recconected
+    # @method onReconnect
+    ###
+    @onReconnect = ->
+
+    ###*
+    # Callback for when the client is reconnecting
+    # @method onReconnecting
+    ###
+    @onReconnecting = ->
+
+    ###*
+    # Callback for when the connection is lost
+    # @method onDisconnect
+    ###
+    @onDisconnect = ->
+
+
+  ###*
+  # Connects to the server
+  # @method connect
+  ###
+  connect: ->
     that = @
 
-    @Socket = @_socket = io.connect "#{@host}:#{@port}"
-    @_socket.on 'connect', ->
+    @Socket = io.connect "#{@host}:#{@port}"
+    @Socket.on 'connect', ->
 
       if that.hasConnectedOnce
         that.onReconnect @
@@ -50,11 +89,11 @@ class Network
 
 
     # On reconnecting status
-    @._socket.on 'reconnecting', ->
+    @Socket.on 'reconnecting', ->
       that.onReconnecting @
 
     # On disconnecting status
-    @_socket.on 'disconnect', ->
+    @Socket.on 'disconnect', ->
       that.onDisconnect @
 
 

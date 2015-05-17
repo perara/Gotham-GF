@@ -16,8 +16,18 @@ class Sprite extends PIXI.Sprite
   constructor: (texture) ->
     super
 
+    ###*
+    # Texture for when the sprite is hovered
+    # @property {Gotham.Graphics.Texture}
+    ###
     @hoverTexture = null
+
+    ###*
+    # Original texture
+    # @property {Gotham.Graphics.Texture} normalTexture
+    ###
     @normalTexture = texture
+    @texture = texture
 
 
 

@@ -13,6 +13,7 @@
 # @param [options] {Object} Options of the button
 # @param [options.toggle=true] {Boolean} Weither the button is a toggle button or click button
 # @param [options.textSize=40] {Number} Size of the text label
+# @param [options.buttonColor=0x000000] {Hex} Hex color of buttonColor
 # @param [options.texture=null] {Gotham.Graphics.Texture} Which texture to apply to the button
 # @param [options.offset=0] {Number} Offset of the button in pixels
 # @param [options.margin=0] {Number} Margin of the button
@@ -61,8 +62,18 @@ class Button extends Gotham.Graphics.Sprite
       y: 0.5
     @addChild button_text
 
+    ###*
+    # Label of the button
+    # @property {String} label
+    ###
     @label = button_text
 
+    ###*
+    # Click event of the button
+    # @method click
+    # @param e {Event} button event
+    # @private
+    ###
     @click = (e) ->
       if not _toggle
         @onClick()
@@ -74,11 +85,30 @@ class Button extends Gotham.Graphics.Sprite
       else
         @toggleOff()
 
+  ###*
+  # Set the background of the button
+  # @method setBackground
+  # @param hex {Hex} hex of the background color to set
+  ###
   setBackground: (hex) ->
     @tint = hex
 
+  ###*
+  # callback for when button is clicked
+  # @method onClick
+  ###
   onClick: ->
+
+  ###*
+  # callback for when button is toggled on
+  # @method toggleOn
+  ###
   toggleOn: ->
+
+  ###*
+  # callback for when button is toggled off
+  # @method toggleOff
+  ###
   toggleOff: ->
 
 
